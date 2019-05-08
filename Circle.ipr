@@ -30,4 +30,15 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
+  <component name="libraryTable">
+    <library name="tomcat-jdbc">
+      <CLASSES>
+        <root url="jar://D:/apache-tomcat-8.0.53/lib/servlet-api.jar!/" />
+        <root url="jar://D:/apache-tomcat-8.0.53/lib/tomcat-jdbc.jar!/" />
+        <root url="jar://D:/apache-tomcat-8.0.53/lib/jsp-api.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+  </component>
 </project>
