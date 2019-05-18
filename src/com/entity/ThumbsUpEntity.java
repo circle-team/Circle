@@ -5,9 +5,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "thumbs_up", schema = "liff", catalog = "")
+@Table(name = "Thumbs_up", schema = "liff", catalog = "")
 public class ThumbsUpEntity {
     private long tid;
+    private long thbid;
+    private long tuid;
     private Timestamp tdate;
 
     @Id
@@ -18,6 +20,26 @@ public class ThumbsUpEntity {
 
     public void setTid(long tid) {
         this.tid = tid;
+    }
+
+    @Basic
+    @Column(name = "Thbid")
+    public long getThbid() {
+        return thbid;
+    }
+
+    public void setThbid(long thbid) {
+        this.thbid = thbid;
+    }
+
+    @Basic
+    @Column(name = "Tuid")
+    public long getTuid() {
+        return tuid;
+    }
+
+    public void setTuid(long tuid) {
+        this.tuid = tuid;
     }
 
     @Basic
@@ -36,11 +58,13 @@ public class ThumbsUpEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ThumbsUpEntity that = (ThumbsUpEntity) o;
         return tid == that.tid &&
+                thbid == that.thbid &&
+                tuid == that.tuid &&
                 Objects.equals(tdate, that.tdate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tid, tdate);
+        return Objects.hash(tid, thbid, tuid, tdate);
     }
 }

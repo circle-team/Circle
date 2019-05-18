@@ -5,9 +5,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "board", schema = "liff", catalog = "")
+@Table(name = "Board", schema = "liff", catalog = "")
 public class BoardEntity {
     private long bDid;
+    private long bDruid;
+    private long bDsuid;
     private String bDtext;
     private Timestamp bDtime;
 
@@ -19,6 +21,26 @@ public class BoardEntity {
 
     public void setbDid(long bDid) {
         this.bDid = bDid;
+    }
+
+    @Basic
+    @Column(name = "BDruid")
+    public long getbDruid() {
+        return bDruid;
+    }
+
+    public void setbDruid(long bDruid) {
+        this.bDruid = bDruid;
+    }
+
+    @Basic
+    @Column(name = "BDsuid")
+    public long getbDsuid() {
+        return bDsuid;
+    }
+
+    public void setbDsuid(long bDsuid) {
+        this.bDsuid = bDsuid;
     }
 
     @Basic
@@ -47,12 +69,14 @@ public class BoardEntity {
         if (o == null || getClass() != o.getClass()) return false;
         BoardEntity that = (BoardEntity) o;
         return bDid == that.bDid &&
+                bDruid == that.bDruid &&
+                bDsuid == that.bDsuid &&
                 Objects.equals(bDtext, that.bDtext) &&
                 Objects.equals(bDtime, that.bDtime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bDid, bDtext, bDtime);
+        return Objects.hash(bDid, bDruid, bDsuid, bDtext, bDtime);
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users", schema = "liff", catalog = "")
+@Table(name = "Users", schema = "liff", catalog = "")
 public class UsersEntity {
     private long userid;
     private String upassword;
