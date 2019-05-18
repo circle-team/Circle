@@ -56,7 +56,7 @@ CREATE TABLE Collect (
 	Ctime datetime NOT NULL -- 收藏时间
 	
 );
-drop  TABLE School ;
+
 CREATE TABLE UserInfo (
 	Uid BIGINT NOT NULL  PRIMARY KEY,
 	FOREIGN KEY ( Uid ) REFERENCES Users ( Userid ),-- 注册用户账号Users(uname)外键
