@@ -46,6 +46,19 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="Java EE 6-Java EE 6 (2)">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/javax.transaction.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.annotation.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="tomcat-jdbc">
       <CLASSES>
         <root url="jar://D:/apache-tomcat-8.0.53/lib/servlet-api.jar!/" />
