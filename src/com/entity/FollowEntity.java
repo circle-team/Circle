@@ -5,9 +5,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "follow", schema = "liff", catalog = "")
+@Table(name = "Follow", schema = "liff", catalog = "")
 public class FollowEntity {
     private long fid;
+    private long fhuid;
+    private long fuid;
     private Timestamp ftime;
 
     @Id
@@ -18,6 +20,26 @@ public class FollowEntity {
 
     public void setFid(long fid) {
         this.fid = fid;
+    }
+
+    @Basic
+    @Column(name = "Fhuid")
+    public long getFhuid() {
+        return fhuid;
+    }
+
+    public void setFhuid(long fhuid) {
+        this.fhuid = fhuid;
+    }
+
+    @Basic
+    @Column(name = "Fuid")
+    public long getFuid() {
+        return fuid;
+    }
+
+    public void setFuid(long fuid) {
+        this.fuid = fuid;
     }
 
     @Basic
@@ -36,11 +58,13 @@ public class FollowEntity {
         if (o == null || getClass() != o.getClass()) return false;
         FollowEntity that = (FollowEntity) o;
         return fid == that.fid &&
+                fhuid == that.fhuid &&
+                fuid == that.fuid &&
                 Objects.equals(ftime, that.ftime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fid, ftime);
+        return Objects.hash(fid, fhuid, fuid, ftime);
     }
 }

@@ -56,8 +56,9 @@ CREATE TABLE Collect (
 	Ctime datetime NOT NULL -- 收藏时间
 	
 );
+
 CREATE TABLE UserInfo (
-	Uid BIGINT NOT NULL,
+	Uid BIGINT NOT NULL  PRIMARY KEY,
 	FOREIGN KEY ( Uid ) REFERENCES Users ( Userid ),-- 注册用户账号Users(uname)外键
 	Ugender VARCHAR ( 4 ),-- 男	性别
 	Ucontact VARCHAR ( 20 ),-- 联系电话
@@ -70,7 +71,7 @@ CREATE TABLE UserInfo (
 	
 );
 CREATE TABLE School (
-	Suid BIGINT NOT NULL,
+	Suid BIGINT NOT NULL PRIMARY KEY,
 	FOREIGN KEY ( Suid ) REFERENCES Users ( Userid ),-- 用户User,外键
 	Spschool VARCHAR ( 50 ),-- 小学
 	Smschool VARCHAR ( 50 ),-- 初中

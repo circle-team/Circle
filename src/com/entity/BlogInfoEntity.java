@@ -5,9 +5,10 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "bloginfo", schema = "liff", catalog = "")
-public class BloginfoEntity {
+@Table(name = "BlogInfo", schema = "liff", catalog = "")
+public class BlogInfoEntity {
     private long bid;
+    private long buid;
     private String btext;
     private Timestamp bdate;
     private String bimage;
@@ -21,6 +22,16 @@ public class BloginfoEntity {
 
     public void setBid(long bid) {
         this.bid = bid;
+    }
+
+    @Basic
+    @Column(name = "Buid")
+    public long getBuid() {
+        return buid;
+    }
+
+    public void setBuid(long buid) {
+        this.buid = buid;
     }
 
     @Basic
@@ -67,8 +78,9 @@ public class BloginfoEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BloginfoEntity that = (BloginfoEntity) o;
+        BlogInfoEntity that = (BlogInfoEntity) o;
         return bid == that.bid &&
+                buid == that.buid &&
                 Objects.equals(btext, that.btext) &&
                 Objects.equals(bdate, that.bdate) &&
                 Objects.equals(bimage, that.bimage) &&
@@ -77,6 +89,6 @@ public class BloginfoEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(bid, btext, bdate, bimage, btitle);
+        return Objects.hash(bid, buid, btext, bdate, bimage, btitle);
     }
 }

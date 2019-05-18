@@ -1,14 +1,12 @@
 package com.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "userinfo", schema = "liff", catalog = "")
-public class UserinfoEntity {
+@Table(name = "UserInfo", schema = "liff", catalog = "")
+public class UserInfoEntity {
+    private long uid;
     private String ugender;
     private String ucontact;
     private String uname;
@@ -17,6 +15,16 @@ public class UserinfoEntity {
     private String uidentityNumber;
     private String uimage;
     private String uhobby;
+
+    @Id
+    @Column(name = "Uid")
+    public long getUid() {
+        return uid;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
+    }
 
     @Basic
     @Column(name = "Ugender")
@@ -102,8 +110,9 @@ public class UserinfoEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserinfoEntity that = (UserinfoEntity) o;
-        return Objects.equals(ugender, that.ugender) &&
+        UserInfoEntity that = (UserInfoEntity) o;
+        return uid == that.uid &&
+                Objects.equals(ugender, that.ugender) &&
                 Objects.equals(ucontact, that.ucontact) &&
                 Objects.equals(uname, that.uname) &&
                 Objects.equals(uaddress, that.uaddress) &&
@@ -115,6 +124,6 @@ public class UserinfoEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ugender, ucontact, uname, uaddress, uemail, uidentityNumber, uimage, uhobby);
+        return Objects.hash(uid, ugender, ucontact, uname, uaddress, uemail, uidentityNumber, uimage, uhobby);
     }
 }

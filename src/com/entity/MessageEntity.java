@@ -5,9 +5,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "message", schema = "liff", catalog = "")
+@Table(name = "Message", schema = "liff", catalog = "")
 public class MessageEntity {
     private long mid;
+    private long mruid;
+    private long msuid;
     private String mtext;
     private Timestamp mtime;
 
@@ -19,6 +21,26 @@ public class MessageEntity {
 
     public void setMid(long mid) {
         this.mid = mid;
+    }
+
+    @Basic
+    @Column(name = "Mruid")
+    public long getMruid() {
+        return mruid;
+    }
+
+    public void setMruid(long mruid) {
+        this.mruid = mruid;
+    }
+
+    @Basic
+    @Column(name = "Msuid")
+    public long getMsuid() {
+        return msuid;
+    }
+
+    public void setMsuid(long msuid) {
+        this.msuid = msuid;
     }
 
     @Basic
@@ -47,12 +69,14 @@ public class MessageEntity {
         if (o == null || getClass() != o.getClass()) return false;
         MessageEntity that = (MessageEntity) o;
         return mid == that.mid &&
+                mruid == that.mruid &&
+                msuid == that.msuid &&
                 Objects.equals(mtext, that.mtext) &&
                 Objects.equals(mtime, that.mtime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mid, mtext, mtime);
+        return Objects.hash(mid, mruid, msuid, mtext, mtime);
     }
 }

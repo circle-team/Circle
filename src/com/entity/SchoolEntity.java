@@ -1,14 +1,12 @@
 package com.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "school", schema = "liff", catalog = "")
+@Table(name = "School", schema = "liff", catalog = "")
 public class SchoolEntity {
+    private long suid;
     private String spschool;
     private String smschool;
     private String shschool;
@@ -17,6 +15,16 @@ public class SchoolEntity {
     private Integer smgrade;
     private Integer shgrade;
     private Integer sugrade;
+
+    @Id
+    @Column(name = "Suid")
+    public long getSuid() {
+        return suid;
+    }
+
+    public void setSuid(long suid) {
+        this.suid = suid;
+    }
 
     @Basic
     @Column(name = "Spschool")
@@ -103,7 +111,8 @@ public class SchoolEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SchoolEntity that = (SchoolEntity) o;
-        return Objects.equals(spschool, that.spschool) &&
+        return suid == that.suid &&
+                Objects.equals(spschool, that.spschool) &&
                 Objects.equals(smschool, that.smschool) &&
                 Objects.equals(shschool, that.shschool) &&
                 Objects.equals(suschool, that.suschool) &&
@@ -115,6 +124,6 @@ public class SchoolEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(spschool, smschool, shschool, suschool, spgrade, smgrade, shgrade, sugrade);
+        return Objects.hash(suid, spschool, smschool, shschool, suschool, spgrade, smgrade, shgrade, sugrade);
     }
 }

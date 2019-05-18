@@ -5,9 +5,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "comments", schema = "liff", catalog = "")
+@Table(name = "Comments", schema = "liff", catalog = "")
 public class CommentsEntity {
     private long cid;
+    private long cfid;
+    private long cuid;
     private String ctext;
     private Timestamp ctime;
 
@@ -19,6 +21,26 @@ public class CommentsEntity {
 
     public void setCid(long cid) {
         this.cid = cid;
+    }
+
+    @Basic
+    @Column(name = "Cfid")
+    public long getCfid() {
+        return cfid;
+    }
+
+    public void setCfid(long cfid) {
+        this.cfid = cfid;
+    }
+
+    @Basic
+    @Column(name = "Cuid")
+    public long getCuid() {
+        return cuid;
+    }
+
+    public void setCuid(long cuid) {
+        this.cuid = cuid;
     }
 
     @Basic
@@ -47,12 +69,14 @@ public class CommentsEntity {
         if (o == null || getClass() != o.getClass()) return false;
         CommentsEntity that = (CommentsEntity) o;
         return cid == that.cid &&
+                cfid == that.cfid &&
+                cuid == that.cuid &&
                 Objects.equals(ctext, that.ctext) &&
                 Objects.equals(ctime, that.ctime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cid, ctext, ctime);
+        return Objects.hash(cid, cfid, cuid, ctext, ctime);
     }
 }
