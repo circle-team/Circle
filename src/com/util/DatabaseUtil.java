@@ -13,22 +13,17 @@ import java.sql.ResultSet;
  */
 public class DatabaseUtil {
 
-    private static final String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=QDU";
-    private static final String USERNAME = "sa";
-    private static final String PASSWORD = "sa";
-
-    private static final String DRIVER_CLASS2 = "com.mysql.jdbc.Driver";
-    private static final String URL2 = "jdbc:mysql://cd-cdb-o3v1sjms.sql.tencentcdb.com:63142/QDU";
-    private static final String USERNAME2 = "root";
-    private static final String PASSWORD2 = "tgs123456@";
+    private static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://cd-cdb-o3v1sjms.sql.tencentcdb.com:63142/QDU";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "tgs123456@";
 
 
     public static Connection getConnection() {
         try {
-            Class.forName(DRIVER_CLASS2);
+            Class.forName(DRIVER_CLASS);
             DriverManager.setLoginTimeout(5);
-            return DriverManager.getConnection(URL2, USERNAME2, PASSWORD2);
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
