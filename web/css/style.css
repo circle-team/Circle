@@ -1,3 +1,26 @@
+body{
+    text-align: center;
+    font-family: "Comic Sans MS";
+    width: 1300px;
+}
 #box1{
+    height: 50px;
+    padding: 12px;
     background: transparent;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+a {
+    color: #9360ff;
+    font-size: 18px;
+    padding-right: 20px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+a:hover, a:active, a:focus {
+    color: #46b8da;
+    outline: none;
+    text-decoration: none;
 }

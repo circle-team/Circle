@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>Title</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
   <link rel="stylesheet" href="css/style.css">
@@ -15,10 +17,10 @@
   <script src="bootstrap/js/bootstrap.js"></script>
 </head>
   <body>
-  <div class="container">
-    <div class="row clearfix">
-      <div class="col-md-12">
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" id="box1" role="navigation">
+  <div class="container"><%--导航栏--%>
+    <div class="row">
+      <div class="col-md-12 column">
+        <nav class="navbar navbar-default navbar-fixed-top <%--navbar-inverse--%>" id="box1" role="navigation">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
           </div>
@@ -56,11 +58,6 @@
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" />
-              </div> <button type="submit" class="btn btn-default">Submit</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <a href="#">Link</a>
@@ -89,20 +86,24 @@
 
         </nav>
       </div>
+    </div><%--导航栏--%>
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+      </div>
     </div>
     <div class="row clearfix">
       <div class="col-md-12 column">
-        <div class="carousel slide" id="carousel-472503">
+        <div class="carousel slide" id="carousel-301909">
           <ol class="carousel-indicators">
-            <li class="active" data-slide-to="0" data-target="#carousel-472503">
+            <li data-slide-to="0" data-target="#carousel-301909">
             </li>
-            <li data-slide-to="1" data-target="#carousel-472503">
+            <li data-slide-to="1" data-target="#carousel-301909">
             </li>
-            <li data-slide-to="2" data-target="#carousel-472503">
+            <li data-slide-to="2" data-target="#carousel-301909" class="active">
             </li>
           </ol>
           <div class="carousel-inner">
-            <div class="item active">
+            <div class="item">
               <img alt="" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/1/default.jpg" />
               <div class="carousel-caption">
                 <h4>
@@ -124,7 +125,7 @@
                 </p>
               </div>
             </div>
-            <div class="item">
+            <div class="item active">
               <img alt="" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/3/default.jpg" />
               <div class="carousel-caption">
                 <h4>
@@ -135,14 +136,8 @@
                 </p>
               </div>
             </div>
-          </div> <a class="left carousel-control" href="#carousel-472503" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-472503" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+          </div> <a class="left carousel-control" href="#carousel-301909" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-301909" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-      </div>
-    </div>
-  </div>
-  </div>
-    <div class="row clearfix">
-      <div class="col-md-12 column">
         <div class="row">
           <div class="col-md-4">
             <div class="thumbnail">
@@ -198,22 +193,130 @@
     <div class="row clearfix">
       <div class="col-md-8 column">
         <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
-        <h2>
-          Heading
-        </h2>
         <p>
-          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
         </p>
-        <p>
-          <a class="btn" href="#">View details »</a>
-        </p>
+        <a id="modal-665779" href="#modal-container-665779" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+        <div class="modal fade" id="modal-container-665779" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                  标题
+                </h4>
+              </div>
+              <div class="modal-body">
+                内容...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
       <div class="col-md-4 column">
+        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
+        <p>
+          <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+        </p>
+        <a id="modal-174630" href="#modal-container-174630" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+        <div class="modal fade" id="modal-container-174630" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                  标题
+                </h4>
+              </div>
+              <div class="modal-body">
+                内容...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-md-2 column">
+      </div>
+      <div class="col-md-4 column">
+        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
+        <p>
+          <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+        </p>
+        <a id="modal-872479" href="#modal-container-872479" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+        <div class="modal fade" id="modal-container-872479" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                  标题
+                </h4>
+              </div>
+              <div class="modal-body">
+                内容...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-4 column">
+        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
+        <p>
+          <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
+        </p>
+        <a id="modal-479939" href="#modal-container-479939" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+        <div class="modal fade" id="modal-container-479939" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                  标题
+                </h4>
+              </div>
+              <div class="modal-body">
+                内容...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-2 column">
         <blockquote>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
           </p> <small>Someone famous <cite>Source Title</cite></small>
-        </blockquote><img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
+        </blockquote>
       </div>
     </div>
     <div class="row clearfix">
