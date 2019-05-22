@@ -1,7 +1,6 @@
 body{
-    text-align: center;
     font-family: "Comic Sans MS";
-    width: 1300px;
+    width: 80%;
 }
 #box1{
     height: 50px;
@@ -33,7 +32,7 @@ a:hover, a:active, a:focus {
     text-decoration: none;
 }
 #carouse-example-generic{
-    width: 1510px;
+    width: 125%;
 }
 #carouse-example-generic .carousel-inner>.item> img{
     display: block;
