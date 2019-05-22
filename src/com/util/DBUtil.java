@@ -11,7 +11,7 @@ import java.sql.ResultSet;
  *
  * @author Anna
  */
-public class DatabaseUtil {
+public class DBUtil {
 
     private static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://cd-cdb-o3v1sjms.sql.tencentcdb.com:63142/QDU";
