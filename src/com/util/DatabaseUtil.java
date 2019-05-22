@@ -22,7 +22,6 @@ public class DatabaseUtil {
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER_CLASS);
-            DriverManager.setLoginTimeout(5);
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (Exception ex) {
             ex.printStackTrace();
