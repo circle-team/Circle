@@ -11,6 +11,14 @@ body{
     -o-transition: 0.5s;
     transition: 0.5s;
 }
+#box2{
+    background: #f9f9f9;
+    height: 50px;
+    padding: 5px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
 a {
     color: #9360ff;
     font-size: 18px;
@@ -23,4 +31,12 @@ a:hover, a:active, a:focus {
     color: #46b8da;
     outline: none;
     text-decoration: none;
+}
+#carouse-example-generic{
+    width: 1510px;
+}
+#carouse-example-generic .carousel-inner>.item> img{
+    display: block;
+    width: 100%;
+    height: 700px;
 }

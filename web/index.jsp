@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="bootstr ap/js/bootstrap.js"></script>
 </head>
   <body>
   <div class="container"><%--导航栏--%>
