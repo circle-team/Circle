@@ -65,12 +65,51 @@ public class BlogInfoDao implements CommonDao {
     }
 
     @Override
-    public ArrayList query(int start, int length) throws SQLException {
+    public ArrayList<BlogInfoEntity> query(int start, int length) throws SQLException {
+        Connection conn = DBUtil.getConnection();
+
+        String sql = "select * from authInfo  limit ?, ?;";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, start - 1);
+        pstmt.setInt(2, length);
+        ResultSet rs = pstmt.executeQuery();
+
+        ArrayList<AuthInfo> list = new ArrayList<>();
+        AuthInfo authInfo;
+
+        while (rs.next()) {
+            authInfo = new AuthInfo(rs.getInt(1), rs.getString(2), rs.getString(3)
+                    , rs.getString(4), rs.getString(5), rs.getString(6));
+            list.add(authInfo);
+        }
+
+        rs.close();
+        pstmt.close();
+
+        return list;
         return null;
     }
 
     @Override
     public Object query(Object o) throws SQLException {
-        return null;
+        BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
+
+        Connection conn = DBUtil.getConnection();
+
+        String sql = "SELECT * FROM BlogInfo WHERE buid = ?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+       pstmt.setLong(1, BlogInfo.getBid());
+        ResultSet rs = pstmt.executeQuery();
+
+        BlogInfoEntity newBlogInfo = null;
+        while (rs.next()) {
+            newBlogInfo = new BlogInfoEntity(rs.getInt(1), rs.getString(2), rs.getString(3)
+                    , rs.getString(4), rs.getString(5), rs.getString(6));
+        }
+
+        if (newBlogInfo == null)
+            newBlogInfo = new BlogInfoEntity();
+        return newBlogInfo;
     }
 }

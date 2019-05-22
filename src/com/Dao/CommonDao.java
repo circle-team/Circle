@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
         void updateData(Object o) throws SQLException;
 
-        int queryDataNum() throws SQLException;
+        int queryDataNum(Object o) throws SQLException;
 
         ArrayList query(int start, int length) throws SQLException;
 
