@@ -47,11 +47,13 @@ public class BlogInfoDao implements CommonDao {
     }
 
     @Override
-    public int queryDataNum() throws SQLException {
+    public int queryDataNum(Object o) throws SQLException {
         Connection conn = DBUtil.getConnection();
+        BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
-        String sql = "select count(*) from BlogInfo;";
+        String sql = "select count(*) from BlogInfo WHERE uid = ?;";
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1, BlogInfo.getBid());
         ResultSet rs = pstmt.executeQuery();
 
         int num;
@@ -74,11 +76,11 @@ public class BlogInfoDao implements CommonDao {
         pstmt.setInt(2, length);
         ResultSet rs = pstmt.executeQuery();
 
-        ArrayList<AuthInfo> list = new ArrayList<>();
-        AuthInfo authInfo;
+        ArrayList<BlogInfoEntity> list = new ArrayList<>();
+        BlogInfoEntity authInfo;
 
         while (rs.next()) {
-            authInfo = new AuthInfo(rs.getInt(1), rs.getString(2), rs.getString(3)
+            authInfo = new BlogInfoEntity(rs.getInt(1), rs.getString(2), rs.getString(3)
                     , rs.getString(4), rs.getString(5), rs.getString(6));
             list.add(authInfo);
         }
