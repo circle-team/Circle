@@ -14,9 +14,9 @@ import java.sql.ResultSet;
 public class DBUtil {
 
     private static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://cd-cdb-o3v1sjms.sql.tencentcdb.com:63142/QDU";
+    private static final String URL = "jdbc:mysql://localhost:3306/liff";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "tgs123456@";
+    private static final String PASSWORD = "123456";
 
 
     public static Connection getConnection() {

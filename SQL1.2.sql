@@ -62,7 +62,7 @@ CREATE TABLE UserInfo (
 	FOREIGN KEY ( Uid ) REFERENCES Users ( Userid ),-- 注册用户账号Users(uname)外键
 	Ugender VARCHAR ( 4 ),-- 男	性别
 	Ucontact VARCHAR ( 20 ),-- 联系电话
-	Uname VARCHAR ( 20 ),-- 真实姓名
+	Uname VARCHAR ( 20 ),-- 昵称
 	Uaddress VARCHAR ( 200 ),-- 地址
 	Uemail VARCHAR ( 100 ),-- 邮箱
 	UidentityNumber CHAR ( 18 ),-- 证件号码

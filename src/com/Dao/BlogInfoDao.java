@@ -21,19 +21,20 @@ public class BlogInfoDao implements CommonDao {
         pstmt.setString(3, BlogInfo.getBtext());
         pstmt.setTimestamp(4, BlogInfo.getBdate());
         pstmt.setString(5, BlogInfo.getBimage());
-        pstmt.setString(5, BlogInfo.getBtitle());
-
+        pstmt.setString(6, BlogInfo.getBtitle());
+        System.out.println("插入成功！");
         pstmt.executeUpdate();
         pstmt.close();
     }
 
     @Override
+
     public void deleteData(Object o) throws SQLException {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
         Connection conn = DBUtil.getConnection();
 
-        String sql = "DELETE FROM BlogInfo WHERE Buid = ?";
+        String sql = "DELETE FROM BlogInfo WHERE Bid = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1, BlogInfo.getBid());
 
