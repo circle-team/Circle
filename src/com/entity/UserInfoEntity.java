@@ -16,6 +16,18 @@ public class UserInfoEntity {
     private String uimage;
     private String uhobby;
 
+    public UserInfoEntity(long uid, String ugender, String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby) {
+        this.uid = uid;
+        this.ugender = ugender;
+        this.ucontact = ucontact;
+        this.uname = uname;
+        this.uaddress = uaddress;
+        this.uemail = uemail;
+        this.uidentityNumber = uidentityNumber;
+        this.uimage = uimage;
+        this.uhobby = uhobby;
+    }
+
     @Id
     @Column(name = "Uid")
     public long getUid() {

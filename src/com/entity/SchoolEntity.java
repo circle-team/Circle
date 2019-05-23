@@ -14,6 +14,19 @@ public class SchoolEntity {
     private Integer spgrade;
     private Integer smgrade;
     private Integer shgrade;
+
+    public SchoolEntity(long suid, String spschool, String smschool, String shschool, String suschool, Integer spgrade, Integer smgrade, Integer shgrade, Integer sugrade) {
+        this.suid = suid;
+        this.spschool = spschool;
+        this.smschool = smschool;
+        this.shschool = shschool;
+        this.suschool = suschool;
+        this.spgrade = spgrade;
+        this.smgrade = smgrade;
+        this.shgrade = shgrade;
+        this.sugrade = sugrade;
+    }
+
     private Integer sugrade;
 
     @Id

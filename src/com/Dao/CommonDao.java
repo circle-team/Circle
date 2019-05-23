@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
         int queryDataNum(Object o) throws SQLException;
 
-        ArrayList query(int start, int length) throws SQLException;
+        ArrayList query(Object o,int start, int length) throws SQLException;
 
         Object query(Object o) throws SQLException;
     }

@@ -33,7 +33,7 @@ public class BlogInfoDao implements CommonDao {
 
         Connection conn = DBUtil.getConnection();
 
-        String sql = "DELETE FROM BlogInfo WHERE bid = ?";
+        String sql = "DELETE FROM BlogInfo WHERE Buid = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1, BlogInfo.getBid());
 
@@ -51,7 +51,7 @@ public class BlogInfoDao implements CommonDao {
         Connection conn = DBUtil.getConnection();
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
-        String sql = "select count(*) from BlogInfo WHERE uid = ?;";
+        String sql = "select count(*) from BlogInfo WHERE Buid = ?;";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1, BlogInfo.getBid());
         ResultSet rs = pstmt.executeQuery();
@@ -67,29 +67,30 @@ public class BlogInfoDao implements CommonDao {
     }
 
     @Override
-    public ArrayList<BlogInfoEntity> query(int start, int length) throws SQLException {
+    public ArrayList<BlogInfoEntity> query(Object o,int start, int length) throws SQLException {
         Connection conn = DBUtil.getConnection();
+        BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
-        String sql = "select * from authInfo  limit ?, ?;";
+        String sql = "select * from BlogInfo where Buid = ?  limit ?, ?;";
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, start - 1);
-        pstmt.setInt(2, length);
+        pstmt.setLong(1, BlogInfo.getBuid());
+        pstmt.setInt(2, start - 1);
+        pstmt.setInt(3, length);
         ResultSet rs = pstmt.executeQuery();
 
         ArrayList<BlogInfoEntity> list = new ArrayList<>();
-        BlogInfoEntity authInfo;
+        BlogInfoEntity newBlogInfo;
 
         while (rs.next()) {
-            authInfo = new BlogInfoEntity(rs.getInt(1), rs.getString(2), rs.getString(3)
-                    , rs.getString(4), rs.getString(5), rs.getString(6));
-            list.add(authInfo);
+            newBlogInfo = new BlogInfoEntity(rs.getLong(1), rs.getLong(2), rs.getString(3)
+                    , rs.getTimestamp(4), rs.getString(5), rs.getString(6));
+            list.add(newBlogInfo);
         }
 
         rs.close();
         pstmt.close();
 
         return list;
-        return null;
     }
 
     @Override
@@ -98,7 +99,7 @@ public class BlogInfoDao implements CommonDao {
 
         Connection conn = DBUtil.getConnection();
 
-        String sql = "SELECT * FROM BlogInfo WHERE buid = ?";
+        String sql = "SELECT * FROM BlogInfo WHERE Bid = ?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
        pstmt.setLong(1, BlogInfo.getBid());
@@ -106,8 +107,8 @@ public class BlogInfoDao implements CommonDao {
 
         BlogInfoEntity newBlogInfo = null;
         while (rs.next()) {
-            newBlogInfo = new BlogInfoEntity(rs.getInt(1), rs.getString(2), rs.getString(3)
-                    , rs.getString(4), rs.getString(5), rs.getString(6));
+            newBlogInfo = new BlogInfoEntity(rs.getLong(1), rs.getLong(2), rs.getString(3)
+                    , rs.getTimestamp(4), rs.getString(5), rs.getString(6));
         }
 
         if (newBlogInfo == null)
