@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="js/login.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            document.getElementById("alert_win").style.visibility="hidden";
+        })
+    </script>
+
 </head>
 <body>
 <div class="container">
@@ -65,25 +72,25 @@
                         </div>
                         <div class="col-md-8 column">
                             <br>
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" method="post" action="" onsubmit="return submitTest()">
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">昵称</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" />
+                                        <input type="text" class="form-control" id="name" placeholder="请输入用户名" name="name"  onblur="oBlur_name()"/>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="Password" class="col-sm-2 control-label">密码</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="Password" />
+                                        <input type="password" class="form-control" id="Password" name="password" placeholder="请输入密码" onblur="oBlur_Password()"/>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="Password2" class="col-sm-2 control-label">确认密码</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Password2" />
+                                        <input type="password" class="form-control" id="Password2" name="Password2" laceholder="请再次输入密码" onblur="oBlur_Password2()"/>
                                     </div>
                                 </div>
                                 <br>
@@ -100,11 +107,11 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="alert alert-success alert-dismissable">
+                            <div class="alert  alert-warning alert-dismissable"id="alert_win">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h4>
-                                    注意!
-                                </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+                                <h4 id="alert">
+                                    输入有误!
+                                </h4>
                             </div>
                         </div>
                         <div class="col-md-2 column">
