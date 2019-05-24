@@ -7,14 +7,14 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 public class textjava1 {
-    public static void main(String[] args) throws SQLException {
-        Timestamp a= new Timestamp(new Date().getTime());
-//        a.getTime();
-        BlogInfoEntity b = new BlogInfoEntity(1,1,"1",a,"1","1");
-        BlogInfoDao c = new BlogInfoDao();
+//    public static void main(String[] args) throws SQLException {
+//        Timestamp a= new Timestamp(new Date().getTime());
+////        a.getTime();
+//        BlogInfoEntity b = new BlogInfoEntity(1,"1" ,a,null,null);
+//        BlogInfoDao c = new BlogInfoDao();
 //        c.insertData(b);
-        c.deleteData(b);
+////        c.deleteData(b);
 
 
-    }
+//    }
 }

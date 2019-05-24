@@ -11,25 +11,40 @@ import java.util.ArrayList;
 public class BlogInfoDao implements CommonDao {
 
     @Override
-    public void insertData(Object o) throws SQLException {
+    public boolean insertData(Object o) throws SQLException {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
         Connection conn = DBUtil.getConnection();
-        String sql = "insert into BlogInfo (bid, buid, btext, bdate, bimage,btitle) values (?,?,?,?,?,?)";
+        String sql = "insert into BlogInfo (buid, btext, bdate, bimage,btitle) values (?,?,?,?,?,?)";
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setLong(1, BlogInfo.getBid());
-        pstmt.setLong(2, BlogInfo.getBuid());
-        pstmt.setString(3, BlogInfo.getBtext());
-        pstmt.setTimestamp(4, BlogInfo.getBdate());
-        pstmt.setString(5, BlogInfo.getBimage());
-        pstmt.setString(6, BlogInfo.getBtitle());
+        pstmt.setLong(1, BlogInfo.getBuid());
+        pstmt.setString(2, BlogInfo.getBtext());
+        pstmt.setTimestamp(3, BlogInfo.getBdate());
+        pstmt.setString(4, BlogInfo.getBimage());
+        pstmt.setString(5, BlogInfo.getBtitle());
         System.out.println("插入成功！");
-        pstmt.executeUpdate();
+        if(pstmt.executeUpdate()>0){
+            pstmt.close();
+            return true;
+        }
         pstmt.close();
+        return false;
     }
+
+
+@Override
+    public Object searchData(Object o) throws SQLException{
+
+
+      return o;
+
+
+
+
+}
 
     @Override
 
-    public void deleteData(Object o) throws SQLException {
+    public boolean deleteData(Object o) throws SQLException {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
         Connection conn = DBUtil.getConnection();
@@ -40,11 +55,12 @@ public class BlogInfoDao implements CommonDao {
 
         pstmt.executeUpdate();
         pstmt.close();
+        return true;
     }
 
     @Override
-    public void updateData(Object o) throws SQLException {
-
+    public boolean updateData(Object o) throws SQLException {
+                   return true;
     }
 
     @Override
