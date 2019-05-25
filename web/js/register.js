@@ -1,11 +1,19 @@
 var Password_var;
 var Password2_var;
 var name_var;
+var q1_var;
+var q2_var;
+var a1_var;
+var a2_var;
 var reg_str = /^\w{6,20}$/;
 
 var name_ok;
 var Password_ok;
 var Password2_ok;
+var q1_ok;
+var q2_ok;
+var a1_ok;
+var a2_ok;
 
 function oBlur_name() {
     var name = document.getElementById("name").value;
@@ -57,6 +65,54 @@ function oBlur_Password2() {
         document.getElementById("alert_win").style.visibility="hidden";
         Password2_var=Password2;
         Password2_ok="ok";
+    }
+}
+
+function oBlur_q1() {
+    var q1 = document.getElementById("q1").value;
+    if (!q1) { //密码框value值为空
+        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert").innerHTML= "请选择密保问题1！";
+    }else{
+        document.getElementById("alert_win").style.visibility="hidden";
+        q1_var=q1;
+        q1_ok="ok";
+    }
+}
+
+function oBlur_a1() {
+    var a1 = document.getElementById("a1").value;
+    if (!a1) { //密码框value值为空
+        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert").innerHTML= "请填写密保答案1！";
+    }else{
+        document.getElementById("alert_win").style.visibility="hidden";
+        a1_var=a1;
+        a1_ok="ok";
+    }
+}
+
+function oBlur_q2() {
+    var q2 = document.getElementById("q2").value;
+    if (!q2) { //密码框value值为空
+        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert").innerHTML= "请选择密保问题2！";
+    }else{
+        document.getElementById("alert_win").style.visibility="hidden";
+        q2_var=q2;
+        q2_ok="ok";
+    }
+}
+
+function oBlur_a2() {
+    var a2 = document.getElementById("a2").value;
+    if (!a2) { //密码框value值为空
+        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert").innerHTML= "请填写密保答案2！";
+    }else{
+        document.getElementById("alert_win").style.visibility="hidden";
+        a2_var=a2;
+        a2_ok="ok";
     }
 }
 
