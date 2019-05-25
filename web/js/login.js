@@ -1,7 +1,7 @@
 var Password_var;
 
 var name_var;
-var reg_str = /^\w{6,20}$/;
+var reg_str = /^\w{6,16}$/;
 
 var name_ok;
 var Password_ok;
