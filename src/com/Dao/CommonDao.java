@@ -15,15 +15,17 @@ import java.util.ArrayList;
      */
     public interface CommonDao {
 
-        void insertData(Object o) throws SQLException;
+        boolean insertData(Object o) throws SQLException;
 
-        void deleteData(Object o) throws SQLException;
+        boolean deleteData(Object o) throws SQLException;
 
-        void updateData(Object o) throws SQLException;
+        boolean updateData(Object o) throws SQLException;
 
-        int queryDataNum() throws SQLException;
+//        Object searchData(Object o) throws SQLException;
 
-        ArrayList query(int start, int length) throws SQLException;
+        int queryDataNum(Object o) throws SQLException;
+
+        ArrayList query(Object o,int start, int length) throws SQLException;
 
         Object query(Object o) throws SQLException;
     }

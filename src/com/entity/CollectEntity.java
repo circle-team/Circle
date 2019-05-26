@@ -12,6 +12,13 @@ public class CollectEntity {
     private long cuid;
     private Timestamp ctime;
 
+    public CollectEntity(long cid, long cbid, long cuid, Timestamp ctime) {
+        this.cid = cid;
+        this.cbid = cbid;
+        this.cuid = cuid;
+        this.ctime = ctime;
+    }
+
     @Id
     @Column(name = "Cid")
     public long getCid() {

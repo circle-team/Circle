@@ -14,11 +14,11 @@
     </artifact>
   </component>
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="liff@cdb-fk8pr1tu.cd.tencentcdb.com" uuid="f7fbdcc6-4887-4f77-9177-f8d9ec5f3e4e">
+    <data-source source="LOCAL" name="liff@cdb-708qztd4.cd.tencentcdb.com" uuid="f7fbdcc6-4887-4f77-9177-f8d9ec5f3e4e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://cdb-fk8pr1tu.cd.tencentcdb.com:10044/liff</jdbc-url>
+      <jdbc-url>jdbc:mysql://cdb-708qztd4.cd.tencentcdb.com:10055/liff</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
@@ -168,7 +168,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="dataSourceStorageLocal">
-    <data-source name="liff@cdb-fk8pr1tu.cd.tencentcdb.com" uuid="f7fbdcc6-4887-4f77-9177-f8d9ec5f3e4e">
+    <data-source name="liff@cdb-708qztd4.cd.tencentcdb.com" uuid="f7fbdcc6-4887-4f77-9177-f8d9ec5f3e4e">
       <database-info product="MySQL" version="5.7.18-20170830-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.18" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>

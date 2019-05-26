@@ -16,6 +16,23 @@ public class SchoolEntity {
     private Integer shgrade;
     private Integer sugrade;
 
+
+    public SchoolEntity(){}
+
+    public SchoolEntity(long suid, String spschool, String smschool, String shschool, String suschool, Integer spgrade, Integer smgrade, Integer shgrade, Integer sugrade) {
+        this.suid = suid;
+        this.spschool = spschool;
+        this.smschool = smschool;
+        this.shschool = shschool;
+        this.suschool = suschool;
+        this.spgrade = spgrade;
+        this.smgrade = smgrade;
+        this.shgrade = shgrade;
+        this.sugrade = sugrade;
+    }
+
+
+
     @Id
     @Column(name = "Suid")
     public long getSuid() {

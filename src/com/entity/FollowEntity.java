@@ -12,6 +12,13 @@ public class FollowEntity {
     private long fuid;
     private Timestamp ftime;
 
+    public FollowEntity(long fid, long fhuid, long fuid, Timestamp ftime) {
+        this.fid = fid;
+        this.fhuid = fhuid;
+        this.fuid = fuid;
+        this.ftime = ftime;
+    }
+
     @Id
     @Column(name = "Fid")
     public long getFid() {

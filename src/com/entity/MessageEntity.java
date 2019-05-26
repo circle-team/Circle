@@ -13,6 +13,14 @@ public class MessageEntity {
     private String mtext;
     private Timestamp mtime;
 
+    public MessageEntity(long mid, long mruid, long msuid, String mtext, Timestamp mtime) {
+        this.mid = mid;
+        this.mruid = mruid;
+        this.msuid = msuid;
+        this.mtext = mtext;
+        this.mtime = mtime;
+    }
+
     @Id
     @Column(name = "Mid")
     public long getMid() {

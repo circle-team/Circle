@@ -13,6 +13,14 @@ public class CommentsEntity {
     private String ctext;
     private Timestamp ctime;
 
+    public CommentsEntity(long cid, long cfid, long cuid, String ctext, Timestamp ctime) {
+        this.cid = cid;
+        this.cfid = cfid;
+        this.cuid = cuid;
+        this.ctext = ctext;
+        this.ctime = ctime;
+    }
+
     @Id
     @Column(name = "Cid")
     public long getCid() {

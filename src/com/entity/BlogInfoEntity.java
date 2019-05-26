@@ -14,6 +14,19 @@ public class BlogInfoEntity {
     private String bimage;
     private String btitle;
 
+    public BlogInfoEntity(long bid, long buid, String btext, Timestamp bdate, String bimage, String btitle) {
+        this.bid = bid;
+        this.buid = buid;
+        this.btext = btext;
+        this.bdate = bdate;
+        this.bimage = bimage;
+        this.btitle = btitle;
+    }
+
+    public BlogInfoEntity() {
+
+    }
+
     @Id
     @Column(name = "Bid")
     public long getBid() {

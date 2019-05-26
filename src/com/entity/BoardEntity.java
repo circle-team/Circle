@@ -13,6 +13,14 @@ public class BoardEntity {
     private String bDtext;
     private Timestamp bDtime;
 
+    public BoardEntity(long bDid, long bDruid, long bDsuid, String bDtext, Timestamp bDtime) {
+        this.bDid = bDid;
+        this.bDruid = bDruid;
+        this.bDsuid = bDsuid;
+        this.bDtext = bDtext;
+        this.bDtime = bDtime;
+    }
+
     @Id
     @Column(name = "BDid")
     public long getbDid() {

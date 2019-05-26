@@ -12,6 +12,13 @@ public class ThumbsUpEntity {
     private long tuid;
     private Timestamp tdate;
 
+    public ThumbsUpEntity(long tid, long thbid, long tuid, Timestamp tdate) {
+        this.tid = tid;
+        this.thbid = thbid;
+        this.tuid = tuid;
+        this.tdate = tdate;
+    }
+
     @Id
     @Column(name = "Tid")
     public long getTid() {
