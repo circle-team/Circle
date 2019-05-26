@@ -5,7 +5,9 @@ var q1_var;
 var q2_var;
 var a1_var;
 var a2_var;
-var reg_str = /^\w{6,16}$/;
+var user_str=/@"^\w$"/;
+var reg_str =/^[a-zA-Z0-9_-]{6,16}$/;
+
 
 var name_ok;
 var Password_ok;
@@ -20,10 +22,10 @@ function oBlur_name() {
     if (!name) { //用户框value值为空
         document.getElementById("alert_win").style.visibility="visible";
         document.getElementById("alert").innerHTML= "请输入昵称！";
-    } else if (name.length > 20 || name.length < 6 || !reg_str.test(name))//用户框value值不为空
+    } else if (name.length > 20 || name.length < 6 || !user_str.test(name))//用户框value值不为空
     {
         document.getElementById("alert_win").style.visibility="visible";
-        document.getElementById("alert").innerHTML= "昵称请输入6-16位字符包括数字字母，且不能包含特殊字符";
+        document.getElementById("alert").innerHTML= "昵称不能包含特殊字符";
     }else{
         document.getElementById("alert_win").style.visibility="hidden";
         name_var=name;
@@ -127,13 +129,14 @@ function submitTest() {
         return false;
 //只有返回true表单才会提交
     } else if (Password2_ok != "ok" || Password_ok != "ok") { //用户框value值为空
-        alert("请按要求填写密码");
+        document.getElementById("alert").innerHTML= "请按要求填写密码！";
         return false;
     } else if (q1_ok != "ok" || q1_ok != "ok" ||a1_ok !="ok"||a2_ok !="ok" ||q2_var ==q1_var) { //用户框value值为空
-        alert("请按要求填写密保");
+        document.getElementById("alert").innerHTML= "请按要求填写密保！";
+
         return false;
     } else if (Password2_ok !=Password_ok) { //密码框value值为空
-        alert("请按要求再次填写密码");
+        document.getElementById("alert").innerHTML= "请按要求再次填写密码！";
         return false;
     }
 }
