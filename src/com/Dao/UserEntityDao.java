@@ -44,29 +44,29 @@ public class UserEntityDao implements CommonDao {
 
              return false;
     }
-    public Object searchData(Object o) throws SQLException{
-           UsersEntity User=(UsersEntity) o;
-           Connection coon = DBUtil.getConnection();
-           String sql="select * from Users where id=?";
-           PreparedStatement pstmt = coon.prepareStatement(sql);
-           pstmt.setLong(1,User.getUserid());
-           UsersEntity nUser = new UsersEntity();
-            nUser.setUserid(pstmt.executeQuery().getInt("id"));
-            nUser.setUpassword(pstmt.executeQuery().getString("password"));
-            nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
-            nUser.setuAnswer1(pstmt.executeQuery().getString("Answer1"));
-        nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
-        nUser.setuAnswer2(pstmt.executeQuery().getString("Answer2"));
-        return nUser;
-
-
-    }
+//    public Object searchData(Object o) throws SQLException{
+////           UsersEntity User=(UsersEntity) o;
+////           Connection coon = DBUtil.getConnection();
+////           String sql="select * from Users where id=?";
+////           PreparedStatement pstmt = coon.prepareStatement(sql);
+////           pstmt.setLong(1,User.getUserid());
+////           UsersEntity nUser = new UsersEntity();
+////            nUser.setUserid(pstmt.executeQuery().getInt("id"));
+////            nUser.setUpassword(pstmt.executeQuery().getString("password"));
+////            nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
+////            nUser.setuAnswer1(pstmt.executeQuery().getString("Answer1"));
+////        nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
+////        nUser.setuAnswer2(pstmt.executeQuery().getString("Answer2"));
+////        return nUser;
+//return o;
+//
+//    }
 
     public String Login(Object o) throws SQLException{
            UsersEntity User=new UsersEntity();
            UsersEntity nUser = (UsersEntity)o;
 //           UserEntityDao UserDao = new UserEntityDao();
-                   User=(UsersEntity) searchData(o);
+                   User=(UsersEntity) query(o);
    if(User==null)
    {
        return "The id is nonexistent";
@@ -107,6 +107,19 @@ public class UserEntityDao implements CommonDao {
 
     @Override
     public Object query(Object o) throws SQLException {
-        return null;
+        UsersEntity User=(UsersEntity) o;
+        Connection coon = DBUtil.getConnection();
+        String sql="select * from Users where Userid=?";
+        PreparedStatement pstmt = coon.prepareStatement(sql);
+        pstmt.setLong(1,User.getUserid());
+        UsersEntity nUser = new UsersEntity();
+        nUser.setUserid(pstmt.executeQuery().getInt("Userid"));
+        nUser.setUpassword(pstmt.executeQuery().getString("Upassword"));
+        nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
+        nUser.setuAnswer1(pstmt.executeQuery().getString("UAnswer1"));
+        nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
+        nUser.setuAnswer2(pstmt.executeQuery().getString("UAnswer2"));
+        return nUser;
+
     }
 }

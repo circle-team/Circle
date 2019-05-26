@@ -8,6 +8,7 @@ import java.util.Objects;
 public class UserInfoEntity {
     private long uid;
     private String ugender;
+    private Integer  uage;
     private String ucontact;
     private String uname;
     private String uaddress;
@@ -15,9 +16,14 @@ public class UserInfoEntity {
     private String uidentityNumber;
     private String uimage;
     private String uhobby;
+    public UserInfoEntity(){}
+public UserInfoEntity(Long uid)
+{
 
-    public UserInfoEntity(long uid, String ugender, String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby) {
+}
+    public UserInfoEntity(Long uid, String ugender,Integer uage,String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby) {
         this.uid = uid;
+        this.uage= uage;
         this.ugender = ugender;
         this.ucontact = ucontact;
         this.uname = uname;
@@ -26,6 +32,14 @@ public class UserInfoEntity {
         this.uidentityNumber = uidentityNumber;
         this.uimage = uimage;
         this.uhobby = uhobby;
+    }
+
+    public Integer getUage() {
+        return uage;
+    }
+
+    public void setUage(Integer uage) {
+        this.uage = uage;
     }
 
     @Id

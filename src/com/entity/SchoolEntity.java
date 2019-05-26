@@ -14,6 +14,10 @@ public class SchoolEntity {
     private Integer spgrade;
     private Integer smgrade;
     private Integer shgrade;
+    private Integer sugrade;
+
+
+    public SchoolEntity(){}
 
     public SchoolEntity(long suid, String spschool, String smschool, String shschool, String suschool, Integer spgrade, Integer smgrade, Integer shgrade, Integer sugrade) {
         this.suid = suid;
@@ -27,7 +31,7 @@ public class SchoolEntity {
         this.sugrade = sugrade;
     }
 
-    private Integer sugrade;
+
 
     @Id
     @Column(name = "Suid")

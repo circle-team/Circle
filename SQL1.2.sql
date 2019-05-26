@@ -7,7 +7,6 @@ Uquestion1 VARCHAR ( 20 ) NOT NULL,-- 用户密保问题1
 UQuestion2 VARCHAR ( 20 ),-- 用户密保问题2
 UAnswer1 VARCHAR ( 20 ),-- 密码查询答案1
 UAnswer2 VARCHAR ( 20 ) -- 密码查询答案2
-
 );
 CREATE TABLE BlogInfo (
 	Bid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 动态编号id,主键
@@ -58,9 +57,9 @@ CREATE TABLE Collect (
 );
 
 CREATE TABLE UserInfo (
-	Uid BIGINT NOT NULL  PRIMARY KEY,
-	FOREIGN KEY ( Uid ) REFERENCES Users ( Userid ),-- 注册用户账号Users(uname)外键
+	Uid BIGINT NOT NULL  PRIMARY KEY,-- 注册用户账号Users(uname)外键
 	Ugender VARCHAR ( 4 ),-- 男	性别
+	Uage INT ,-- 年龄
 	Ucontact VARCHAR ( 20 ),-- 联系电话
 	Uname VARCHAR ( 20 ),-- 昵称
 	Uaddress VARCHAR ( 200 ),-- 地址
@@ -71,8 +70,7 @@ CREATE TABLE UserInfo (
 	
 );
 CREATE TABLE School (
-	Suid BIGINT NOT NULL PRIMARY KEY,
-	FOREIGN KEY ( Suid ) REFERENCES Users ( Userid ),-- 用户User,外键
+	Suid BIGINT NOT NULL PRIMARY KEY,-- 用户User,主键键
 	Spschool VARCHAR ( 50 ),-- 小学
 	Smschool VARCHAR ( 50 ),-- 初中
 	Shschool VARCHAR ( 50 ),-- 高中
