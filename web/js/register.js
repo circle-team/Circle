@@ -97,7 +97,11 @@ function oBlur_q2() {
     if (!q2) { //密码框value值为空
         document.getElementById("alert_win").style.visibility="visible";
         document.getElementById("alert").innerHTML= "请选择密保问题2！";
-    }else{
+    }else if(q2 ==q1_var){
+        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert").innerHTML= "密保问题不能相同！";
+    }
+    else{
         document.getElementById("alert_win").style.visibility="hidden";
         q2_var=q2;
         q2_ok="ok";
@@ -125,7 +129,7 @@ function submitTest() {
     } else if (Password2_ok != "ok" || Password_ok != "ok") { //用户框value值为空
         alert("请按要求填写密码");
         return false;
-    } else if (q1_ok != "ok" || q1_ok != "ok" ||a1_ok !="ok"||a2_ok !="ok") { //用户框value值为空
+    } else if (q1_ok != "ok" || q1_ok != "ok" ||a1_ok !="ok"||a2_ok !="ok" ||q2_var ==q1_var) { //用户框value值为空
         alert("请按要求填写密保");
         return false;
     } else if (Password2_ok !=Password_ok) { //密码框value值为空
