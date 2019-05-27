@@ -77,13 +77,13 @@
                                     <label for="name" class="col-sm-2 control-label">昵称</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="name" placeholder="请输入用户名"
-                                               name="name" onblur="oBlur_name()"/>
+                                               name="name"  onchange="on_name()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="q1" class="col-sm-2 control-label">密保问题1</label>
                                     <div class="col-sm-4">
-                                        <select class="form-control" id="q1" name="q1" onchange="oBlur_q1()">
+                                        <select class="form-control" id="q1" name="q1" onchange="on_q1()">
                                             <option value="你喜欢看的电影？">你喜欢看的电影</option>
                                             <option value="你的生日？">你的生日</option>
                                             <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
@@ -96,13 +96,13 @@
                                     <label for="a1" class="col-sm-2 control-label">问题1答案</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="a1" name="a1"
-                                               placeholder="请输入密保答案" onblur="oBlur_a1()"/>
+                                              onchange="on_a1()" placeholder="请输入密保答案"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="q2" class="col-sm-2 control-label">密保问题2</label>
                                     <div class="col-sm-4">
-                                        <select class="form-control" id="q2" name="q2" onchange="oBlur_q2()">
+                                        <select class="form-control" id="q2" name="q2" onchange="on_q2()">
                                             <option value="你喜欢看的电影？">你喜欢看的电影</option>
                                             <option value="你的生日？">你的生日</option>
                                             <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
@@ -115,21 +115,21 @@
                                     <label for="a2" class="col-sm-2 control-label">问题2答案</label>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control" id="a2" name="a2"
-                                               placeholder="请输入密保答案" onblur="oBlur_a2()"/>
+                                               placeholder="请输入密保答案"  onchange="on_a2()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Password" class="col-sm-2 control-label">密码</label>
                                     <div class="col-sm-4">
                                         <input type="password" class="form-control" id="Password" name="password"
-                                               placeholder="请输入密码" onblur="oBlur_Password()"/>
+                                               placeholder="请输入密码"  onchange="on_Password()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="Password2" class="col-sm-2 control-label">确认密码</label>
                                     <div class="col-sm-4">
                                         <input type="password" class="form-control" id="Password2" name="Password2"
-                                               placeholder="请再次输入密码" onblur="oBlur_Password2()"/>
+                                               placeholder="请再次输入密码"  onchange="on_Password2()"/>
                                     </div>
                                 </div>
                                 <br>

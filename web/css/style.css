@@ -1,14 +1,14 @@
 body{
     font-family: "Comic Sans MS";
-    width: 80%;
 }
 #box1{
-    height: 50px;
+    height: 60px;
     padding: 12px;
     background: transparent;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+    /*border-bottom: 2px cadetblue solid;*/
 }
 #box2{
     background: #f9f9f9;
@@ -32,10 +32,19 @@ a:hover, a:active, a:focus {
     text-decoration: none;
 }
 #carouse-example-generic{
-    width: 125%;
+    width: 101%;
+    margin-left: -10px;
 }
 #carouse-example-generic .carousel-inner>.item> img{
     display: block;
     width: 100%;
-    height: 700px;
+    height: 750px;
+}
+#inf1{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+#inf1 img{
+    width: 110%;
+    height: 300px;
 }
