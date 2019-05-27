@@ -30,7 +30,20 @@ public class BlogInfoDao implements CommonDao {
         return false;
     }
 
+
+//  @Override
+//    public Object searchData(Object o) throws SQLException{
+//
+//
+//      return o;
+//
+//
+//
+//
+//}
+
     @Override
+
     public boolean deleteData(Object o) throws SQLException {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
