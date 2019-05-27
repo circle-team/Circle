@@ -13,13 +13,14 @@ public class UserEntityDao implements CommonDao {
     public boolean insertData(Object o) throws SQLException {
         UsersEntity User = (UsersEntity)o;
         Connection coon = DBUtil.getConnection();
-        String sql = "insert into Users value(,?,?,?,?,?)";
+        String sql = "insert into Users value(?,?,?,?,?,?)";
         PreparedStatement pstmt = coon.prepareStatement(sql);
-        pstmt.setString(1,User.getUpassword());
-        pstmt.setString(2,User.getUquestion1());
-        pstmt.setString(3,User.getuAnswer1());
-        pstmt.setString(4,User.getuquestion2());
-        pstmt.setString(5,User.getuAnswer2());
+        pstmt.setLong(1,User.getUserid());
+        pstmt.setString(2,User.getUpassword());
+        pstmt.setString(3,User.getUquestion1());
+        pstmt.setString(4,User.getuAnswer1());
+        pstmt.setString(5,User.getuquestion2());
+        pstmt.setString(6,User.getuAnswer2());
     if(pstmt.executeUpdate()>0){
         coon.close();
         return true;

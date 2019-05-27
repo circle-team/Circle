@@ -6,15 +6,15 @@ import java.util.Objects;
 @Entity
 //@Table(name = "Users", schema = "liff", catalog = "")
 public class UsersEntity {
-    private long userid;
+    private Long userid;
     private String upassword;
     private String uquestion1;
     private String uquestion2;
     private String uAnswer1;
     private String uAnswer2;
 
-    public UsersEntity(String upassword, String uquestion1, String uQuestion2, String uAnswer1, String uAnswer2) {
-
+    public UsersEntity(Long userid,String upassword, String uquestion1, String uQuestion2, String uAnswer1, String uAnswer2) {
+        this.userid= userid;
         this.upassword = upassword;
         this.uquestion1 = uquestion1;
         this.uquestion2 = uQuestion2;
@@ -23,6 +23,10 @@ public class UsersEntity {
     }
     public UsersEntity(){
 
+    }
+    public UsersEntity(Long uid)
+    {
+        this.userid=uid;
     }
 
     @Id

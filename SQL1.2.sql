@@ -1,7 +1,7 @@
 CREATE DATABASE liff;
 USE liff;
 CREATE TABLE Users (
-Userid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 用户编号，主键，自动增长
+Userid BIGINT NOT NULL PRIMARY KEY,-- 用户编号，主键，自动增长
 Upassword VARCHAR ( 20 ) NOT NULL,-- 用户密码
 Uquestion1 VARCHAR ( 20 ) NOT NULL,-- 用户密保问题1
 UQuestion2 VARCHAR ( 20 ),-- 用户密保问题2

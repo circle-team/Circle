@@ -31,16 +31,16 @@ public class BlogInfoDao implements CommonDao {
     }
 
 
-@Override
-    public Object searchData(Object o) throws SQLException{
-
-
-      return o;
-
-
-
-
-}
+//  @Override
+//    public Object searchData(Object o) throws SQLException{
+//
+//
+//      return o;
+//
+//
+//
+//
+//}
 
     @Override
 
