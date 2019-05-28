@@ -21,7 +21,7 @@
                     <div class="row clearfix">
                         <form role="form">
                         <div class="col-md-4 column">
-                            <img height="160" width="160" src="images/img_10.jpg">
+                            <img height="160" width="160" src="images/img_10.jpg" alt="">
                             <br>
                             <div class="form-group">
                                 <label for="image" class="btn btn-default">更换头像</label>
