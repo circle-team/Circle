@@ -8,9 +8,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            document.getElementById("alert_win").style.visibility="hidden";
-        })
+
     </script>
 
 </head>
