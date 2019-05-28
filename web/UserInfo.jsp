@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <div class="row clearfix">
                                         <div class="col-md-6 column">
-                                            <label for="gender"><h5>性别</h5></label>
+                                            <label for="gender">性别</label>
                                         </div>
                                         <div class="col-md-6 column">
                                             <select class="form-control" id="gender" name="gender">
