@@ -60,39 +60,95 @@
                             <div class="col-md-2 column">
                             </div>
                         <div class="col-md-4 column">
-                                <div class="form-group">
+                            <div class="form-group">
                                     <label for="identityNumber">身份证号码</label>
                                     <input type="text" class="form-control" name="identityNumber" id="identityNumber" />
-                                </div>
-                                <div class="form-group">
+                            </div>
+                            <div class="form-group">
                                     <label for="hobby">爱好</label>
                                     <input type="text" class="form-control" name="hobby" id="hobby" />
-                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-md-12 column">
-                                    <div class="row clearfix">
-                                        <div class="col-md-8 column">
-                                            <label for="pschool">小学学校</label>
-                                        </div>
-                                        <div class="col-md-6 column">
-                                            <label for="pgrade">年级</label>
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <label for="pschool">pschool</label>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <label for="pgrade">pgrade</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 column">
-                                <div class="row clearfix">
-
-                                    <div class="col-md-8 column">
-
-                                        <input type="text" class="form-control" name="pschool" id="pschool"/>
+                                <div class="row clearfix"><div class="col-md-8 column">
+                                    <input type="text" class="form-control" name="pschool" id="pschool"/>
                                     </div>
-                                    <div class="col-md-6 column">
+                                    <div class="col-md-4 column">
                                         <input type="text" class="form-control" name="pgrade" id="pgrade"/>
-
                                     </div>
                                 </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <label for="mschool">mschool</label>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <label for="mgrade">mgrade</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <input type="text" class="form-control" name="mschool" id="mschool"/>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <input type="text" class="form-control" name="mgrade" id="mgrade"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <label for="hschool">hschool</label>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <label for="hgrade">hgrade</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <input type="text" class="form-control" name="hschool" id="hschool"/>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <input type="text" class="form-control" name="hgrade" id="hgrade"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <label for="uschool">uschool</label>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <label for="ugrade">ugrade</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 column">
+                                    <div class="row clearfix"><div class="col-md-8 column">
+                                        <input type="text" class="form-control" name="uschool" id="uschool"/>
+                                    </div>
+                                        <div class="col-md-4 column">
+                                            <input type="text" class="form-control" name="ugrade" id="ugrade"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                                 <button type="submit" class="btn btn-default btn-lg">保 存</button>
                         </div>
                         </form>
