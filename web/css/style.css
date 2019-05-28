@@ -1,22 +1,27 @@
 body{
     font-family: "Comic Sans MS";
 }
-#box1{
+.box1{
+    width: 80%;
     height: 60px;
     padding: 12px;
+    margin-left: 148px;
     background: transparent;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
-    /*border-bottom: 2px cadetblue solid;*/
+    border-bottom: 1px solid whitesmoke;
 }
-#box2{
+.box2{
     background: #f9f9f9;
-    height: 50px;
+    height: 63px;
     padding: 5px;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+}
+.box2 #logo{
+    margin-left: 50px;
 }
 a {
     color: #9360ff;
@@ -32,13 +37,16 @@ a:hover, a:active, a:focus {
     text-decoration: none;
 }
 #carouse-example-generic{
-    width: 101%;
-    margin-left: -10px;
+    width: 102%;
+    height: 700px;
+    margin-left: -15px;
+    background-color: #8c8c8c;
+    opacity : 0.9;
 }
 #carouse-example-generic .carousel-inner>.item> img{
     display: block;
     width: 100%;
-    height: 750px;
+    height: 700px;
 }
 #inf1{
     margin-left: 100px;

@@ -8,21 +8,37 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
+  <!--<script>-->
+  <!--function ScollPostion(){-->
+  <!--var t, l, w, h;-->
+  <!--if (document.documentElement && document.documentElement.scrollTop) {-->
+  <!--t = document.documentElement.scrollTop;-->
+  <!--l = document.documentElement.scrollLeft;-->
+  <!--w = document.documentElement.scrollWidth;-->
+  <!--h = document.documentElement.scrollHeight;-->
+  <!--} else if (document.body) {-->
+  <!--t = document.body.scrollTop;-->
+  <!--l = document.body.scrollLeft;-->
+  <!--w = document.body.scrollWidth;-->
+  <!--h = document.body.scrollHeight;-->
+  <!--}-->
+  <!--return { top: t, left: l, width: w, height: h };-->
+  <!--}-->
+  <!--</script>-->
 </head>
 <body>
 <div class="text-center">
   <div class="container">
     <div class="row">
-      <nav class="narbar navbar-default navbar-fixed-top" id="box2" role="navigation">
-        <div class="col-md-1 text-left">
-        </div>
+      <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
         <div class="col-md-3 text-left">
-          <a href="#"><img src="images/home.png"/></a>
+          <img id="logo" style="width: 45%" src="images/logo.png"/>
         </div>
+        <div class="col-md-2"></div>
         <div class="col-md-7 text-right">
           <a href="#"><img src="images/personal.png"/></a>
-          <a href="#">two</a>
-          <a href="#">three</a>
+          <a href="UserInfo.jsp"><img src="images/information.png"/></a>
+          <a href="#"><img src="images/blog.png"/></a>
           <a href="#"><img src="images/defult_uiImge.png"/></a>
         </div>
 
@@ -33,11 +49,11 @@
     <div class="col-md-12">
       <div class="carousel slider" data-ride="carousel" id="carouse-example-generic">
         <ol class="carousel-indicators">
-          <li data-slide-to="0" data-target="carouse-example-generic" class="active">
+          <li data-slide-to="2" data-target="carouse-example-generic" class="active">
           </li>
-          <li data-slide-to="1" data-target="carouse-example-generic">
+          <li data-slide-to="3" data-target="carouse-example-generic">
           </li>
-          <li data-slide-to="2" data-target="carouse-example-generic">
+          <li data-slide-to="4" data-target="carouse-example-generic">
           </li>
         </ol>
         <div class="carousel-inner" role="listbox">
@@ -66,13 +82,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6"><img style="width: 70%;height: 450px;margin-left: 100px;margin-top: 20px;" src="images/img_1.jpg"/></div>
-    <div class="col-lg-2" style="margin-top: 25px;"><p>okokokokokokokokokokokokokkko</p></div>
-    <div class="col-md-3"><img style="width: 90%;margin-top: 20px;" src="images/img_5.jpg"/></div>
-    <div class="col-md-5" style="margin-top: 20px;"><p class="text-right">okokokokokokokoko</p></div>
-    <div class="col-md-3"><img style="width: 100%;margin-left: 40px;margin-top: 20px;" src="images/img_6.jpg"/></div>
+    <div class="col-md-6"><img style="width: 70%;height: 420px;margin-left: 100px;margin-top: 30px;" src="images/img_1.jpg"/></div>
+    <div class="col-lg-2" style="margin-top: 35px;"><p>okokokokokokokokokokokokokkko</p></div>
+    <div class="col-md-3"><img style="width: 90%;margin-top: 30px;" src="images/img_5.jpg"/></div>
+    <div class="col-md-5" style="margin-top: 30px;"><p class="text-right">okokokokokokokoko</p></div>
+    <div class="col-md-3"><img style="width: 100%;margin-left: 40px;margin-top: 0px;" src="images/img_6.jpg"/></div>
     <div class="col-md-1"><p style="-webkit-writing-mode:vertical-lr ;writing-mode: lr-bt; margin-left: 50px;margin-top: 20px;">okokokokokokokokookkok</p></div>
-    <div class="col-md-6"><img style="width: 60%;height: 250px;margin-left: 260px;margin-top: -280px;" src="images/img_7.jpg"/></div>
+    <div class="col-md-6"><img style="width: 60%;height: 250px;margin-left: 260px;margin-top: -350px;" src="images/img_7.jpg"/></div>
 
   </div>
   <div class="row">
@@ -121,5 +137,26 @@
     </p>
   </div>
 </div>
+
+<script>
+  var isAnimated = false;
+  $(document).ready(function(){
+    $(window).on("scroll",function () {
+      if ($(this).scrollTop()>190) {
+        $(".box1").addClass("box2");
+        $(".box2").removeClass("box1");
+        if (!isAnimated) {
+          $(".navbar").css("top", "-60px");
+          $(".navbar").animate({"top": "0px"}, 1000);
+          isAnimated = true;
+        }
+      }else {
+        isAnimated = false;
+        $(".box1").removeClass("box2");
+        $(".box2").addClass("box1");
+      }
+    })
+  })
+</script>
 </body>
 </html>
