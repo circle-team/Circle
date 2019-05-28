@@ -71,10 +71,10 @@
                             <div class="form-group">
                                 <div class="col-md-12 column">
                                     <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="pschool">pschool</label>
+                                        <label for="pschool">小学学校</label>
                                     </div>
                                         <div class="col-md-4 column">
-                                            <label for="pgrade">pgrade</label>
+                                            <label for="pgrade">年级</label>
                                         </div>
                                     </div>
                                 </div>
@@ -91,10 +91,10 @@
                             <div class="form-group">
                                 <div class="col-md-12 column">
                                     <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="mschool">mschool</label>
+                                        <label for="mschool">初中学校</label>
                                     </div>
                                         <div class="col-md-4 column">
-                                            <label for="mgrade">mgrade</label>
+                                            <label for="mgrade">年级</label>
                                         </div>
                                     </div>
                                 </div>
@@ -111,10 +111,10 @@
                             <div class="form-group">
                                 <div class="col-md-12 column">
                                     <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="hschool">hschool</label>
+                                        <label for="hschool">高中学校</label>
                                     </div>
                                         <div class="col-md-4 column">
-                                            <label for="hgrade">hgrade</label>
+                                            <label for="hgrade">年级</label>
                                         </div>
                                     </div>
                                 </div>
@@ -131,10 +131,10 @@
                             <div class="form-group">
                                 <div class="col-md-12 column">
                                     <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="uschool">uschool</label>
+                                        <label for="uschool">大学学校</label>
                                     </div>
                                         <div class="col-md-4 column">
-                                            <label for="ugrade">ugrade</label>
+                                            <label for="ugrade">年级</label>
                                         </div>
                                     </div>
                                 </div>
