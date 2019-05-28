@@ -22,38 +22,55 @@
                 <div class="col-md-10 column">
                     <div class="row clearfix">
                         <form role="form">
-                        <div class="col-md-6 column">
+                        <div class="col-md-4 column">
+                            <div class="form-group">
+                                <label for="image" class="btn btn-default">更换头像</label>
+                                <input name="image" id="image" type="file" style="display:none">
+                                <p class="help-block">
+                                    Example block-level help text here.
+                                </p>
+                            </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" />
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control" name="name" id="name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+                                    <div class="row clearfix">
+                                        <div class="col-md-6 column">
+                                            <label for="gender"><h5>性别</h5></label>
+                                        </div>
+                                        <div class="col-md-6 column">
+                                            <select class="form-control" id="gender" name="gender">
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                                <option value="不透露">不透露</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
-                                    <p class="help-block">
-                                        Example block-level help text here.
-                                    </p>
+                                    <label for="contact">联系方式</label>
+                                    <input type="text"  class="form-control" name="contact" id="contact" />
                                 </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email"  class="form-control" name="email" id="email" />
+                            </div>
                         </div>
-                        <div class="col-md-6 column">
+                            <div class="col-md-2 column">
+                            </div>
+                        <div class="col-md-4 column">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" />
+                                    <label for="identityNumber">身份证号码</label>
+                                    <input type="text" class="form-control" name="identityNumber" id="identityNumber" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+                                    <label for="hobby">爱好</label>
+                                    <input type="password" class="form-control" name="hobby" id="hobby" />
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
-                                    <p class="help-block">
-                                        Example block-level help text here.
-                                    </p>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" />Check me out</label>
-                                </div> <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-default">Submit</button>
                         </div>
-                        </form>>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-2 column">
