@@ -6,6 +6,9 @@ var reg_str = /^\w{6,16}$/;
 var name_ok;
 var Password_ok;
 
+$(document).ready(function(){
+    document.getElementById("alert_win").style.visibility="hidden";
+})
 
 function oBlur_name() {
     var name = document.getElementById("name").value;
