@@ -53,14 +53,14 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
-                                        <form role="form">
+                                        <form role="form" onsubmit="return submitTest()" method="post" action="/comment">
                                             <div class="form-group">
                                                 <label for="comment">写评论</label><input type="text" onchange="on_comment()" class="form-control" id="comment" />
                                                 <p class="help-block">
                                                     Example block-level help text here.
                                                 </p>
                                                 <div class="alert  alert-warning alert-dismissable" id="alert_win">
-                                                    <h4 id="alert">输入有误!</h4>
+                                                    <h5 id="alert">输入有误!</h5>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">评论</button>
                                             </div>
