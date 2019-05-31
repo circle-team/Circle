@@ -5,6 +5,7 @@ var q1_var;
 var q2_var;
 var a1_var;
 var a2_var;
+
 var user_str= /^{1,20}$/;
 var reg_str =/^[a-zA-Z0-9_-]{6,16}$/;
 
