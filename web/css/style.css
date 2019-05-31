@@ -30,7 +30,6 @@ body{
     display: none;
     position: absolute;
     left: 0;
-    margin-right: 50px;
     width: 200px;
     height: 100px;
     border: 1px solid black;
