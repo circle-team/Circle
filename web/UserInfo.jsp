@@ -8,7 +8,6 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
-
     </script>
 
 </head>

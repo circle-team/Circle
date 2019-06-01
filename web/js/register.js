@@ -19,20 +19,20 @@ var a1_ok;
 var a2_ok;
 
 $(document).ready(function(){
-    document.getElementById("alert_win").style.visibility="hidden";
-})
+    document.getElementById("alert_win").style.display="none";
+});
 
 function on_name() {
     var name = document.getElementById("name").value;
     if (!name) { //用户框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请输入昵称！";
     } else if (name.length > 20 || name.length < 1 || !user_str.test(name))//用户框value值不为空
     {
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "昵称不能包含特殊字符";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         name_var=name;
         name_ok="ok";
     }
@@ -43,14 +43,14 @@ function on_Password() {
     var Password = document.getElementById("Password").value;
 
     if (!Password) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请输入密码！";
     } else if (Password.length > 20 || Password.length < 6 || !reg_str.test(Password))//用户框value值不为空
     {
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "密码请输入6-16位字符包括数字字母，且不能包含特殊字符";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         Password_var=Password;
         Password_ok="ok";
     }
@@ -60,16 +60,16 @@ function on_Password2() {
     var Password2 = document.getElementById("Password2").value;
     if (Password_ok !="ok" )
     {
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "密码请输入6-16位字符包括数字字母，且不能包含特殊字符";
     } else if (!Password2) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请再次输入密码！";
     }else if(Password2 !=Password_var){
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "两次密码输入不相同！";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         Password2_var=Password2;
         Password2_ok="ok";
     }
@@ -78,10 +78,10 @@ function on_Password2() {
 function on_q1() {
     var q1 = document.getElementById("q1").value;
     if (!q1) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请选择密保问题1！";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         q1_var=q1;
         q1_ok="ok";
     }
@@ -90,10 +90,10 @@ function on_q1() {
 function on_a1() {
     var a1 = document.getElementById("a1").value;
     if (!a1) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请填写密保答案1！";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         a1_var=a1;
         a1_ok="ok";
     }
@@ -102,14 +102,14 @@ function on_a1() {
 function on_q2() {
     var q2 = document.getElementById("q2").value;
     if (!q2) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请选择密保问题2！";
     }else if(q2 ==q1_var){
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "密保问题不能相同！";
     }
     else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         q2_var=q2;
         q2_ok="ok";
     }
@@ -118,10 +118,10 @@ function on_q2() {
 function on_a2() {
     var a2 = document.getElementById("a2").value;
     if (!a2) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请填写密保答案2！";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         a2_var=a2;
         a2_ok="ok";
     }
@@ -144,7 +144,7 @@ function submitTest() {
         document.getElementById("alert").innerHTML= "请按要求再次填写密码！";
         return false;
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         return true;
     }
 }

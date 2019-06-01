@@ -7,20 +7,20 @@ var name_ok;
 var Password_ok;
 
 $(document).ready(function(){
-    document.getElementById("alert_win").style.visibility="hidden";
-})
+    document.getElementById("alert_win").style.display="none";
+});
 
 function oBlur_name() {
     var name = document.getElementById("name").value;
     if (!name) { //用户框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请输入昵称！";
     } else if (name.length > 20 || name.length < 6 || !reg_str.test(name))//用户框value值不为空
         {
-            document.getElementById("alert_win").style.visibility="visible";
+            document.getElementById("alert_win").style.display="";
             document.getElementById("alert").innerHTML= "昵称请输入6-20位字符包括数字字母，且不能包含特殊字符";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         name_var=name;
         name_ok="ok";
     }
@@ -31,14 +31,14 @@ function oBlur_Password() {
     var Password = document.getElementById("Password").value;
 
     if (!Password) { //密码框value值为空
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "请输入密码！";
     } else if (Password.length > 20 || Password.length < 6 || !reg_str.test(Password))//用户框value值不为空
     {
-        document.getElementById("alert_win").style.visibility="visible";
+        document.getElementById("alert_win").style.display="";
         document.getElementById("alert").innerHTML= "密码请输入6-20位字符包括数字字母，且不能包含特殊字符";
     }else{
-        document.getElementById("alert_win").style.visibility="hidden";
+        document.getElementById("alert_win").style.display="none";
         Password_var=Password;
         Password_ok="ok";
     }
