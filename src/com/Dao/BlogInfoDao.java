@@ -14,13 +14,14 @@ public class BlogInfoDao implements CommonDao {
     public boolean insertData(Object o) throws SQLException {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
         Connection conn = DBUtil.getConnection();
-        String sql = "insert into BlogInfo (buid, btext, bdate, bimage,btitle) values (?,?,?,?,?,?)";
+        String sql = "insert into BlogInfo (Bid,buid, btext, bdate, bimage,btitle) values (?,?,?,?,?,?)";
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setLong(1, BlogInfo.getBuid());
-        pstmt.setString(2, BlogInfo.getBtext());
-        pstmt.setTimestamp(3, BlogInfo.getBdate());
-        pstmt.setString(4, BlogInfo.getBimage());
-        pstmt.setString(5, BlogInfo.getBtitle());
+        pstmt.setLong(1,BlogInfo.getBid());
+        pstmt.setLong(2, BlogInfo.getBuid());
+        pstmt.setString(3, BlogInfo.getBtext());
+        pstmt.setTimestamp(4, BlogInfo.getBdate());
+        pstmt.setString(5, BlogInfo.getBimage());
+        pstmt.setString(6, BlogInfo.getBtitle());
         System.out.println("插入成功！");
         if(pstmt.executeUpdate()>0){
             pstmt.close();

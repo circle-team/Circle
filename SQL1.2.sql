@@ -9,7 +9,7 @@ UAnswer1 VARCHAR ( 20 ),-- 密码查询答案1
 UAnswer2 VARCHAR ( 20 ) -- 密码查询答案2
 );
 CREATE TABLE BlogInfo (
-	Bid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 动态编号id,主键
+	Bid BIGINT NOT NULL PRIMARY KEY,-- 动态编号id,主键
 	Buid BIGINT NOT NULL,
 	FOREIGN KEY ( Buid ) REFERENCES Users ( Userid ),-- 动态发布者id，外键
 	Btext VARCHAR ( 200 ) NOT NULL,-- 动态文本
@@ -19,7 +19,6 @@ CREATE TABLE BlogInfo (
 	
 );
 CREATE TABLE Comments (
-	Cid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 评论id，主键
 	Cfid BIGINT NOT NULL,
 	Cuid BIGINT NOT NULL,
 	FOREIGN KEY ( Cfid ) REFERENCES BlogInfo ( Bid ),-- 评论归属的动态的id，外键
@@ -29,7 +28,6 @@ CREATE TABLE Comments (
 	
 );
 CREATE TABLE Thumbs_up (
-	Tid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 点赞id，主键
 	Thbid BIGINT NOT NULL,
 	Tuid BIGINT NOT NULL,
 	FOREIGN KEY ( Thbid ) REFERENCES BlogInfo ( Bid ),-- 点赞所属动态的编号，外键
@@ -38,7 +36,6 @@ CREATE TABLE Thumbs_up (
 	
 );
 CREATE TABLE Follow (
-	Fid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 关注id，主键
 	Fhuid BIGINT NOT NULL,
 	Fuid BIGINT NOT NULL,
 	FOREIGN KEY ( Fhuid ) REFERENCES Users ( Userid ),-- 被关注者id，外键
@@ -47,7 +44,6 @@ CREATE TABLE Follow (
 	
 );
 CREATE TABLE Collect (
-	Cid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 收藏信息id，主键
 	Cbid BIGINT NOT NULL,
 	Cuid BIGINT NOT NULL,
 	FOREIGN KEY ( Cbid ) REFERENCES BlogInfo ( Bid ),-- 被收藏动态id，外键

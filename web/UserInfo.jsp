@@ -8,7 +8,6 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
-
     </script>
 
 </head>
@@ -30,126 +29,71 @@
                                     Example block-level help text here.
                                 </p>
                             </div>
-                                <div class="form-group">
-                                    <label for="name">姓名</label>
-                                    <input type="text" class="form-control" name="name" id="name" />
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon" id="addon1">姓名</span>
+                                    <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name" />
                                 </div>
-                                <div class="form-group">
-                                    <div class="row clearfix">
-                                        <div class="col-md-6 column">
-                                            <label for="gender">性别</label>
-                                        </div>
-                                        <div class="col-md-6 column">
-                                            <select class="form-control" id="gender" name="gender">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                                <option value="不透露">不透露</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="form-group input-group col-md-6 column">
+                                    <span class="input-group-addon" id="addon2">性别</span>
+                                    <select class="form-control" id="gender" aria-describedby="addon2" name="gender">
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                        <option value="不透露">不透露</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contact">联系方式</label>
-                                    <input type="text"  class="form-control" name="contact" id="contact" />
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon" id="addon3">联系方式</span>
+                                    <input type="text"  class="form-control" aria-describedby="addon3" name="contact" id="contact" />
                                 </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email"  class="form-control" name="email" id="email" />
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon4">Email</span>
+                                <input type="email"  class="form-control"  aria-describedby="addon4" name="email" id="email" />
                             </div>
                         </div>
                             <div class="col-md-2 column">
                             </div>
                         <div class="col-md-4 column">
-                            <div class="form-group">
-                                    <label for="identityNumber">身份证号码</label>
-                                    <input type="text" class="form-control" name="identityNumber" id="identityNumber" />
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon5">身份证号码</span>
+                                <input type="text" class="form-control"  aria-describedby="addon5" name="identityNumber" id="identityNumber" />
                             </div>
-                            <div class="form-group">
-                                    <label for="hobby">爱好</label>
-                                    <input type="text" class="form-control" name="hobby" id="hobby" />
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon6">爱好</span>
+                                <input type="text" class="form-control" aria-describedby="addon6" name="hobby" id="hobby" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="pschool">小学学校</label>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <label for="pgrade">年级</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column">
-                                <div class="row clearfix"><div class="col-md-8 column">
-                                    <input type="text" class="form-control" name="pschool" id="pschool"/>
-                                    </div>
-                                    <div class="col-md-4 column">
-                                        <input type="text" class="form-control" name="pgrade" id="pgrade"/>
-                                    </div>
-                                </div>
-                                </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon7">小学学校</span>
+                                <input type="text" class="form-control" aria-describedby="addon7" name="pschool" id="pschool" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="mschool">初中学校</label>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <label for="mgrade">年级</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <input type="text" class="form-control" name="mschool" id="mschool"/>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <input type="text" class="form-control" name="mgrade" id="mgrade"/>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group input-group col-md-6 column">
+                                <span class="input-group-addon" id="addon8">小学年级</span>
+                                <input type="text" class="form-control" aria-describedby="addon8" name="pgrade" id="pgrade" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="hschool">高中学校</label>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <label for="hgrade">年级</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <input type="text" class="form-control" name="hschool" id="hschool"/>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <input type="text" class="form-control" name="hgrade" id="hgrade"/>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon9">初中学校</span>
+                                <input type="text" class="form-control" aria-describedby="addon9" name="mschool" id="mschool" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <label for="uschool">大学学校</label>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <label for="ugrade">年级</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 column">
-                                    <div class="row clearfix"><div class="col-md-8 column">
-                                        <input type="text" class="form-control" name="uschool" id="uschool"/>
-                                    </div>
-                                        <div class="col-md-4 column">
-                                            <input type="text" class="form-control" name="ugrade" id="ugrade"/>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group input-group col-md-6 column">
+                                <span class="input-group-addon" id="addon10">初中年级</span>
+                                <input type="text" class="form-control" aria-describedby="addon10" name="mgrade" id="mgrade" />
                             </div>
-
-                                <button type="submit" class="btn btn-default btn-lg">保 存</button>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon11">高中学校</span>
+                                <input type="text" class="form-control" aria-describedby="addon11" name="hschool" id="hschool" />
+                            </div>
+                            <div class="form-group input-group col-md-6 column">
+                                <span class="input-group-addon" id="addon12">高中年级</span>
+                                <input type="text" class="form-control" aria-describedby="addon12" name="hgrade" id="hgrade" />
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="addon13">大学学校</span>
+                                <input type="text" class="form-control" aria-describedby="addon13" name="uschool" id="uschool" />
+                            </div>
+                            <div class="form-group input-group col-md-6 column">
+                                <span class="input-group-addon" id="addon14">大学年级</span>
+                                <input type="text" class="form-control" aria-describedby="addon14" name="h\ugrade" id="ugrade" />
+                            </div>
+                            <button type="submit" class="btn btn-default btn-lg">保 存</button>
                         </div>
                         </form>
                     </div>

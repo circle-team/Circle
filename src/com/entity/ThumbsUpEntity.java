@@ -7,27 +7,22 @@ import java.util.Objects;
 @Entity
 @Table(name = "Thumbs_up", schema = "liff", catalog = "")
 public class ThumbsUpEntity {
-    private long tid;
+
     private long thbid;
     private long tuid;
     private Timestamp tdate;
 
-    public ThumbsUpEntity(long tid, long thbid, long tuid, Timestamp tdate) {
-        this.tid = tid;
+    public ThumbsUpEntity(long thbid, long tuid, Timestamp tdate) {
+
         this.thbid = thbid;
         this.tuid = tuid;
         this.tdate = tdate;
     }
+    public ThumbsUpEntity(long thbid,long tuid)
+    {}
 
-    @Id
-    @Column(name = "Tid")
-    public long getTid() {
-        return tid;
-    }
-
-    public void setTid(long tid) {
-        this.tid = tid;
-    }
+    public  ThumbsUpEntity(long thbid)
+    {}
 
     @Basic
     @Column(name = "Thbid")
@@ -64,7 +59,7 @@ public class ThumbsUpEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ThumbsUpEntity that = (ThumbsUpEntity) o;
-        return tid == that.tid &&
+        return
                 thbid == that.thbid &&
                 tuid == that.tuid &&
                 Objects.equals(tdate, that.tdate);
@@ -72,6 +67,6 @@ public class ThumbsUpEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(tid, thbid, tuid, tdate);
+        return Objects.hash(thbid, tuid, tdate);
     }
 }

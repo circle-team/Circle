@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Random;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Random;
 
 @WebServlet("/register")
 public class UserRrgisterServlet  extends HttpServlet {

@@ -2,37 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/comment.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <div class="row clearfix">
-                <div class="col-md-3 column">
-                    <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
-                </div>
-                <div class="col-md-9 column">
-                    <div class="row clearfix">
-                        <div class="col-md-6 column">
-                            <h3>
-                                h3. 这是一套可视化布局系统.
-                            </h3>
+            <a id="modal" href="#modal-container" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+            <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                详情内容
+                            </h4>
                         </div>
-                        <div class="col-md-6 column">
-                            <br>
-                            <button type="button" class="btn btn-default">按钮</button>
+                        <div class="modal-body">
+
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column text-center">
+                                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column">
+                                           <h3>正文内容</h3>
+                                    </div>
+                                </div>
+                            <hr>
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column">
+                                        <div class="row clearfix">
+                                            <div class="col-md-2 column text-center">
+                                                <img height="80" width="80" alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" />
+                                                <label>name</label>
+                                            </div>
+                                            <div class="col-md-10 column">
+                                                <blockquote>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> <small>send date time<cite>发送于web客户端</cite></small>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column">
+                                        <form role="form" onsubmit="return submitTest()" method="post" action="/comment">
+                                            <div class="form-group">
+                                                <label for="comment">写评论</label><input type="text" onchange="on_comment()" class="form-control" id="comment" />
+                                                <p class="help-block">
+                                                    Example block-level help text here.
+                                                </p>
+                                                <div class="alert animated fadeInDown alert-warning alert-dismissable" id="alert_win">
+                                                    <h5 id="alert">输入有误!</h5>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">评论</button>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
-                            <p>
-                                <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong> 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在 <small>Ruby</small> 社区中。
-                            </p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </div>
                     </div>
                 </div>
@@ -40,5 +78,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
