@@ -114,7 +114,7 @@ public class UserEntityDao implements CommonDao {
         PreparedStatement pstmt = coon.prepareStatement(sql);
         pstmt.setLong(1,User.getUserid());
         UsersEntity nUser = new UsersEntity();
-        nUser.setUserid(pstmt.executeQuery().getInt("Userid"));
+        nUser.setUserid(pstmt.executeQuery().getLong("Userid"));
         nUser.setUpassword(pstmt.executeQuery().getString("Upassword"));
         nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
         nUser.setuAnswer1(pstmt.executeQuery().getString("UAnswer1"));

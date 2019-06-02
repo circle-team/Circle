@@ -7,27 +7,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "Collect", schema = "liff", catalog = "")
 public class CollectEntity {
-    private long cid;
     private long cbid;
     private long cuid;
     private Timestamp ctime;
 
-    public CollectEntity(long cid, long cbid, long cuid, Timestamp ctime) {
-        this.cid = cid;
+    public CollectEntity( long cbid, long cuid, Timestamp ctime) {
+
         this.cbid = cbid;
         this.cuid = cuid;
         this.ctime = ctime;
     }
 
-    @Id
-    @Column(name = "Cid")
-    public long getCid() {
-        return cid;
-    }
 
-    public void setCid(long cid) {
-        this.cid = cid;
-    }
 
     @Basic
     @Column(name = "Cbid")
@@ -64,7 +55,7 @@ public class CollectEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CollectEntity that = (CollectEntity) o;
-        return cid == that.cid &&
+        return
                 cbid == that.cbid &&
                 cuid == that.cuid &&
                 Objects.equals(ctime, that.ctime);
@@ -72,6 +63,6 @@ public class CollectEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cid, cbid, cuid, ctime);
+        return Objects.hash( cbid, cuid, ctime);
     }
 }

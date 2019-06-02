@@ -7,26 +7,24 @@ import java.util.Objects;
 @Entity
 @Table(name = "Follow", schema = "liff", catalog = "")
 public class FollowEntity {
-    private long fid;
+
     private long fhuid;
     private long fuid;
     private Timestamp ftime;
 
-    public FollowEntity(long fid, long fhuid, long fuid, Timestamp ftime) {
-        this.fid = fid;
+    public FollowEntity(long fhuid, long fuid, Timestamp ftime) {
+
         this.fhuid = fhuid;
         this.fuid = fuid;
         this.ftime = ftime;
     }
+    public FollowEntity(long fhuid, long fuid){
 
-    @Id
-    @Column(name = "Fid")
-    public long getFid() {
-        return fid;
+        this.fhuid = fhuid;
+        this.fuid = fuid;
     }
+    public FollowEntity(){
 
-    public void setFid(long fid) {
-        this.fid = fid;
     }
 
     @Basic
@@ -64,14 +62,13 @@ public class FollowEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FollowEntity that = (FollowEntity) o;
-        return fid == that.fid &&
-                fhuid == that.fhuid &&
+        return fhuid == that.fhuid &&
                 fuid == that.fuid &&
                 Objects.equals(ftime, that.ftime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fid, fhuid, fuid, ftime);
+        return Objects.hash(fhuid, fuid, ftime);
     }
 }
