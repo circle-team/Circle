@@ -1,5 +1,10 @@
 package com.servlet;
 
+import com.Dao.UserEntityDao;
+import com.Dao.UserInfoDao;
+import com.entity.UserInfoEntity;
+import com.entity.UsersEntity;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
