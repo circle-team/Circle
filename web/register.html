@@ -71,13 +71,15 @@
                                 <div class="form-group">
                                     <div class="input-group col-sm-4">
                                         <span class="input-group-addon" id="addon1">用户名</span>
-                                        <input type="text" class="form-control" id="name" placeholder="请输入用户名" name="name"  aria-describedby="addon1" onchange="on_name()"/>
+                                        <input type="text" class="form-control" id="name" placeholder="请输入用户名"
+                                               name="name" aria-describedby="addon1" onblur="oBlur_name()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6 input-group">
                                         <span class="input-group-addon" id="addon2">密保问题1</span>
-                                        <select class="form-control" id="q1" name="q1" aria-describedby="addon2" onchange="on_q1()">
+                                        <select class="form-control" id="q1" name="q1" aria-describedby="addon2"
+                                                onblur="oBlur_q1()">
                                             <option value="你喜欢看的电影？">你喜欢看的电影</option>
                                             <option value="你的生日？">你的生日</option>
                                             <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
@@ -90,13 +92,14 @@
                                     <div class="col-sm-6 input-group">
                                         <span class="input-group-addon" id="addon3">密保答案1</span>
                                         <input type="text" class="form-control" id="a1" name="a1"
-                                              onchange="on_a1()" aria-describedby="addon3" placeholder="请输入密保答案"/>
+                                               onblur="oBlur_a1()" aria-describedby="addon3" placeholder="请输入密保答案"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6 input-group">
                                         <span class="input-group-addon" id="addon4">密保问题2</span>
-                                        <select class="form-control" id="q2" name="q2" aria-describedby="addon4" onchange="on_q2()">
+                                        <select class="form-control" id="q2" name="q2" aria-describedby="addon4"
+                                                onblur="oBlur_q2()">
                                             <option value="你喜欢看的电影？">你喜欢看的电影</option>
                                             <option value="你的生日？">你的生日</option>
                                             <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
@@ -109,21 +112,22 @@
                                     <div class="col-sm-6 input-group">
                                         <span class="input-group-addon" id="addon5">密保答案2</span>
                                         <input type="text" class="form-control" id="a2" name="a2"
-                                               placeholder="请输入密保答案"  aria-describedby="addon5" onchange="on_a2()"/>
+                                               placeholder="请输入密保答案" aria-describedby="addon5" onblur="oBlur_a2()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-5 input-group">
                                         <span class="input-group-addon" id="addon6">输入密码</span>
                                         <input type="password" class="form-control" id="Password" name="password"
-                                               placeholder="请输入密码"  aria-describedby="addon6" onchange="on_Password()"/>
+                                               placeholder="请输入密码" aria-describedby="addon6" onblur="oBlur_Password()"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-5 input-group">
                                         <span class="input-group-addon" id="addon7">确认密码</span>
                                         <input type="password" class="form-control" id="Password2" name="Password2"
-                                               placeholder="再次输入密码" aria-describedby="addon7" onchange="on_Password2()"/>
+                                               placeholder="再次输入密码" aria-describedby="addon7"
+                                               onblur="oBlur_Password2()"/>
                                     </div>
                                 </div>
                                 <br>
@@ -133,13 +137,12 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="alert animated fadeIn alert-warning" id="alert_win">
+                            <div class="alert animated fadeIn alert-warning" id="alert_win" style="display: none">
                                 <h4 id="alert">
                                     输入有误!
                                 </h4>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-4 column">
@@ -215,9 +218,7 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-12 column">
             <p class="text-center">
                 <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong>
                 编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在
@@ -225,6 +226,7 @@
                 社区中。
             </p>
         </div>
+
     </div>
 </div>
 </body>

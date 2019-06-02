@@ -6,10 +6,6 @@ var reg_str = /^\w{6,16}$/;
 var name_ok;
 var Password_ok;
 
-$(document).ready(function(){
-    document.getElementById("alert_win").style.display="none";
-});
-
 function oBlur_name() {
     var name = document.getElementById("name").value;
     if (!name) { //用户框value值为空

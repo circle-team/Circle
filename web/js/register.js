@@ -5,11 +5,8 @@ var q1_var;
 var q2_var;
 var a1_var;
 var a2_var;
-
 var user_str= /^{1,20}$/;
 var reg_str =/^[a-zA-Z0-9_-]{6,16}$/;
-
-
 var name_ok;
 var Password_ok;
 var Password2_ok;
@@ -18,11 +15,7 @@ var q2_ok;
 var a1_ok;
 var a2_ok;
 
-$(document).ready(function(){
-    document.getElementById("alert_win").style.display="none";
-});
-
-function on_name() {
+function oBlur_name() {
     var name = document.getElementById("name").value;
     if (!name) { //用户框value值为空
         document.getElementById("alert_win").style.display="";
@@ -39,7 +32,7 @@ function on_name() {
 }
 
 //密码框失去焦点后验证value值
-function on_Password() {
+function oBlur_Password() {
     var Password = document.getElementById("Password").value;
 
     if (!Password) { //密码框value值为空
@@ -56,7 +49,7 @@ function on_Password() {
     }
 }
 
-function on_Password2() {
+function oBlur_Password2() {
     var Password2 = document.getElementById("Password2").value;
     if (Password_ok !="ok" )
     {
@@ -75,7 +68,7 @@ function on_Password2() {
     }
 }
 
-function on_q1() {
+function oBlur_q1() {
     var q1 = document.getElementById("q1").value;
     if (!q1) { //密码框value值为空
         document.getElementById("alert_win").style.display="";
@@ -87,7 +80,7 @@ function on_q1() {
     }
 }
 
-function on_a1() {
+function oBlur_a1() {
     var a1 = document.getElementById("a1").value;
     if (!a1) { //密码框value值为空
         document.getElementById("alert_win").style.display="";
@@ -99,7 +92,7 @@ function on_a1() {
     }
 }
 
-function on_q2() {
+function oBlur_q2() {
     var q2 = document.getElementById("q2").value;
     if (!q2) { //密码框value值为空
         document.getElementById("alert_win").style.display="";
@@ -115,7 +108,7 @@ function on_q2() {
     }
 }
 
-function on_a2() {
+function oBlur_a2() {
     var a2 = document.getElementById("a2").value;
     if (!a2) { //密码框value值为空
         document.getElementById("alert_win").style.display="";
