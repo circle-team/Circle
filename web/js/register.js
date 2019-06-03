@@ -18,11 +18,6 @@ var q2_ok;
 var a1_ok;
 var a2_ok;
 
-$(document).ready(function () {
-    document.getElementById("alert_win").style.display = "none";
-});
-
-
 function oBlur_name() {
     var name = document.getElementById("name").value;
     if (!name) { //用户框value值为空

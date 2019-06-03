@@ -1,7 +1,3 @@
-$(document).ready(function () {
-    document.getElementById("alert_win").style.display = "none";
-})
-
 var comment_ok;
 var comment_var;
 
