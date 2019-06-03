@@ -13,7 +13,7 @@ public class UsersEntity {
     private String uAnswer1;
     private String uAnswer2;
 
-    public UsersEntity(Long userid,String upassword, String uquestion1, String uQuestion2, String uAnswer1, String uAnswer2) {
+    public UsersEntity(Long userid,String upassword, String uquestion1,String uAnswer1, String uQuestion2,  String uAnswer2) {
         this.userid= userid;
         this.upassword = upassword;
         this.uquestion1 = uquestion1;
