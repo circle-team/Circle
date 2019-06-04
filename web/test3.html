@@ -38,7 +38,7 @@
                                 </div>
                             <hr>
                                 <div class="row clearfix">
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column" id="comment_block_1">
                                         <div class="row clearfix">
                                             <div class="col-md-2 column text-center">
                                                 <img height="80" width="80" alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" />
@@ -51,16 +51,17 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
-                                        <form role="form" onsubmit="return submitTest()" method="post" action="/comment">
+                                        <form role="form" onsubmit="return submitTest()" method="post" action="comment">
                                             <div class="form-group">
                                                 <label for="comment">写评论</label><input type="text" onchange="on_comment()" class="form-control" id="comment" />
                                                 <p class="help-block">
                                                     Example block-level help text here.
                                                 </p>
-                                                <div class="alert animated fadeInDown alert-warning alert-dismissable" id="alert_win">
+                                                <div class="alert animated fadeInDown alert-warning alert-dismissable" style="display: none" id="alert_win">
                                                     <h5 id="alert">输入有误!</h5>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">评论</button>
@@ -81,3 +82,15 @@
 
 </body>
 </html>
+<ul class="nav nav-pills">
+<li class="active">
+    <a href="#"><h4>相贴 <span class="badge  badge-primary">16</span></h4></a>
+</li>
+<li>
+    <a href="#"><h4>粉丝 <span class="badge  badge-primary">16</span></h4></a>
+</li>
+<li>
+    <a href="#"><h4>关注 <span class="badge  badge-primary">16</span></h4></a>
+</li>
+</ul>
+jumbotron well-sm

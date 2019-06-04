@@ -13,7 +13,7 @@ public class UserEntityDao implements CommonDao {
     public boolean insertData(Object o) throws SQLException {
         UsersEntity User = (UsersEntity)o;
         Connection coon = DBUtil.getConnection();
-        String sql = "insert into Users value(?,?,?,?,?,?)";
+        String sql = "insert into Users values(?,?,?,?,?,?)";
         PreparedStatement pstmt = coon.prepareStatement(sql);
         pstmt.setLong(1,User.getUserid());
         pstmt.setString(2,User.getUpassword());
@@ -21,6 +21,8 @@ public class UserEntityDao implements CommonDao {
         pstmt.setString(4,User.getuAnswer1());
         pstmt.setString(5,User.getuquestion2());
         pstmt.setString(6,User.getuAnswer2());
+
+        System.out.println(User.getUquestion1());
     if(pstmt.executeUpdate()>0){
         coon.close();
         return true;
@@ -113,13 +115,20 @@ public class UserEntityDao implements CommonDao {
         String sql="select * from Users where Userid=?";
         PreparedStatement pstmt = coon.prepareStatement(sql);
         pstmt.setLong(1,User.getUserid());
-        UsersEntity nUser = new UsersEntity();
-        nUser.setUserid(pstmt.executeQuery().getLong("Userid"));
-        nUser.setUpassword(pstmt.executeQuery().getString("Upassword"));
-        nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
-        nUser.setuAnswer1(pstmt.executeQuery().getString("UAnswer1"));
-        nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
-        nUser.setuAnswer2(pstmt.executeQuery().getString("UAnswer2"));
+//        ResultSet rs = pstmt.executeQuery();
+        UsersEntity nUser = null;
+
+        if(pstmt.executeQuery().next()) {
+            System.out.println("查找成功");
+            nUser = new UsersEntity();
+            nUser.setUserid(pstmt.executeQuery().getLong("Userid"));
+            nUser.setUpassword(pstmt.executeQuery().getString("Upassword"));
+            nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
+            nUser.setuAnswer1(pstmt.executeQuery().getString("UAnswer1"));
+            nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
+            nUser.setuAnswer2(pstmt.executeQuery().getString("UAnswer2"));
+        }
+        coon.close();
         return nUser;
 
     }

@@ -70,25 +70,25 @@
                                   onsubmit="return submitTest()">
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon1">用户名</span>
-                                    <input type="text" class="form-control" id="name" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
+                                    <input type="text" class="form-control" id="name" value="${cookie.username.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon2">密   码</span>
                                     <input type="password" class="form-control" id="Password" name="password"
-                                           aria-describedby="addon2" placeholder="请输入密码" onblur="oBlur_Password()"/>
+                                           aria-describedby="addon2" placeholder="请输入密码" value="${cookie username.value}" onblur="oBlur_Password()"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <div class="checkbox">
-                                            <label><input type="checkbox"/>记住我</label>
+                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <button type="submit" class="btn btn-default">登 录</button>
-                                    </div>q
+                                    </div>
                                 </div>
                             </form>
                             <div class="alert animated fadeIn alert-warning" id="alert_win" style="display: none">
