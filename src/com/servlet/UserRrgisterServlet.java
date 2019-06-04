@@ -16,10 +16,12 @@ import java.sql.SQLException;
 
 @WebServlet("/register")
 public class UserRrgisterServlet  extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         System.out.println("111");
         String name = req.getParameter("name");
         String password = req.getParameter("password");
@@ -76,7 +78,7 @@ public class UserRrgisterServlet  extends HttpServlet {
         if(x) {
 //            HttpSession session = req.getSession();
 //            session.setAttribute("User",User);
-            UserInfoEntity uiuser = new UserInfoEntity(uid,null,0,null,name,null,null,null,null,null);
+            UserInfoEntity uiuser = new UserInfoEntity(uid,null,0,null,name,null,null,null,null,null,null,null);
 
             UserInfoDao uidao = new UserInfoDao();
             try {
@@ -86,7 +88,7 @@ public class UserRrgisterServlet  extends HttpServlet {
             }
 
 
-            resp.sendRedirect("login.html");
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }
 
 
@@ -94,8 +96,9 @@ public class UserRrgisterServlet  extends HttpServlet {
 
 
         else
+
         {
-            resp.sendRedirect("/Fail.jsp");
+            resp.sendRedirect("Fail.jsp");
         }
 
 

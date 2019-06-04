@@ -8,6 +8,21 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
+       $(document).ready(function () {
+           var str=document.getElementById("gender1").value;
+           var obj=document.getElementById("gender");
+           for (i=0;i<obj.length;i++)
+           {
+               if(obj[i].value==str)
+                   obj.selected=true;
+           }
+
+       })
+
+
+
+
+
     </script>
 
 </head>
@@ -18,7 +33,7 @@
             <div class="row clearfix">
                 <div class="col-md-10 column">
                     <div class="row clearfix">
-                        <form role="form">
+                        <form role="form" action="userinf" method="post">
                         <div class="col-md-4 column">
                             <img height="160" width="160" src="images/img_10.jpg" alt="">
                             <br>
@@ -28,26 +43,30 @@
                                 <p class="help-block">
                                     Example block-level help text here.
                                 </p>
+                                <span id="addon55" value="">your  id:</span>
+                                <input type="" class="form-control" aria-describedby="addon1" name="id" id="id" value="${sessionScope.userinf.getUid()}" disabled/>
+
                             </div>
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon" id="addon1">姓名</span>
-                                    <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name"  hidden="{$user.getname()}"/>
+                                    <span class="input-group-addon" id="addon1" value="">姓名</span>
+                                    <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name" value="${sessionScope.userinf.getUname()}" hidden="{$user.getname()}"/>
                                 </div>
                                 <div class="form-group input-group col-md-6 column">
                                     <span class="input-group-addon" id="addon2">性别</span>
-                                    <select class="form-control" id="gender" aria-describedby="addon2" name="gender">
+                                    <select class="form-control" id="gender" aria-describedby="addon2" name="gender"  >
                                         <option value="男">男</option>
-                                        <option value="女">女</option>
                                         <option value="不透露">不透露</option>
+                                        <option value="女">女</option>
                                     </select>
+                                    <input type="hidden" id="gender1" value="${sessionScope.userinf.getUgender()}">
                                 </div>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon" id="addon3">联系方式</span>
-                                    <input type="text"  class="form-control" aria-describedby="addon3" name="contact" id="contact" />
+                                    <input type="text"  class="form-control" aria-describedby="addon3" name="contact" id="contact" value="${sessionScope.userinf.getUcontact()}" />
                                 </div>
                             <div class="form-group input-group">
                                 <span class="input-group-addon" id="addon4">Email</span>
-                                <input type="email"  class="form-control"  aria-describedby="addon4" name="email" id="email" />
+                                <input type="email"  class="form-control"  aria-describedby="addon4" name="email" id="email" value="${sessionScope.userinf.getUemail()}"/>
                             </div>
                         </div>
                             <div class="col-md-2 column">
@@ -55,19 +74,19 @@
                         <div class="col-md-4 column">
                             <div class="form-group input-group">
                                 <span class="input-group-addon" id="addon5">身份证号码</span>
-                                <input type="text" class="form-control"  aria-describedby="addon5" name="identityNumber" id="identityNumber" />
+                                <input type="text" class="form-control"  aria-describedby="addon5" name="identityNumber" id="identityNumber" value="${sessionScope.userinf.getUidentityNumber()}"/>
                             </div>
                             <div class="form-group input-group">
                                 <span class="input-group-addon" id="addon6">爱好</span>
-                                <input type="text" class="form-control" aria-describedby="addon6" name="hobby" id="hobby" />
+                                <input type="text" class="form-control" aria-describedby="addon6" name="hobby" id="hobby" value="${sessionScope.userinf.getUhobby()}" />
                             </div>
                             <div class="form-group input-group">
-                                <span class="input-group-addon" id="addon7">小学学校</span>
-                                <input type="text" class="form-control" aria-describedby="addon7" name="pschool" id="pschool" />
+                                <span class="input-group-addon" id="addon7">地址</span>
+                                <input type="text" class="form-control" aria-describedby="addon7" name="address" id="pschool" value="${sessionScope.userinf.getUaddress()}" />
                             </div>
                             <div class="form-group input-group col-md-6 column">
-                                <span class="input-group-addon" id="addon8">小学年级</span>
-                                <input type="text" class="form-control" aria-describedby="addon8" name="pgrade" id="pgrade" />
+                                <span class="input-group-addon" id="addon8">年龄</span>
+                                <input type="text" class="form-control" aria-describedby="addon8" name="age" id="age" value="${sessionScope.userinf.getUage()}"/>
                             </div>
                             <div class="form-group input-group">
                                 <span class="input-group-addon" id="addon9">初中学校</span>
@@ -87,11 +106,11 @@
                             </div>
                             <div class="form-group input-group">
                                 <span class="input-group-addon" id="addon13">大学学校</span>
-                                <input type="text" class="form-control" aria-describedby="addon13" name="uschool" id="uschool" />
+                                <input type="text" class="form-control" aria-describedby="addon13" name="uschool" id="uschool" value="${sessionScope.userinf.getUschool()}"/>
                             </div>
                             <div class="form-group input-group col-md-6 column">
                                 <span class="input-group-addon" id="addon14">大学年级</span>
-                                <input type="text" class="form-control" aria-describedby="addon14" name="h\ugrade" id="ugrade" />
+                                <input type="text" class="form-control" aria-describedby="addon14" name="ugrade" id="ugrade" value="${sessionScope.userinf.getUgrade()}"/>
                             </div>
                             <button type="submit" class="btn btn-default btn-lg">保 存</button>
                         </div>

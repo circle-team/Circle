@@ -65,21 +65,21 @@ public class UserEntityDao implements CommonDao {
 //
 //    }
 
-    public String Login(Object o) throws SQLException{
+    public int Login(Object o) throws SQLException{
            UsersEntity User=new UsersEntity();
            UsersEntity nUser = (UsersEntity)o;
 //           UserEntityDao UserDao = new UserEntityDao();
                    User=(UsersEntity) query(o);
    if(User==null)
    {
-       return "The id is nonexistent";
+       return 0;
    }
       if (User.getUpassword().equals(nUser.getUpassword())) {
-      return "success";
+      return 1;
 
       }
       else
-          return "The password is wrong!";
+          return 2;
 
     }
 
@@ -117,16 +117,16 @@ public class UserEntityDao implements CommonDao {
         pstmt.setLong(1,User.getUserid());
 //        ResultSet rs = pstmt.executeQuery();
         UsersEntity nUser = null;
-
-        if(pstmt.executeQuery().next()) {
+      ResultSet rs = pstmt.executeQuery();
+        if(rs.next()) {
             System.out.println("查找成功");
             nUser = new UsersEntity();
-            nUser.setUserid(pstmt.executeQuery().getLong("Userid"));
-            nUser.setUpassword(pstmt.executeQuery().getString("Upassword"));
-            nUser.setUquestion1(pstmt.executeQuery().getString("Uquestion1"));
-            nUser.setuAnswer1(pstmt.executeQuery().getString("UAnswer1"));
-            nUser.setuquestion2(pstmt.executeQuery().getString("UQuestion2"));
-            nUser.setuAnswer2(pstmt.executeQuery().getString("UAnswer2"));
+            nUser.setUserid(rs.getLong("Userid"));
+            nUser.setUpassword(rs.getString("Upassword"));
+            nUser.setUquestion1(rs.getString("Uquestion1"));
+            nUser.setuAnswer1(rs.getString("UAnswer1"));
+            nUser.setuquestion2(rs.getString("UQuestion2"));
+            nUser.setuAnswer2(rs.getString("UAnswer2"));
         }
         coon.close();
         return nUser;

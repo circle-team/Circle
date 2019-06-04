@@ -63,7 +63,8 @@ CREATE TABLE UserInfo (
 	UidentityNumber CHAR ( 18 ),-- 证件号码
 	Uimage VARCHAR ( 50 ),-- 头像
 	Uhobby VARCHAR ( 50 ) -- 爱好
-	
+	Uschool VARCHAR(50) --大学
+    Ugrade  VARCHAR(50) --级部
 );
 CREATE TABLE School (
 	Suid BIGINT NOT NULL PRIMARY KEY,-- 用户User,主键键

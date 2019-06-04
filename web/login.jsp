@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,55 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/login.js"></script>
+<!--    <script src="js/login.js"></script>-->
+
+    <script>
+        function login_commit(){
+            var flag = true;
+            $.ajax({
+                url:"login",
+                type:"POST",
+                async:false,
+                data:$("#login_form").serialize(),
+                success:function (data) {
+;                    if(data=="false"){
+                        $("#login_alert").css("display","block");
+                        flag = false;
+                    }
+                }
+            })
+            return flag;
+        }
+   $(document).ready(function(){
+
+       /*$("#btn btn-default").click(function () {
+           $.ajax({
+
+               url:"loginServlet",
+               type:"POST",
+               data:{"name":$("#name").val(),"password":$("#password").val()},
+               success:function (test) {
+                   if(test==2)
+                   $("alert").html("密码错误");
+                   
+               },
+               error:function () {
+                   alert("出现连接错误！");
+               }
+
+
+
+           })
+       })*/
+
+
+
+
+   })
+
+
+
+    </script>
 </head>
 <body>
 <div class="container">
@@ -66,17 +114,17 @@
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <br>
-                            <form class="form-horizontal" role="form" method="post" action="/login"
-                                  onsubmit="return submitTest()">
+                            <form id="login_form" class="form-horizontal" role="form" method="post" action="login"
+                                  onsubmit="return login_commit()">
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon1">用户名</span>
-                                    <input type="text" class="form-control" id="name" value="${cookie.username.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
+                                    <input type="text" class="form-control" id="name" value="${cookie.id.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon2">密   码</span>
                                     <input type="password" class="form-control" id="Password" name="password"
-                                           aria-describedby="addon2" placeholder="请输入密码" value="${cookie username.value}" onblur="oBlur_Password()"/>
+                                           aria-describedby="addon2" placeholder="请输入密码" value="${cookie.password.value}" onblur="oBlur_Password()"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
@@ -87,14 +135,13 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">登 录</button>
+                                        <button class="btn btn-default" type="submit">登 录</button>
                                     </div>
                                 </div>
                             </form>
-                            <div class="alert animated fadeIn alert-warning" id="alert_win" style="display: none">
-                                <h4 id="alert">
-                                    输入有误!
-                                </h4>
+
+                            <div id="login_alert" class="alert alert-danger" role="alert" style="display: none">
+                                密码错误!
                             </div>
                         </div>
                     </div>

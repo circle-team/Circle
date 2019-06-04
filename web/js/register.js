@@ -23,7 +23,7 @@ function oBlur_name() {
     if (!name) { //用户框value值为空
         document.getElementById("alert_win").style.display = "";
         document.getElementById("alert").innerHTML = "请输入昵称！";
-    } else if (name.length > 20 || name.length < 1 || !user_str.test(name))//用户框value值不为空
+    } else if (name.length > 20 || name.length < 1)//用户框value值不为空
     {
         document.getElementById("alert_win").style.display = "";
         document.getElementById("alert").innerHTML = "昵称不能包含特殊字符";
@@ -42,10 +42,11 @@ function oBlur_Password() {
     if (!Password) { //密码框value值为空
         document.getElementById("alert_win").style.display = "";
         document.getElementById("alert").innerHTML = "请输入密码！";
-    } else if (Password.length > 20 || Password.length < 6 || !reg_str.test(Password))//用户框value值不为空
+    } else if (Password.length > 20 || Password.length < 6 )//用户框value值不为空
     {
-        document.getElementById("alert_win").style.display = "";
         document.getElementById("alert").innerHTML = "密码请输入6-16位字符包括数字字母，且不能包含特殊字符";
+        document.getElementById("alert_win").style.display = "";
+
     } else {
         document.getElementById("alert_win").style.display = "none";
         Password_var = Password;
@@ -130,16 +131,20 @@ function oBlur_a2() {
 function submitTest() {
     if (name_ok != "ok") { //用户框value值和密码框value值都为空
         document.getElementById("alert").innerHTML = "请按要求填写name！";
+        document.getElementById("alert_win").style.display = "";
         return false;
 //只有返回true表单才会提交
     } else if (Password2_ok != "ok" || Password_ok != "ok") { //用户框value值为空
         document.getElementById("alert").innerHTML = "请按要求填写密码！";
+        document.getElementById("alert_win").style.display = "";
         return false;
     } else if (a1_ok != "ok" || a2_ok != "ok" || q2_var == q1_var) { //用户框value值为空
         document.getElementById("alert").innerHTML = "请按要求填写密保！";
+        document.getElementById("alert_win").style.display = "";
         return false;
     } else if (Password2_ok != Password_ok) { //密码框value值为空
         document.getElementById("alert").innerHTML = "请按要求再次填写密码！";
+        document.getElementById("alert_win").style.display = "";
         return false;
     } else {
         document.getElementById("alert_win").style.display = "none";

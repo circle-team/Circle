@@ -2,6 +2,7 @@ package com.Dao;
 
 import com.entity.UserInfoEntity;
 import com.entity.UsersEntity;
+import com.servlet.UserInfoServlet;
 import com.util.DBUtil;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class UserInfoDao implements CommonDao{
     public boolean insertData(Object o) throws SQLException {
         UserInfoEntity Useri = (UserInfoEntity)o;
         Connection conn = DBUtil.getConnection();
-        String sql = "insert into UserInfo value(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into UserInfo value(?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,Useri.getUid());
         pstmt.setString(2,Useri.getUgender());
@@ -28,6 +29,8 @@ public class UserInfoDao implements CommonDao{
         pstmt.setString(8,Useri.getUidentityNumber());
         pstmt.setString(9,Useri.getUimage());
         pstmt.setString(10,Useri.getUhobby());
+        pstmt.setString(11,Useri.getUschool());
+        pstmt.setString(12,Useri.getUgrade());
        if(pstmt.executeUpdate()>0)
        {
            conn.close();
@@ -49,7 +52,7 @@ conn.close();
     public boolean updateData(Object o) throws SQLException {
         UserInfoEntity Useri = (UserInfoEntity)o;
         Connection conn = DBUtil.getConnection();
-        String sql = "update UserInfo set Ugender=?,Uage=?,Ucontact=?,Uname=?,Uaddress=?,Uemail=?,UidentityNumber=?,Uimage=?,Uhobby=? where Uid=?";
+        String sql = "update UserInfo set Ugender=?,Uage=?,Ucontact=?,Uname=?,Uaddress=?,Uemail=?,UidentityNumber=?,Uimage=?,Uhobby=?,Uschool=?,Ugrade=? where Uid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,Useri.getUgender());
         pstmt.setInt(2,Useri.getUage());
@@ -60,7 +63,10 @@ conn.close();
         pstmt.setString(7,Useri.getUidentityNumber());
         pstmt.setString(8,Useri.getUimage());
         pstmt.setString(9,Useri.getUhobby());
-        pstmt.setLong(10,Useri.getUid());
+        pstmt.setString(10,Useri.getUschool());
+        pstmt.setString(11,Useri.getUgrade());
+        pstmt.setLong(12,Useri.getUid());
+
         if(pstmt.executeUpdate()>0){
             conn.close();
             return true;
@@ -82,8 +88,35 @@ conn.close();
 
     @Override
     public ArrayList query(Object o, int start, int length) throws SQLException {
+        ArrayList<UserInfoEntity> se = new ArrayList<UserInfoEntity>();
+        UserInfoEntity sUser = (UserInfoEntity) o;
+        Connection conn = DBUtil.getConnection();
+        PreparedStatement pstmt=null;
+        String sql=null;
+        sql = "select Uid from School where Uschool=? and Ugrade=?";
+                         pstmt=conn.prepareStatement(sql);
+                pstmt.setString(1,sUser.getUschool());
+                pstmt.setString(2,sUser.getUgrade());
 
-        return null;
+
+        while(conn.prepareStatement(sql).executeQuery().next()) {
+            Long x = conn.prepareStatement(sql).executeQuery().getLong("Suid");
+            UserInfoDao uidao = new UserInfoDao();
+            UserInfoEntity u = new UserInfoEntity(x);
+            UserInfoEntity t= new UserInfoEntity();
+            t=(UserInfoEntity) uidao.query(u);
+            if(t==null)
+            {
+                System.out.println("该用户信息不存在");
+            }
+            else
+            {
+                se.add(t);
+            }
+
+        }
+
+        return se;
     }
 
     @Override
@@ -93,19 +126,23 @@ conn.close();
         String sql = "select * from UserInfo where Uid = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,Useri.getUid());
-        UserInfoEntity Useri1= new UserInfoEntity();
+        UserInfoEntity Useri1= null;
         ResultSet result = pstmt.executeQuery();
-        Useri1.setUid(result.getLong("Uid"));
-        Useri1.setUgender(result.getString("Ugender"));
-        Useri.setUage(result.getInt("Uage"));
-        Useri1.setUcontact(result.getString("Ucontact"));
-        Useri1.setUname(result.getString("Uname"));
-        Useri1.setUaddress(result.getString("Uaddress"));
-        Useri1.setUemail(result.getString("Uemail"));
-        Useri1.setUidentityNumber(result.getString("UidentityNumber"));
-        Useri1.setUimage(result.getString("Uimage"));
-        Useri1.setUhobby(result.getString("Uhobby"));
-
+        if (result.next()) {
+            Useri1 = new UserInfoEntity();
+            Useri1.setUid(result.getLong("Uid"));
+            Useri1.setUgender(result.getString("Ugender"));
+            Useri.setUage(result.getInt("Uage"));
+            Useri1.setUcontact(result.getString("Ucontact"));
+            Useri1.setUname(result.getString("Uname"));
+            Useri1.setUaddress(result.getString("Uaddress"));
+            Useri1.setUemail(result.getString("Uemail"));
+            Useri1.setUidentityNumber(result.getString("UidentityNumber"));
+            Useri1.setUimage(result.getString("Uimage"));
+            Useri1.setUhobby(result.getString("Uhobby"));
+            Useri1.setUschool(result.getString("Uschool"));
+            Useri1.setUgrade(result.getString("Ugrade"));
+        }
         return Useri1;
     }
 }

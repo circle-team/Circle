@@ -10,18 +10,26 @@ public class UserInfoEntity {
     private String ugender;
     private int  uage;
     private String ucontact;
+
+
+
     private String uname;
     private String uaddress;
     private String uemail;
     private String uidentityNumber;
     private String uimage;
     private String uhobby;
+    private String uschool;
+    private String ugrade;
+
+
+
     public UserInfoEntity(){}
 public UserInfoEntity(Long uid)
 {
 
 }
-    public UserInfoEntity(Long uid, String ugender,int uage,String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby) {
+    public UserInfoEntity(Long uid, String ugender,int uage,String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby,String uschool, String ugrade) {
         this.uid = uid;
         this.uage= uage;
         this.ugender = ugender;
@@ -32,16 +40,19 @@ public UserInfoEntity(Long uid)
         this.uidentityNumber = uidentityNumber;
         this.uimage = uimage;
         this.uhobby = uhobby;
+        this.uschool = uschool;
+        this.ugrade = ugrade;
     }
 
-    public Integer getUage() {
+
+
+    public int getUage() {
         return uage;
     }
 
-    public void setUage(Integer uage) {
+    public void setUage(int uage) {
         this.uage = uage;
     }
-
     @Id
     @Column(name = "Uid")
     public long getUid() {
@@ -50,6 +61,14 @@ public UserInfoEntity(Long uid)
 
     public void setUid(long uid) {
         this.uid = uid;
+    }
+
+    public String getUgrade() {
+        return ugrade;
+    }
+
+    public void setUgrade(String ugrade) {
+        this.ugrade = ugrade;
     }
 
     @Basic
@@ -90,6 +109,14 @@ public UserInfoEntity(Long uid)
 
     public void setUaddress(String uaddress) {
         this.uaddress = uaddress;
+    }
+
+    public String getUschool() {
+        return uschool;
+    }
+
+    public void setUschool(String uschool) {
+        this.uschool = uschool;
     }
 
     @Basic
