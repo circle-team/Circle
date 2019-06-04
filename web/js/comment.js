@@ -2,10 +2,28 @@ var comment_ok;
 var comment_var;
 
 
-$(".forum-links-btn > a").on("click", function(){
-    $(".forum-links").toggleClass("active");
-    return false;
-});
+/* @author:Romey
+ * 动态点赞
+ * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
+*/
+$(function(){
+    $("#praise").click(function(){
+        var praise_img = $("#praise-img");
+        var praise_txt = $("#praise-txt");
+        var num=parseInt(praise_txt.text());
+        if(praise_img.attr("src") == ("images/loved.png")){
+            $(this).html("<img src='images/love.png' id='praise-img' class='animated rubberBand' />");
+            praise_txt.removeClass("hover");
+            num -=1;
+            praise_txt.text(num)
+        }else{
+            $(this).html("<img src='images/loved.png' id='praise-img' class='animated rubberBand' />");
+            praise_txt.addClass("hover");
+            num +=1;
+            praise_txt.text(num)
+        }
+    });
+})
 
 function on_comment() {
     var comment = document.getElementById("comment").value;
