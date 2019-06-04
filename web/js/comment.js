@@ -1,6 +1,12 @@
 var comment_ok;
 var comment_var;
 
+
+$(".forum-links-btn > a").on("click", function(){
+    $(".forum-links").toggleClass("active");
+    return false;
+});
+
 function on_comment() {
     var comment = document.getElementById("comment").value;
     if (!comment) { //comment.value值为空
