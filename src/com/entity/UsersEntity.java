@@ -5,19 +5,19 @@ import java.util.Objects;
 
 @Entity
 //@Table(name = "Users", schema = "liff", catalog = "")
-public class UsersEntity {
-    private Long userid;
-    private String upassword;
-    private String uquestion1;
-    private String uquestion2;
-    private String uAnswer1;
-    private String uAnswer2;
+        public class UsersEntity {
+            private Long userid;
+            private String upassword;
+            private String uquestion1;
+            private String uquestion2;
+            private String uAnswer1;
+            private String uAnswer2;
 
-    public UsersEntity(Long userid,String upassword, String uquestion1,String uAnswer1, String uQuestion2,  String uAnswer2) {
-        this.userid= userid;
-        this.upassword = upassword;
-        this.uquestion1 = uquestion1;
-        this.uquestion2 = uQuestion2;
+            public UsersEntity(Long userid,String upassword, String uquestion1,String uAnswer1, String uQuestion2,  String uAnswer2) {
+                this.userid= userid;
+                this.upassword = upassword;
+                this.uquestion1 = uquestion1;
+                this.uquestion2 = uQuestion2;
         this.uAnswer1 = uAnswer1;
         this.uAnswer2 = uAnswer2;
     }
