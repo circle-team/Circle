@@ -21,4 +21,18 @@
   .waterfall .list-group {
     width: 271px; } }
 
+.heart {
+  background:url(../images/web_heart_animation.png);
+  background-position:left;
+  background-repeat:no-repeat;
+  height:100px;
+  width:100px;
+  cursor:pointer;
+  position:absolute;
+  left:-14px;
+  background-size:2900%;
+}
+.heart:hover, .heart:focus{
+  background-position:right;
+}
 /*# sourceMappingURL=main.css.map */
