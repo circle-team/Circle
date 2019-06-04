@@ -31,7 +31,7 @@
                             </div>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon" id="addon1">姓名</span>
-                                    <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name" />
+                                    <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name"  hidden="{$user.getname()}"/>
                                 </div>
                                 <div class="form-group input-group col-md-6 column">
                                     <span class="input-group-addon" id="addon2">性别</span>
