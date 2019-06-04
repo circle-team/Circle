@@ -38,7 +38,7 @@
                                 </div>
                             <hr>
                                 <div class="row clearfix">
-                                    <div class="col-md-12 column">
+                                    <div class="col-md-12 column" id="comment_block_1">
                                         <div class="row clearfix">
                                             <div class="col-md-2 column text-center">
                                                 <img height="80" width="80" alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" />
@@ -51,10 +51,11 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
-                                        <form role="form" onsubmit="return submitTest()" method="post" action="/comment">
+                                        <form role="form" onsubmit="return submitTest()" method="post" action="comment">
                                             <div class="form-group">
                                                 <label for="comment">写评论</label><input type="text" onchange="on_comment()" class="form-control" id="comment" />
                                                 <p class="help-block">

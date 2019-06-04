@@ -19,7 +19,7 @@ function on_comment() {
 
 function submitTest() {
     if (comment_ok != "ok") { //用户框value值和密码框value值都为空
-        alert("请按要求填写姓名");
+        alert("请按要求填写评论");
         return false;
     }
 }
