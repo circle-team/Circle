@@ -12,6 +12,9 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
     @Override
@@ -64,8 +67,12 @@ public class loginServlet extends HttpServlet {
                 e.printStackTrace();
             }
             session.setAttribute("userinf",uif);
-            resp.sendRedirect("UserInfo.jsp");
+//
+//            ArrayList<UserInfoServlet> Uilist = new ArrayList<UserInfoServlet>();
 
+//            req.setAttribute();
+            resp.sendRedirect("UserInfo.jsp");
+//req.getRequestDispatcher()
         }
         else if(test==2)
         {
