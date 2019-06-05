@@ -1,6 +1,30 @@
 var comment_ok;
 var comment_var;
 
+
+/* @author:Romey
+ * 动态点赞
+ * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
+*/
+$(function(){
+    $("#praise").click(function(){
+        var praise_img = $("#praise-img");
+        var praise_txt = $("#praise-txt");
+        var num=parseInt(praise_txt.text());
+        if(praise_img.attr("src") == ("images/loved.png")){
+            $(this).html("<img src='images/love.png' id='praise-img' class='animated rubberBand' />");
+            praise_txt.removeClass("hover");
+            num -=1;
+            praise_txt.text(num)
+        }else{
+            $(this).html("<img src='images/loved.png' id='praise-img' class='animated rubberBand' />");
+            praise_txt.addClass("hover");
+            num +=1;
+            praise_txt.text(num)
+        }
+    });
+})
+
 function on_comment() {
     var comment = document.getElementById("comment").value;
     if (!comment) { //comment.value值为空
@@ -19,7 +43,7 @@ function on_comment() {
 
 function submitTest() {
     if (comment_ok != "ok") { //用户框value值和密码框value值都为空
-        alert("请按要求填写姓名");
+        alert("请按要求填写评论");
         return false;
     }
 }

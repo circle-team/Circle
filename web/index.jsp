@@ -5,7 +5,7 @@
   <title>Title</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
   <!--<script>-->
@@ -16,7 +16,7 @@
   <!--l = document.documentElement.scrollLeft;-->
   <!--w = document.documentElement.scrollWidth;-->
   <!--h = document.documentElement.scrollHeight;-->
-  <!--} else if (document.body) {-->
+  <!-- else if (document.body) {-->
   <!--t = document.body.scrollTop;-->
   <!--l = document.body.scrollLeft;-->
   <!--w = document.body.scrollWidth;-->
@@ -25,7 +25,7 @@
   <!--return { top: t, left: l, width: w, height: h };-->
   <!--}-->
   <!--</script>-->
-</head>
+</head>}
 <body>
 <div class="text-center">
   <div class="container">
@@ -132,7 +132,7 @@
       <li><a href="#"><img src="images/qq.png"/></a></li>
       <li><a href="#"><img src="images/wechat.png"></a></li>
       <li><a href="#"><img src="images/ins.png"></a></li>
-      <li><a href="#"><img src="images/微博.png"></a></li>
+      <li><a href="#"><img src="images/weibo.png"></a></li>
     </ul>
     </p>
   </div>
