@@ -96,7 +96,6 @@ public class UserRrgisterServlet  extends HttpServlet {
 
 
         else
-
         {
             resp.sendRedirect("Fail.jsp");
         }

@@ -20,7 +20,10 @@ public class UserInfoServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
-        Long id = Long.valueOf(req.getParameter("id"));
+        HttpSession session = req.getSession();
+        UserInfoEntity kuaile = null;
+         kuaile = (UserInfoEntity) session.getAttribute("userinf");
+        Long id = kuaile.getUid();
         String name = req.getParameter("name");
         String gender = req.getParameter("gender");
         String contact = req.getParameter("contact");
@@ -41,7 +44,7 @@ public class UserInfoServlet extends HttpServlet {
         try {
             if (xdao.updateData(x))
             {
-                HttpSession session = req.getSession();
+
                 session.setAttribute("userinf",x);
                 req.getRequestDispatcher("UserInfo.jsp").forward(req,resp);
 
