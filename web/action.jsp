@@ -15,6 +15,25 @@
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
 
+<script type="text/javascript">
+
+    $.ajax({
+        type: 'GET',
+        url:'SelfBlogServlet',
+        dataType: 'json',
+        success:function(data){
+            var json = eval(data);
+            alert(json);
+            <c:forEach var="i">
+
+            <jsp:useBean id="" class="com.entity.BlogInfoEntity"></jsp:useBean>
+            </c:forEach>
+
+        },
+        error:''
+
+    });
+</script>
 </head>
 <body>
 <div class="container">
@@ -102,7 +121,7 @@
 </div>
 
 <script id="waterfall-template" type="text/template">
-    <c
+
     <ul class="list-group">
         <li class="list-group-item">
             <a href="javascript:;">
