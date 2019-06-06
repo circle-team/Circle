@@ -16,7 +16,8 @@
         <div class="col-md-12 column">
             <a id="modal" href="#modal-container" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
 
-            <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal-container" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -26,54 +27,66 @@
                             </h4>
                         </div>
                         <div class="modal-body">
-                                <div class="row clearfix">
-                                    <div class="col-md-12 column text-center">
-                                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" />
-                                    </div>
+                            <div class="row clearfix">
+                                <div class="col-md-12 column text-center">
+                                    <img style="width:auto;height:auto;"
+                                         src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"/>
                                 </div>
-                                <div class="row clearfix">
-                                    <div class="col-md-12 column">
-                                           <h3>正文内容</h3>
-                                    </div>
-                                </div>
-                            <hr>
-                            <div class="praise row clearfix">
+                            </div>
+                            <div class="row clearfix">
                                 <div class="col-md-12 column">
-                                <span id="praise"><img src="images/love.png" id="praise-img" class="animated rubberBand"></span>
-                                <span id="praise-txt" class="hover">146</span>
+                                    <h3>正文内容</h3>
                                 </div>
                             </div>
                             <hr>
-                                <div class="row clearfix">
-                                    <div class="col-md-12 column" id="comment_block_1">
-                                        <div class="row clearfix">
-                                            <div class="col-md-2 column text-center">
-                                                <img height="80" width="80" alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" />
-                                                <label>name</label>
-                                            </div>
-                                            <div class="col-md-10 column">
-                                                <blockquote>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> <small>send date time<cite>发送于web客户端</cite></small>
-                                                </blockquote>
-                                            </div>
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <span class="praise"><span class="praise_img_block"><img src="images/love.png"
+                                                                                       class="praise_img animated rubberBand"></span>
+                                    <span class="praise_txt">146</span></span>
+
+                                    <span class="comments"><img src="images/comment.png"
+                                                                class="comment_img animated rubberBand"></span>
+                                    <span id="comment-txt">146</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row clearfix animated fadeInDown">
+                                <div class="col-md-12 column" id="comment_block_1">
+                                    <div class="row clearfix">
+                                        <div class="col-md-2 column text-center">
+                                            <img height="80" width="80" alt="140x140"
+                                                 src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"
+                                                 class="img-circle"/>
+                                            <label>name</label>
+                                        </div>
+                                        <div class="col-md-10 column">
+                                            <blockquote>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                                                    posuere erat a ante.</p>
+                                                <small>send date time<cite>发送于web客户端</cite></small>
+                                            </blockquote>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div class="row clearfix">
-                                    <div class="col-md-12 column">
-                                        <form role="form" onsubmit="return submitTest()" method="post" action="comment">
-                                            <div class="form-group">
-                                                <label for="comment">写评论</label><input type="text" onchange="on_comment()" class="form-control" id="comment" />
-                                                <p class="help-block">
-                                                    Example block-level help text here.
-                                                </p>
-                                                <div class="alert animated fadeInDown alert-warning alert-dismissable" style="display: none" id="alert_win">
-                                                    <h5 id="alert">输入有误!</h5>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">评论</button>
+
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <form role="form" onsubmit="return submitTest()" method="post" action="comment">
+                                        <div class="form-group">
+                                            <label for="comment">写评论</label><input type="text" onchange="on_comment()"
+                                                                                   class="form-control" id="comment"/>
+                                            <p class="help-block">
+                                                Example block-level help text here.
+                                            </p>
+                                            <div class="alert animated fadeInDown alert-warning alert-dismissable"
+                                                 style="display: none" id="alert_win">
+                                                <h5 id="alert">输入有误!</h5>
                                             </div>
-                                        </form>
+                                            <button type="submit" class="btn btn-primary">评论</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -90,14 +103,14 @@
 </body>
 </html>
 <ul class="nav nav-pills">
-<li class="active">
-    <a href="#"><h4>相贴 <span class="badge  badge-primary">16</span></h4></a>
-</li>
-<li>
-    <a href="#"><h4>粉丝 <span class="badge  badge-primary">16</span></h4></a>
-</li>
-<li>
-    <a href="#"><h4>关注 <span class="badge  badge-primary">16</span></h4></a>
-</li>
+    <li class="active">
+        <a href="#"><h4>相贴 <span class="badge  badge-primary">16</span></h4></a>
+    </li>
+    <li>
+        <a href="#"><h4>粉丝 <span class="badge  badge-primary">16</span></h4></a>
+    </li>
+    <li>
+        <a href="#"><h4>关注 <span class="badge  badge-primary">16</span></h4></a>
+    </li>
 </ul>
 jumbotron well-sm
