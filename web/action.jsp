@@ -22,13 +22,9 @@
         url:'SelfBlogServlet',
         dataType: 'json',
         success:function(data){
+
             var json = eval(data);
             alert(json);
-            <c:forEach var="i">
-
-            <jsp:useBean id="" class="com.entity.BlogInfoEntity"></jsp:useBean>
-            </c:forEach>
-
         },
         error:''
 

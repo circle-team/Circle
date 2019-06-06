@@ -1,5 +1,6 @@
-package com.Dao;
+package com.servlet;
 
+import com.Dao.BlogInfoDao;
 import com.entity.BlogInfoEntity;
 import com.entity.UserInfoEntity;
 
@@ -35,7 +36,7 @@ public class InsertBlogServlet extends HttpServlet {
             try {
                  Bid = (long)(Math.random()*10000);
                 Blog = (BlogInfoEntity) BlogDao.query(Bid);
-            } catch (SQLException e) {
+            }catch (SQLException e) {
                 e.printStackTrace();
             }
         }

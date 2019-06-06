@@ -4,6 +4,7 @@ import com.Dao.BlogInfoDao;
 import com.Dao.FollowDao;
 import com.entity.BlogInfoEntity;
 import com.entity.UserInfoEntity;
+import netscape.javascript.JSObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import net.sf.json.JSONObject;
+import java.util.Date;
 
 public class SelfBlogServlet extends HttpServlet {
     @Override
@@ -45,9 +52,11 @@ public class SelfBlogServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        req.setAttribute("fans",fans);
-        req.setAttribute("bfans",bfans);
-        req.setAttribute("bnumber",SelfBolgnumber);
+//        req.setAttribute("fans",fans);
+//        req.setAttribute("bfans",bfans);
+//        req.setAttribute("bnumber",SelfBolgnumber);
+
+
 
       ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
       ArrayList<Long> ID =null;
@@ -63,11 +72,20 @@ public class SelfBlogServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        Comparator<BlogInfoEntity> comparator = new Comparator<BlogInfoEntity>() {
+            @Override
+            public int compare(BlogInfoEntity o1, BlogInfoEntity o2) {
+                Long sqlLastTime = o1.getBdate().getTime();
+                long sqlLastTime2 = o2.getBdate().getTime();
+
+                return (int) (sqlLastTime - sqlLastTime2);
+
+            }
+        };
+          Collections.sort(BlogE, comparator);
 
 
 
 
-
-
-    }
+        }
 }

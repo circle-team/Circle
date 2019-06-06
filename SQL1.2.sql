@@ -40,7 +40,6 @@ CREATE TABLE Follow (
 	Fuid BIGINT NOT NULL,
 	FOREIGN KEY ( Fhuid ) REFERENCES Users ( Userid ),-- 被关注者id，外键
 	FOREIGN KEY ( Fuid ) REFERENCES Users ( Userid ),-- 关注者id，外键
-	Ftime datetime NOT NULL -- 关注时间
 	
 );
 CREATE TABLE Collect (
