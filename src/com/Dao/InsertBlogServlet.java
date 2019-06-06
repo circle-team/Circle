@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class InsertBlogServlet extends HttpServlet {
     @Override
@@ -40,8 +40,13 @@ public class InsertBlogServlet extends HttpServlet {
             }
         }
 
-        Timestamp date = new
-        BlogInfoEntity Blog = new BlogInfoEntity(Bid,id,req.getParameter("text"),date);
 
+        Timestamp date= new Timestamp(new Date().getTime());
+        Blog = new BlogInfoEntity(Bid,id,req.getParameter("text"),date,null,req.getParameter("title"));
+        try {
+            BlogDao.insertData(Blog);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
