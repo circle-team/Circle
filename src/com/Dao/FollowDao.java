@@ -53,13 +53,62 @@ public class FollowDao implements CommonDao {
 
     @Override
     public int queryDataNum(Object o) throws SQLException {
+        Connection conn = DBUtil.getConnection();
+        Integer id = (Integer)o;
+
         return 0;
+
+
     }
+    public int queryDataNum1(Object o,Object x) throws SQLException{
+
+        Connection conn = DBUtil.getConnection();
+        Long id = (Long)o;
+        Long choose = (Long)x;
+        String sql;
+        if(choose==1) {
+             sql = "select count(*) from Follow where Fuid=?";
+        }
+        else{
+            sql = "select count(*) from Follow where Fhuid=?";
+        }
+        PreparedStatement pstmt =conn.prepareStatement(sql);
+        pstmt.setLong(1,id);
+        ResultSet rs = pstmt.executeQuery();
+        int num = 0;
+        if (rs.next())
+        {
+             num = rs.getInt("count(*)");
+        }
+           return num;
+
+    }
+
 
     @Override
     public ArrayList query(Object o, int start, int length) throws SQLException {
         return null;
     }
+
+    public ArrayList<Long> query1(Object o) throws SQLException{
+        Long uid = (Long)o;
+        ArrayList<Long> idlist = new ArrayList<Long>();
+        Connection conn = DBUtil.getConnection();
+        String sql = "select Fhuid from follow where Fuid=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,uid);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next())
+        {
+            uid=rs.getLong("Fhuid");
+            idlist.add(uid);
+
+        }
+
+        return idlist;
+    }
+
+
 
     @Override
     public Object query(Object o) throws SQLException {

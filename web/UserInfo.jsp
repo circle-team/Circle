@@ -17,17 +17,17 @@
                    obj.selected=true;
            }
 
-    $("#follow").click(function () {
-        $ajax({
-            url:"FollowAcquireServlet",
-            type:"GET",
-            data:
-            success:function (test) {
-
-            }
-
-
-        })
+    // $("#follow").click(function () {
+    //     $ajax({
+    //         url:"FollowAcquireServlet",
+    //         type:"GET",
+    //         data:
+    //         success:function (test) {
+    //
+    //         }
+    //
+    //
+    //     })
 
 
 

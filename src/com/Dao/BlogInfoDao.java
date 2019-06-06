@@ -67,11 +67,11 @@ public class BlogInfoDao implements CommonDao {
     @Override
     public int queryDataNum(Object o) throws SQLException {
         Connection conn = DBUtil.getConnection();
-        BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
+        Long x = (Long) o;
 
         String sql = "select count(*) from BlogInfo WHERE Buid = ?;";
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setLong(1, BlogInfo.getBid());
+        pstmt.setLong(1, x);
         ResultSet rs = pstmt.executeQuery();
 
         int num;
@@ -129,8 +129,29 @@ public class BlogInfoDao implements CommonDao {
                     , rs.getTimestamp(4), rs.getString(5), rs.getString(6));
         }
 
-        if (newBlogInfo == null)
-            newBlogInfo = new BlogInfoEntity();
+        conn.close();
+        pstmt.close();
         return newBlogInfo;
     }
+
+
+
+    public ArrayList<BlogInfoEntity> query1(Object o,ArrayList<BlogInfoEntity> Blist)throws SQLException
+    {
+        Long uid = (Long)o;
+        Connection conn = DBUtil.getConnection();
+        String sql = "select * from BlogInf where Buid=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,uid);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next())
+        {
+            BlogInfoEntity Blog = new BlogInfoEntity(rs.getLong(1), rs.getLong(2), rs.getString(3)
+                    , rs.getTimestamp(4), rs.getString(5), rs.getString(6));
+            Blist.add(Blog);
+        }
+        return Blist;
+    }
+
+
 }
