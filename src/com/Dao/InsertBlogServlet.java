@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class InsertBlogServlet extends HttpServlet {
     @Override
@@ -37,8 +39,9 @@ public class InsertBlogServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        if ()
-        BlogInfoEntity Blog = new BlogInfoEntity();
+
+        Timestamp date = new
+        BlogInfoEntity Blog = new BlogInfoEntity(Bid,id,req.getParameter("text"),date);
 
     }
 }
