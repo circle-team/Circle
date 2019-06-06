@@ -52,12 +52,6 @@ public class SelfBlogServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-//        req.setAttribute("fans",fans);
-//        req.setAttribute("bfans",bfans);
-//        req.setAttribute("bnumber",SelfBolgnumber);
-
-
-
       ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
       ArrayList<Long> ID =null;
         try {
@@ -84,8 +78,8 @@ public class SelfBlogServlet extends HttpServlet {
         };
           Collections.sort(BlogE, comparator);
 
-
-
-
-        }
+        ArrayList<BlogInfoEntity> allSites = new SitesCollection().getAllSites();
+        JSONArray allSitesJson = new JSONArray(allSites);
+        return allSitesJson.toString();
+    }
 }
