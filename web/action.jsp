@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh">
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +11,9 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/comment.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/bootstrap-waterfall.js" type="text/javascript"></script>
+    <script src="js/bootstrap-waterfall.js"></script>
 
 </head>
 <body>
@@ -99,6 +102,7 @@
 </div>
 
 <script id="waterfall-template" type="text/template">
+    <c
     <ul class="list-group">
         <li class="list-group-item">
             <a href="javascript:;">
@@ -113,7 +117,7 @@
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span class="comment-txt">146</span>
-            <a  href="#modal-container" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
+            <a href="#modal-container" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
         </li>
         <li class="list-group-item">
             <div class="media">
