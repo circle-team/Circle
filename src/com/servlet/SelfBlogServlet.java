@@ -48,14 +48,15 @@ public class SelfBlogServlet extends HttpServlet {
         System.out.println(id);
         int fans = 0;
         int bfans= 0;
+
         FollowDao fdao = new FollowDao();
         try {
-            bfans=fdao.queryDataNum1(id,1);
+            bfans=fdao.queryDataNum1(id,1l);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            fans=fdao.queryDataNum1(id,0);
+            fans=fdao.queryDataNum1(id,0l);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,10 +68,17 @@ public class SelfBlogServlet extends HttpServlet {
       ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
       ArrayList<Long> ID =null;
         try {
-            ID = fdao.query1(userinf1.getUid());
+            ID = fdao.query1(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        for (Long x:
+                ID
+             ) {
+            System.out.println(x);
+
+        }
+
         for (Long x:ID) {
             try {
                 BlogE=Blogdao.query1(x,BlogE);
@@ -88,13 +96,13 @@ public class SelfBlogServlet extends HttpServlet {
 
             }
         };
-          Collections.sort(BlogE, comparator);
+        Collections.sort(BlogE, comparator);
         System.out.println(BlogE.toString());
         List<BlogInfoEntity> beans = BlogE;
         System.out.println(beans);
         JSONArray array = JSONArray.fromObject(beans);
         System.out.println(array.toString());
-        out.print(array.toString());
+        out.println(array);
 
     }
 }

@@ -140,7 +140,7 @@ public class BlogInfoDao implements CommonDao {
     {
         Long uid = (Long)o;
         Connection conn = DBUtil.getConnection();
-        String sql = "select * from BlogInf where Buid=?";
+        String sql = "select * from BlogInfo where Buid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,uid);
         ResultSet rs = pstmt.executeQuery();

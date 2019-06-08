@@ -60,38 +60,40 @@ public class FollowDao implements CommonDao {
 
 
     }
-    public int queryDataNum1(Object o,int x) throws SQLException{
+    public int queryDataNum1(Object o,Object x) throws SQLException{
 
-        System.out.println("fan方法连接成功！");
+
+
+
         Connection conn = DBUtil.getConnection();
-        System.out.println("fan方法连接成功！");
+
         Long id = (long)o;
         Long choose = (long)x;
-        System.out.println("fan方法连接成功！");
+
         String sql = null;
         if(choose==(long)1) {
-            System.out.println("fan方法连接成功！");
+
              sql = "select count(*) from Follow where Fuid=?";
         }
         else{
-            System.out.println("fan方法连接！");
+
             sql = "select count(*) from Follow where Fhuid=?";
         }
         PreparedStatement pstmt =conn.prepareStatement(sql);
-        System.out.println("fan方法连接成功！");
+
         pstmt.setLong(1,id);
-        System.out.println("fan方法连接成功！");
+
         ResultSet rs = pstmt.executeQuery();
-        System.out.println("fan方法连接成功！");
+
         System.out.println(id);
-        System.out.println("fan方法连接成功！");
+
         int num = 0;
-        System.out.println("fan方法连接成功！");
+
         if (rs.next())
         {
              num = rs.getInt(1);
         }
-        System.out.println("fan方法连接成功！");
+
         conn.close();
            return num;
 
