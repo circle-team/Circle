@@ -178,6 +178,7 @@ function refresh() {
                     <div class="col-md-12 column">
                         <form role="form" onsubmit="return submit_blog()" method="post" action="comment">
                             <div class="form-group">
+
                                 <label for="comment">写博客</label><input type="text" onchange="on_blog()"
                                                                        class="form-control" id="new_blog"/>
                                 <p class="help-block">
