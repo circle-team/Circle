@@ -32,31 +32,37 @@ public class SelfBlogServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         HttpSession session = req.getSession();
         UserInfoEntity userinf1 = (UserInfoEntity) session.getAttribute("userinf");
-        System.out.println("多少微博!");
+//        System.out.println("多少微博!");
+//        System.out.println(userinf1.getUschool());
+//        System.out.println("qqqq");
         int SelfBolgnumber=0;
         BlogInfoDao Blogdao = new BlogInfoDao();
+        Long id = userinf1.getUid();
         try {
-           SelfBolgnumber =Blogdao.queryDataNum(userinf1.getUid());
+           SelfBolgnumber =Blogdao.queryDataNum(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         System.out.println(SelfBolgnumber);
         System.out.println("多少微博!");
+        System.out.println(id);
         int fans = 0;
         int bfans= 0;
         FollowDao fdao = new FollowDao();
         try {
-            bfans=fdao.queryDataNum1(userinf1.getUid(),1);
+            bfans=fdao.queryDataNum1(id,1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            fans=fdao.queryDataNum1(userinf1.getUid(),0);
+            fans=fdao.queryDataNum1(id,0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("fansbigbang");
         System.out.println(fans);
         System.out.println(bfans);
+        System.out.println("fanbigbang ");
 
       ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
       ArrayList<Long> ID =null;
