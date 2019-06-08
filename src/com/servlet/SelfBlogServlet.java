@@ -4,9 +4,10 @@ import com.Dao.BlogInfoDao;
 import com.Dao.FollowDao;
 import com.entity.BlogInfoEntity;
 import com.entity.UserInfoEntity;
-import netscape.javascript.JSObject;
+import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,23 +15,24 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import net.sf.json.JSONObject;
-import java.util.Date;
+import java.util.List;
 
+@WebServlet("/SelfBlogServlet")
 public class SelfBlogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
+         System.out.println("success我！");
         PrintWriter out = resp.getWriter();
         HttpSession session = req.getSession();
         UserInfoEntity userinf1 = (UserInfoEntity) session.getAttribute("userinf");
+        System.out.println("多少微博!");
         int SelfBolgnumber=0;
         BlogInfoDao Blogdao = new BlogInfoDao();
         try {
@@ -38,6 +40,8 @@ public class SelfBlogServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(SelfBolgnumber);
+        System.out.println("多少微博!");
         int fans = 0;
         int bfans= 0;
         FollowDao fdao = new FollowDao();
@@ -51,6 +55,8 @@ public class SelfBlogServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(fans);
+        System.out.println(bfans);
 
       ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
       ArrayList<Long> ID =null;
@@ -77,9 +83,12 @@ public class SelfBlogServlet extends HttpServlet {
             }
         };
           Collections.sort(BlogE, comparator);
+        System.out.println(BlogE.toString());
+        List<BlogInfoEntity> beans = BlogE;
+        System.out.println(beans);
+        JSONArray array = JSONArray.fromObject(beans);
+        System.out.println(array.toString());
+        out.print(array.toString());
 
-        ArrayList<BlogInfoEntity> allSites = new SitesCollection().getAllSites();
-        JSONArray allSitesJson = new JSONArray(allSites);
-        return allSitesJson.toString();
     }
 }

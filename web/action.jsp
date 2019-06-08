@@ -16,19 +16,22 @@
     <script src="js/bootstrap-waterfall.js"></script>
 
 <script type="text/javascript">
-
+function refresh() {
+    alert("fghdffdgfd");
     $.ajax({
         type: 'GET',
-        url:'SelfBlogServlet',
+        url: 'SelfBlogServlet',
         dataType: 'json',
-        success:function(data){
-
+        success: function (data) {
+            alert("qqq!");
             var json = eval(data);
             alert(json);
         },
-        error:''
-
+        error: function () {
+            alert("dddddddddddddddddddd!");
+        }
     });
+}
 </script>
 </head>
 <body>
@@ -120,7 +123,7 @@
 
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="javascript:;">
+            <a href="javascript:refresh();">
                 <img src="images/img_1.jpg"/>
             </a>
         </li>
