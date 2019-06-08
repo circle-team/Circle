@@ -71,7 +71,7 @@ public class loginServlet extends HttpServlet {
 //            ArrayList<UserInfoServlet> Uilist = new ArrayList<UserInfoServlet>();
 
 //            req.setAttribute();
-            resp.sendRedirect("UserInfo.jsp");
+            resp.sendRedirect("action.jsp");
 //req.getRequestDispatcher()
         }
         else if(test==2)
