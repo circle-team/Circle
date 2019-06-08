@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html lang="cn">
 <head>
@@ -15,32 +15,34 @@
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
 
-<script type="text/javascript">
-function refresh() {
-    alert("fghdffdgfd");
-    $.ajax({
-        type: 'GET',
-        url: 'SelfBlogServlet',
-        dataType: 'json',
-        success: function (data) {
-            alert("qqq!");
-            var json = eval(data);
-            alert(json);
-        },
-        error: function () {
-            alert("dddddddddddddddddddd!");
+    <script type="text/javascript">
+        function refresh() {
+            alert("fghdffdgfd");
+            $.ajax({
+                type: 'GET',
+                url: 'SelfBlogServlet',
+                dataType: 'json',
+                success: function (data) {
+                    var datas = eval(data);
+                    for (var p in data) {
+
+                    }
+                },
+                error: function () {
+                    alert("dddddddddddddddddddd!");
+                }
+            });
         }
-    });
-}
-</script>
+    </script>
 </head>
 <body>
 <div class="container">
     <div class="waterfall"></div>
 </div>
+
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -203,7 +205,7 @@ function refresh() {
 
 <script id="waterfall-template" type="text/template">
 
-    <ul class="list-group" id="">
+    <ul class="list-group">
         <li class="list-group-item">
             <a href="javascript:refresh();">
                 <img src="images/img_1.jpg"/>
@@ -217,7 +219,7 @@ function refresh() {
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span clcass="comment-txt">146</span>
-            <a href="#modal-container" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
+            <a href="#modal-blog-details" class="modal-pass" id="123456" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
         </li>
         <li class="list-group-item">
             <div class="media">
@@ -260,9 +262,11 @@ function refresh() {
                 praise_txt.text(num)
             }
         })
+        $("body").on("click", ".modal-pass", function () {
+            var bid=this.id;
+            $(".modal-dialog").attr("id", bid);
+        })
     });
-
-
 </script>
 </body>
 </html>
