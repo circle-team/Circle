@@ -131,7 +131,7 @@
 
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
-            <span class="comment-txt">146</span>
+            <span clcass="comment-txt">146</span>
             <a href="#modal-container" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
         </li>
         <li class="list-group-item">
