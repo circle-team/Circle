@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/nav.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/template-web.js"></script>
     <script src="js/comment.js"></script>
@@ -19,7 +20,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="nav">
     <div class="row">
         <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
             <div class="col-md-3 text-left">
@@ -34,6 +35,22 @@
             </div>
         </nav>
     </div>
+</div>
+<div class="panel">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <button class="btn bg-primary btn-group-lg">asdasdasdsa</button>
+                </li>
+                <li>
+                    <a href="#"> <span class="badge pull-right">16</span> More</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
     <div class="waterfall"></div>
 </div>
 
@@ -90,7 +107,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
@@ -132,52 +148,16 @@
                 <div class="row clearfix">
                     <div class="col-md-12 column text-center">
                         <img style="width:auto;height:auto;"
-                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"/>
-                    </div>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-md-12 column">
-                        <h3>正文内容</h3>
+                             src=""/>
                     </div>
                 </div>
                 <hr>
-                <div class="row clearfix">
-                    <div class="col-md-12 column">
-                        <span class="praise"><span class="praise_img_block"><img src="images/love.png"
-                                                                                 class="praise_img animated rubberBand"></span>
-                            <span class="praise_txt">146</span></span>
-
-                        <span class="comments"><img src="images/comment.png"
-                                                    class="comment_img animated rubberBand"></span>
-                        <span class="comment_txt">146</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row clearfix animated fadeInDown">
-                    <div class="col-md-12 column" id="comment_block_1">
-                        <div class="row clearfix">
-                            <div class="col-md-2 column text-center">
-                                <img height="80" width="80" alt="140x140"
-                                     src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"
-                                     class="img-circle"/>
-                                <label>name</label>
-                            </div>
-                            <div class="col-md-10 column">
-                                <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                                        posuere erat a ante.</p>
-                                    <small>send date time<cite>发送于web客户端</cite></small>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <form role="form" onsubmit="return submit_blog()" method="post" action="comment">
                             <div class="form-group">
-
+                                <label for="image" class="btn btn-default">上传照片</label>
+                                <input name="image" id="image" type="file" style="display:none">
                                 <label for="comment">写博客</label><input type="text" onchange="on_blog()"
                                                                        class="form-control" id="new_blog"/>
                                 <p class="help-block">
@@ -251,7 +231,6 @@
                 var blogs = eval(data);
                 for (var index in blogs) {
                     alert(blogs[index].bid);
-
                 }
                 $('.waterfall')
                     .data('bootstrap-waterfall-template', $('#waterfall-template').html())
@@ -261,7 +240,9 @@
                 alert("dddddddddddddddddddd!");
             }
         });
-
+        $('.waterfall')
+            .data('bootstrap-waterfall-template', $('#waterfall-template').html())
+            .waterfall();
         $(function () {
             $("body").on("click", ".praise", function () {
                 var praise_img_block = $(this).find(".praise_img_block");

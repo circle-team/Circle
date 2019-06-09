@@ -26,7 +26,7 @@
   <!--return { top: t, left: l, width: w, height: h };-->
   <!--}-->
   <!--</script>-->
-</head>}
+</head>
 <body>
 <div class="text-center">
   <div class="container">
