@@ -231,8 +231,22 @@
             url: 'SelfBlogServlet',
             dataType: 'json',
             success: function (data) {
-                var blogs = eval(data);
+                console.log(data);
+                var msg = eval(data);
+                var blogs = JSON.parse(data);
                 for (var index in blogs) {
+                    alert(blogs[index]);
+                    var res = blogs[index];
+                    result = result + template("waterfall-template", res);
+
+                }
+                for (var index in data) {
+                    alert(blogs[index]);
+                    var res = blogs[index];
+                    result = result + template("waterfall-template", res);
+
+                }
+                for (var index in msg) {
                     alert(blogs[index]);
                     var res = blogs[index];
                     result = result + template("waterfall-template", res);
