@@ -11,29 +11,11 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/template-web.js"></script>
     <script src="js/comment.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
 
-    <script type="text/javascript">
-        function refresh() {
-            alert("fghdffdgfd");
-            $.ajax({
-                type: 'GET',
-                url: 'SelfBlogServlet',
-                dataType: 'json',
-                success: function (data) {
-                    var datas = eval(data);
-                    for (var p in data) {
-
-                    }
-                },
-                error: function () {
-                    alert("dddddddddddddddddddd!");
-                }
-            });
-        }
-    </script>
 </head>
 <body>
 <div class="container">
@@ -42,8 +24,8 @@
 
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" id="">
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content details-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="details">
@@ -53,13 +35,13 @@
             <div class="modal-body">
                 <div class="row clearfix">
                     <div class="col-md-12 column text-center">
-                        <img style="width:auto;height:auto;"
-                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"/>
+                        <img class="details-img" style="width:auto;height:auto;"
+                             src=""/>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <h3>正文内容</h3>
+                        <h3 class="details-text">正文内容</h3>
                     </div>
                 </div>
                 <hr>
@@ -67,11 +49,11 @@
                     <div class="col-md-12 column">
                                     <span class="praise"><span class="praise_img_block"><img src="images/love.png"
                                                                                              class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt">146</span></span>
+                                    <span class="praise_txt details-thupnum">146</span></span>
 
                         <span class="comments"><img src="images/comment.png"
                                                     class="comment_img animated rubberBand"></span>
-                        <span class="comment_txt">146</span>
+                        <span class="comment_txt details-commentnum">146</span>
                     </div>
                 </div>
                 <hr>
@@ -124,7 +106,7 @@
 <div class="modal fade" id="modal-blog-new" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content new-blog-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="myModalLabel-new">
@@ -146,9 +128,9 @@
                 <hr>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                                    <span class="praise"><span class="praise_img_block"><img src="images/love.png"
-                                                                                             class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt">146</span></span>
+                        <span class="praise"><span class="praise_img_block"><img src="images/love.png"
+                                                                                 class="praise_img animated rubberBand"></span>
+                            <span class="praise_txt">146</span></span>
 
                         <span class="comments"><img src="images/comment.png"
                                                     class="comment_img animated rubberBand"></span>
@@ -203,7 +185,7 @@
     </div>
 </div>
 
-<script id="waterfall-template" type="text/template">
+<script id="waterfall-template" type="text/html">
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -219,7 +201,11 @@
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span clcass="comment-txt">146</span>
-            <a href="#modal-blog-details" class="modal-pass" id="123456" role="button" class="btn btn-sm" data-toggle="modal">查看详情</a>
+            <a href="#modal-blog-details" class="modal-details-btn" data-text="" data-commentnum="12" data-thupnum="34"
+               data-bid="123456"
+               data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
+               class="btn btn-sm"
+               data-toggle="modal">查看详情</a>
         </li>
         <li class="list-group-item">
             <div class="media">
@@ -240,33 +226,62 @@
 
 </script>
 <script>
-    $('.waterfall')
-        .data('bootstrap-waterfall-template', $('#waterfall-template').html())
-        .waterfall();
-    $(function () {
-        $("body").on("click", ".praise", function () {
-            var praise_img_block = $(this).find(".praise_img_block");
-            var praise_img = $(this).find(".praise_img");
-            var praise_txt = $(this).find(".praise_txt");
-            var num = parseInt(praise_txt.text());
-            if (praise_img.attr("src") == ("images/loved.png")) {
-                praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
-                praise_txt.removeClass("hover");
-                num -= 1;
-                praise_txt.text(num)
-            } else {
-                praise_img.attr("src", "images/loved.png");
-                praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
-                praise_txt.addClass("hover");
-                num += 1;
-                praise_txt.text(num)
+    function refresh() {
+        var res;
+        $.ajax({
+            type: 'GET',
+            url: 'SelfBlogServlet',
+            dataType: 'json',
+            success: function (data) {
+                var blogs= eval(data);
+                for(var index in blogs){
+                    alert(blogs[index].bid);
+
+                }
+                $('.waterfall')
+                    .data('bootstrap-waterfall-template', $('#waterfall-template').html())
+                    .waterfall();
+            },
+            error: function () {
+                alert("dddddddddddddddddddd!");
             }
-        })
-        $("body").on("click", ".modal-pass", function () {
-            var bid=this.id;
-            $(".modal-dialog").attr("id", bid);
-        })
-    });
+        });
+
+        $(function () {
+            $("body").on("click", ".praise", function () {
+                var praise_img_block = $(this).find(".praise_img_block");
+                var praise_img = $(this).find(".praise_img");
+                var praise_txt = $(this).find(".praise_txt");
+                var num = parseInt(praise_txt.text());
+                if (praise_img.attr("src") == ("images/loved.png")) {
+                    praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
+                    praise_txt.removeClass("hover");
+                    num -= 1;
+                    praise_txt.text(num)
+                } else {
+                    praise_img.attr("src", "images/loved.png");
+                    praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
+                    praise_txt.addClass("hover");
+                    num += 1;
+                    praise_txt.text(num)
+                }
+            })
+            $("body").on("click", ".modal-details-btn", function () {
+                var bid = $(this).data("bid");
+                var text = $(this).data("text");
+                var commentnum = $(this).data("commentnum");
+                var thupnum = $(this).data("thupnum");
+                var img = $(this).data("img");
+                $(".details-content").attr("id", bid);
+                $(".details-commentnum").html(commentnum);
+                $(".details-thupnum").html(thupnum);
+                $(".details-text").html(text);
+                $(".details-img").attr("src", img);
+            })
+        });
+    }
+
+    refresh();
 </script>
 </body>
 </html>
