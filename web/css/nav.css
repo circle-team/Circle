@@ -20,6 +20,19 @@
 .box2 #logo{
     margin-left: 50px;
 }
+a {
+    color: #9360ff;
+    font-size: 18px;
+    padding-right: 20px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+a:hover, a:active, a:focus {
+    color: #46b8da;
+    outline: none;
+    text-decoration: none;
+}
 #user{
     position: relative;
 }
@@ -49,4 +62,16 @@
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: beige;
+    color: white;
+}
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
