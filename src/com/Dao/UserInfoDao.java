@@ -143,6 +143,9 @@ conn.close();
             Useri1.setUschool(result.getString("Uschool"));
             Useri1.setUgrade(result.getString("Ugrade"));
         }
+        conn.close();
+        result.close();
+        pstmt.close();
         return Useri1;
     }
 }
