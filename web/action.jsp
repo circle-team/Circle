@@ -41,7 +41,7 @@
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <button class="btn bg-primary btn-group-lg">asdasdasdsa</button>
+                    <a href="#"> <span class="badge pull-right">16</span> More</a>
                 </li>
                 <li>
                     <a href="#"> <span class="badge pull-right">16</span> More</a>
@@ -86,6 +86,8 @@
                         <span class="comments"><img src="images/comment.png"
                                                     class="comment_img animated rubberBand"></span>
                         <span class="comment_txt details-commentnum">146</span>
+                        <button id="delete-blog" data-bid="" data-bid="" class="btn btn-group-lg btn-danger"
+                                style="display: none"></button>
                     </div>
                 </div>
                 <hr>
@@ -185,19 +187,19 @@
     <ul class="list-group">
         <li class="list-group-item">
             <a href="javascript:refresh();">
-                <img src="images/img_1.jpg"/>
+                <img src="{{image}}"/>
             </a>
         </li>
         <li class="list-group-item">
             <span class="praise"><span class="praise_img_block"><img src="images/love.png"
                                                                      class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt">146</span></span>
+                                    <span class="praise_txt">{{thumbnumber}}</span></span>
 
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
-            <span clcass="comment-txt">146</span>
-            <a href="#modal-blog-details" class="modal-details-btn" data-text="" data-commentnum="12" data-thupnum="34"
-               data-bid="123456"
+            <span clcass="comment-txt">{{commentnumber}}</span>
+            <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}" data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
+               data-bid="{{blogid}}"
                data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
@@ -221,8 +223,8 @@
 
 </script>
 <script>
-    function refresh() {
-        var res;
+    function re_blog() {
+        var result;
         $.ajax({
             type: 'GET',
             url: 'SelfBlogServlet',
@@ -230,10 +232,13 @@
             success: function (data) {
                 var blogs = eval(data);
                 for (var index in blogs) {
-                    alert(blogs[index].bid);
+                    alert(blogs[index]);
+                    var res=blogs[index];
+                    result = result + template("waterfall-template",res);
+
                 }
                 $('.waterfall')
-                    .data('bootstrap-waterfall-template', $('#waterfall-template').html())
+                    .data('bootstrap-waterfall-template', result)
                     .waterfall();
             },
             error: function () {
@@ -263,21 +268,44 @@
                 }
             })
             $("body").on("click", ".modal-details-btn", function () {
+                var uid = $(this).data("uid");
                 var bid = $(this).data("bid");
                 var text = $(this).data("text");
                 var commentnum = $(this).data("commentnum");
                 var thupnum = $(this).data("thupnum");
                 var img = $(this).data("img");
                 $(".details-content").attr("id", bid);
+                $("#delete-blog").data("bid", bid);
+                $("#delete-blog").data("uid", uid);
                 $(".details-commentnum").html(commentnum);
                 $(".details-thupnum").html(thupnum);
                 $(".details-text").html(text);
                 $(".details-img").attr("src", img);
             })
+            $("body").on("click", "#delete-blog", function () {
+                var bid = $(this).data("bid");
+                var uid1 = $(this).data("uid");
+                var uid2 = '${sessionScope.userinf.getUid()}';
+                if(uid1 == uid2)
+                {
+                    $("#delete-blog").css("display","");
+                }
+                $.ajax({
+                    type: 'GET',
+                    url: 'SelfBlogServlet',
+                    data:{bid:bid},
+                    success: function () {
+                        alert("delete success");
+                    },
+                    error: function () {
+                        alert("delete fail");
+                    }
+                });
+            })
         });
     }
 
-    refresh();
+    re_blog();
 </script>
 </body>
 </html>
