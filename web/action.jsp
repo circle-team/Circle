@@ -289,7 +289,7 @@
                 if(uid1 == uid2)
                 {
                     $("#delete-blog").css("display","");
-                }
+                }r
                 $.ajax({
                     type: 'GET',
                     url: 'SelfBlogServlet',
