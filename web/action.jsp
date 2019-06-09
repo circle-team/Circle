@@ -231,6 +231,7 @@
             url: 'SelfBlogServlet',
             dataType: 'json',
             success: function (data) {
+                alert("成功！");
                 var blogs = eval(data);
                 for (var index in blogs) {
                     alert(blogs[index]);
