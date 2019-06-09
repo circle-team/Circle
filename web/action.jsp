@@ -51,6 +51,20 @@
     </div>
 </div>
 <div class="container">
+    <div class="row">
+        <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
+            <div class="col-md-3 text-left">
+                <img id="logo" style="width: 45%" src="images/logo.png"/>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-7 text-right">
+                <a href="#"><img src="images/personal.png"/></a>
+                <a href="#"><img src="images/information.png"/></a>
+                <a href="#"><img src="images/blog.png"/></a>
+                <a href="#"><img src="images/defult_uiImge.png"/></a>
+            </div>
+        </nav>
+    </div>
     <div class="waterfall"></div>
 </div>
 
