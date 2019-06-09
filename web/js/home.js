@@ -8,11 +8,15 @@
         }
     }
     oDiv1.onmouseover = function() {
-        oDiv2.style.display = "block";
-    }
-    oDiv1.onmouseout = function () {
-        oDiv2.style.display = "none";
-    }
+oDiv2.style.display = "block";
+$("#page").addClass("blur");
+$()
+$("#userText").addClass("notblur")
+}
+oDiv1.onmouseout = function () {
+    oDiv2.style.display = "none";
+    $("#page").removeClass("blur");
+}
 
 //遮罩窗体
 // var modal = document.getElementById("myModal");
@@ -32,6 +36,21 @@
 //         modal.style.display = "none";
 //     }
 // }
+//幻灯片自动播放
+var slideIndex = 0;
+    showSlides(slideIndex);
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("item");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 1500); // 切换时间为 2 秒
+}
 
 //动画效果
 $(document).ready(function () {
@@ -129,7 +148,7 @@ $(document).ready(function () {
 })
 $(document).ready(function () {
     $(window).on("scroll",function () {
-        if($(this).scrollTop()>1200){
+        if($(this).scrollTop()>1000){
             $('#part12').addClass(" fadeInLeft")
             $('#part12').removeClass(" no");
 
@@ -138,7 +157,7 @@ $(document).ready(function () {
 })
 $(document).ready(function () {
     $(window).on("scroll",function () {
-        if($(this).scrollTop()>1200){
+        if($(this).scrollTop()>1000){
             $('#part13').addClass(" fadeInUp")
             $('#part13').removeClass(" no");
 
@@ -147,7 +166,7 @@ $(document).ready(function () {
 })
 $(document).ready(function () {
     $(window).on("scroll",function () {
-        if($(this).scrollTop()>1200){
+        if($(this).scrollTop()>1000){
             $('#part14').addClass(" fadeInRight")
             $('#part14').removeClass(" no");
 
@@ -156,7 +175,7 @@ $(document).ready(function () {
 })
 $(document).ready(function () {
     $(window).on("scroll",function () {
-        if($(this).scrollTop()>1200){
+        if($(this).scrollTop()>1000){
             $('#part15').addClass(" fadeInUp")
             $('#part15').removeClass(" no");
 

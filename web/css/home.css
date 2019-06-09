@@ -1,68 +1,26 @@
 body{
     font-family: "Comic Sans MS";
 }
-.box1{
-    width: 80%;
-    height: 60px;
-    padding: 12px;
-    margin-left: 148px;
-    background: transparent;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-    border-bottom: 1px solid whitesmoke;
+img{
+    border-radius: 10px;
 }
-.box2{
-    background: #f9f9f9;
-    height: 63px;
-    padding: 5px;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+.blur {-webkit-filter: blur(3px);filter: blur(3px);}
+.notblur{-webkit-filter: blur(0px);filter: blur(0px);}
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
-.box2 #logo{
-    margin-left: 50px;
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
-#user{
-    position: relative;
-}
-#userText{
-    display: none;
-    position: absolute;
-    left: 0;
-    width: 200px;
-    height: 100px;
-    border: 1px solid black;
-}
-#myModal{
-    display: none;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-}
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
 
 .modal-header {
@@ -117,42 +75,51 @@ a:hover, a:active, a:focus {
     width: 70%;height: 420px;margin-left: 100px;margin-top: 30px;
 }
 #part2{
+    font-size: 14px;
+    font-family: 楷体;
+    margin-left: -10px;
     margin-top: 35px;
 }
 
 #part3 img{
-    width: 90%;margin-top: 30px;
+    width: 70%;margin-top: 30px;
 }
 #part4{
-    margin-top: 30px;
+    font-family: 楷体;
+    margin-top: -20px;
+    margin-left: -40px;
 }
 #part5 img{
-    width: 100%;margin-left: 40px;margin-top: 0px;
+    width: 90%;height: 260px; margin-left: 40px;margin-top: 0px;
+}
+#part6{
+    font-family: 楷体;
 }
 #part7 img{
-    width: 60%;height: 250px;margin-left: 260px;margin-top: -350px;
+    width: 60%;height: 230px;margin-left: 300px;margin-top: -150px;
 }
 #part8 img{
     width: 90%;height: 300px;margin-top: 40px;
 }
 #part9{
-    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: -40px;
+    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: -40px;font-family: 楷体;
 }
 #part10 img{
     width: 120%;height: 300px;margin-top: 40px;
 }
 #part11{
-    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: 31px;
+    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: 31px;font-family: 楷体;
 }
 #part12 img{
     width: 120%;height: 300px;margin-top: 40px;margin-left: 25px;
 }
 #part13{
-    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: 55px;
+    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: 55px;font-family: 楷体;
 }
 #part14 img{
     width: 90%;height: 300px;margin-top: 40px;margin-left: -40px;
 }
 #part15{
-    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: -60px;
+    height: 300px;border: black 1px solid;margin-top: 40px;margin-left: -60px;font-family: 楷体;
 }
+
