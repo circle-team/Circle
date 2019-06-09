@@ -234,14 +234,17 @@
                 console.log(data);
                 var msg = eval(data);
                 var blogs = JSON.parse(data);
+                $.each(data.obj, function (index, data) {
+                    alert(data.value);
+                });
                 for (var index in blogs) {
-                    alert(blogs[index]);
+                    alert(blogs[index].blogid);
                     var res = blogs[index];
                     result = result + template("waterfall-template", res);
 
                 }
                 for (var index in data) {
-                    alert(blogs[index]);
+                    alert(blogs[index].blogid);
                     var res = blogs[index];
                     result = result + template("waterfall-template", res);
 
