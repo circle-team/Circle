@@ -36,38 +36,24 @@
         </nav>
     </div>
 </div>
+<div class="blank" style="width: auto;height: 100px">
+
+</div>
 <div class="panel">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <a href="#"> <span class="badge pull-right">16</span> More</a>
+                    <a style="display: none" class="btn-new-blog btn btn-primary btn-group-lg" href="#modal-blog-new"
+                       onclick="">发表博客</a>
                 </li>
-                <li>
-                    <a href="#"> <span class="badge pull-right">16</span> More</a>
+                <li class="active">
+                    <a style="display: none" class="btn btn-primary btn-group-lg" href="#" onclick="">关注</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
-            <div class="col-md-3 text-left">
-                <img id="logo" style="width: 45%" src="images/logo.png"/>
-            </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-7 text-right">
-                <a href="#"><img src="images/personal.png"/></a>
-                <a href="#"><img src="images/information.png"/></a>
-                <a href="#"><img src="images/blog.png"/></a>
-                <a href="#"><img src="images/defult_uiImge.png"/></a>
-            </div>
-        </nav>
-    </div>
-    <div class="waterfall"></div>
-</div>
-
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -175,7 +161,7 @@
                                 <label for="image" class="btn btn-default">上传照片</label>
                                 <input name="image" id="image" type="file" style="display:none">
                                 <label for="comment">写博客</label><input type="text" onchange="on_blog()"
-                                                                       class="form-control" id="new_blog"/>
+                                                                       class="form-control" id="new-blog-text"/>
                                 <p class="help-block">
                                     Example block-level help text here.
                                 </p>
@@ -183,7 +169,7 @@
                                      style="display: none" id="alert_win2">
                                     <h5 id="alert2">输入有误!</h5>
                                 </div>
-                                <button type="submit" class="btn btn-primary">发表</button>
+                                <a  class="btn btn-primary commit-blog" href="javascript:;" onclick="">发表</a>
                             </div>
                         </form>
                     </div>
@@ -212,7 +198,8 @@
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span clcass="comment-txt">{{commentnumber}}</span>
-            <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}" data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
+            <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}"
+               data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
                data-bid="{{blogid}}"
                data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
                class="btn btn-sm"
@@ -247,8 +234,8 @@
                 var blogs = eval(data);
                 for (var index in blogs) {
                     alert(blogs[index]);
-                    var res=blogs[index];
-                    result = result + template("waterfall-template",res);
+                    var res = blogs[index];
+                    result = result + template("waterfall-template", res);
 
                 }
                 $('.waterfall')
@@ -259,9 +246,9 @@
                 alert("dddddddddddddddddddd!");
             }
         });
-        $('.waterfall')
-            .data('bootstrap-waterfall-template', $('#waterfall-template').html())
-            .waterfall();
+        //   $('.waterfall')
+        //     .data('bootstrap-waterfall-template', $('#waterfall-template').html())
+        //      .waterfall();
         $(function () {
             $("body").on("click", ".praise", function () {
                 var praise_img_block = $(this).find(".praise_img_block");
@@ -300,14 +287,15 @@
                 var bid = $(this).data("bid");
                 var uid1 = $(this).data("uid");
                 var uid2 = '${sessionScope.userinf.getUid()}';
-                if(uid1 == uid2)
-                {
-                    $("#delete-blog").css("display","");
-                }r
+                if (uid1 == uid2) {
+                    $("#delete-blog").css("display", "");
+                }
+                r
                 $.ajax({
                     type: 'GET',
                     url: 'SelfBlogServlet',
-                    data:{bid:bid},
+                    data: {bid: bid},
+                    dataType: 'json',
                     success: function () {
                         alert("delete success");
                     },
@@ -318,7 +306,6 @@
             })
         });
     }
-
     re_blog();
 </script>
 </body>
