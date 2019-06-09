@@ -1,8 +1,8 @@
 package com.servlet;
 
-import com.Dao.BlogInfoDao;
-import com.Dao.FollowDao;
+import com.Dao.*;
 import com.entity.BlogInfoEntity;
+import com.entity.ShowblogEntity;
 import com.entity.UserInfoEntity;
 import net.sf.json.JSONArray;
 
@@ -43,9 +43,9 @@ public class SelfBlogServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(SelfBolgnumber);
+//        System.out.println(SelfBolgnumber);
         System.out.println("多少微博!");
-        System.out.println(id);
+//        System.out.println(id);
         int fans = 0;
         int bfans= 0;
 
@@ -72,12 +72,12 @@ public class SelfBlogServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (Long x:
-                ID
-             ) {
-            System.out.println(x);
-
-        }
+//        for (Long x:
+//                ID
+//             ) {
+//            System.out.println(x);
+//
+//        }
 
         for (Long x:ID) {
             try {
@@ -97,12 +97,39 @@ public class SelfBlogServlet extends HttpServlet {
             }
         };
         Collections.sort(BlogE, comparator);
+
         System.out.println(BlogE.toString());
-        List<BlogInfoEntity> beans = BlogE;
+        UserInfoDao Userdao = new UserInfoDao();
+        ArrayList<ShowblogEntity> Sblog = new ArrayList<>();
+
+
+
+
+        for (BlogInfoEntity x : BlogE) {
+            try {
+                UserInfoEntity User = new UserInfoEntity (x.getBuid());
+                User = (UserInfoEntity) Userdao.query(User);
+                System.out.println(x.getBuid());
+                ThumbsUpDao thumbs = new ThumbsUpDao();
+                CommentDao  comments = new CommentDao();
+                Long thumbnum = (Long) thumbs.Search(x.getBuid());
+                System.out.println(thumbnum);
+                Long comment = (Long) comments.Search(x.getBuid());
+                System.out.println(comment);
+                ShowblogEntity a = new ShowblogEntity(x.getBid(),User.getUid(),User.getUname(),User.getUimage(),x.getBtext(),x.getBdate(),x.getBtitle(),thumbnum,comment);
+                Sblog.add(a);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        List<ShowblogEntity> beans = Sblog;
         System.out.println(beans);
         JSONArray array = JSONArray.fromObject(beans);
         System.out.println(array.toString());
-        out.println(array);
+        out.print(array);
 
     }
 }

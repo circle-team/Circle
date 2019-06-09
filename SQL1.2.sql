@@ -19,6 +19,7 @@ CREATE TABLE BlogInfo (
 	
 );
 CREATE TABLE Comments (
+    Cid BIGINT NOT NULL PRIMARY KEY ,
 	Cfid BIGINT NOT NULL,
 	Cuid BIGINT NOT NULL,
 	FOREIGN KEY ( Cfid ) REFERENCES BlogInfo ( Bid ),-- 评论归属的动态的id，外键

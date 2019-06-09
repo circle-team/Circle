@@ -85,7 +85,7 @@ public class FollowDao implements CommonDao {
 
         ResultSet rs = pstmt.executeQuery();
 
-        System.out.println(id);
+//        System.out.println(id);
 
         int num = 0;
 
