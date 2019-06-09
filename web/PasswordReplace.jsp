@@ -67,19 +67,43 @@
                     success:function (data) {
                         if(data.puton=="0"){
                             alert(typeof data.puton);
+                            $("#login_alert").css("display","none");
                             $("#login_alert1").css("display","block");
+
                         }
                         else
                         {
-                            $("#login_alert1").css("display","none");
+
                             alert(data.que);
-                            $("#question").valueOf(data.que);
+                            $("#login_alert1").css("display","none");
+                            $("#question").val(data.que);
                         }
                     }
                 })
             }
 
+        function login_commit(){
+            var flag = false;
+            $.ajax({
+                url:"PwdSubmitServlet",
+                type:"POST",
+                async:false,
+                data:$("#login_form").serialize(),
+                success:function (data) {
+                    ;                    if(data=="false"){
+                        $("#login_alert1").css("display","none");
+                        $("#login_alert").css("display","block");
 
+                    }
+                    else{
+                        alert("恭喜!修改成功！");
+
+                    }
+
+                }
+            })
+            return flag;
+        }
 
 
 
@@ -148,32 +172,30 @@
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon1">id号</span>
                                     <input type="text" class="form-control" id="id" name="id" placeholder="请输入id号" aria-describedby="addon1" />
+                                    <a class="btn btn-default" onclick="rep_merge()" href="javascript:;">验证</a>
+                                </div>
 
-                                </div>
-                                <div id="login_alert1" class="alert alert-danger" role="alert" style="display: none">
-                                    该用户不存在！
-                                </div>
 
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon2">密保问题</span>
-                                    <input type="password" class="form-control" id="question" name="question"
+                                    <input type="text" class="form-control" id="question" name="question"
                                            aria-describedby="addon2" placeholder="" />
                                 </div>
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon3">问题答案</span>
-                                    <input type="password" class="form-control" id="answer" name="answer"
+                                    <input type="text" class="form-control" id="answer" name="answer"
                                            aria-describedby="addon2" placeholder="请输入问题答案" />
                                 </div>
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon4">新密码</span>
-                                    <input type="password" class="form-control" id="password" name="password"
+                                    <input type="text" class="form-control" id="password" name="password"
                                            aria-describedby="addon2" placeholder="请输入新密码" />
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <div class="checkbox">
-                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>
-                                        </div>
+<%--                                        <div class="checkbox">--%>
+<%--                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>--%>
+<%--                                        </div>--%>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -181,10 +203,16 @@
                                         <button class="btn btn-default" type="submit">登 录</button>
                                     </div>
                                 </div>
+
                             </form>
-                            <button class="btn btn-default" onclick=" rep_merge()">验证</button>
+
+<%--                            <button class="btn btn-default" onclick="rep_merge()">验证</button>--%>
+
                             <div id="login_alert" class="alert alert-danger" role="alert" style="display: none">
-                                密码错误!
+                                密保问题错误
+                            </div>
+                            <div id="login_alert1" class="alert alert-danger" role="alert" style="display: none">
+                                该用户不存在！
                             </div>
                         </div>
                     </div>
@@ -266,11 +294,7 @@
                 </div>
             </div>
 
-            <p class="text-center">
-                <em>Git</em> 是一个分布式的版本控制系统，最初由 <strong>Linus Torvalds</strong>
-                编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在
-                <small>Ruby</small>
-                社区中。
+            <p class="text-center">在修改密码提交之前可以验证一下是否存在该用户并显示你要回答的密保问题，点击上表验证即可，否则则需要自己输入自己的密保问题
             </p>
         </div>
 

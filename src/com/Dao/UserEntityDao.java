@@ -35,15 +35,18 @@ public class UserEntityDao implements CommonDao {
     public boolean updateData(Object o) throws SQLException {
         UsersEntity User=(UsersEntity)o;
         Connection coon=DBUtil.getConnection();
+        System.out.println("进入成功");
         String sql="update Users set Upassword=? where Userid=?";
         PreparedStatement pstmt = coon.prepareStatement(sql);
         pstmt.setString(1,User.getUpassword());
         pstmt.setLong(2,User.getUserid());
         if (pstmt.executeUpdate()>0)
         {
+            System.out.println("测试更新成功！");
             coon.close();
             return true;
         }
+        coon.close();
 
              return false;
     }
