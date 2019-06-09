@@ -19,6 +19,23 @@
                    obj.selected=true;
            }
 
+    // $("#follow").click(function () {
+    //     $ajax({
+    //         url:"FollowAcquireServlet",
+    //         type:"GET",
+    //         data:
+    //         success:function (test) {
+    //
+    //         }
+    //
+    //
+    //     })
+
+
+
+
+    })
+
        })
 
 
@@ -137,6 +154,7 @@
                             <button type="submit" class="btn btn-default btn-lg">保 存</button>
                         </div>
                         </form>
+
                     </div>
                 </div>
                 <div class="col-md-2 column">
@@ -153,6 +171,10 @@
                         </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
                     </div>
                 </div>
+
+            </div>
+            <button  id="follow1" type="button" class="btn btn-default btn-lg">推荐关注</button>
+        </div>
             </div>
         </div>
     </div>

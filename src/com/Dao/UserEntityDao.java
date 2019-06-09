@@ -119,7 +119,7 @@ public class UserEntityDao implements CommonDao {
         UsersEntity nUser = null;
       ResultSet rs = pstmt.executeQuery();
         if(rs.next()) {
-            System.out.println("查找成功");
+//            System.out.println("查找成功");
             nUser = new UsersEntity();
             nUser.setUserid(rs.getLong("Userid"));
             nUser.setUpassword(rs.getString("Upassword"));

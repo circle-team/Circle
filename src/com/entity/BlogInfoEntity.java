@@ -13,7 +13,7 @@ public class BlogInfoEntity {
     private Timestamp bdate;
     private String bimage;
     private String btitle;
-
+    private int   number;
     public BlogInfoEntity(long bid, long buid, String btext, Timestamp bdate, String bimage, String btitle) {
         this.bid = bid;
         this.buid = buid;
@@ -22,6 +22,7 @@ public class BlogInfoEntity {
         this.bimage = bimage;
         this.btitle = btitle;
     }
+
 
     public BlogInfoEntity() {
 

@@ -87,7 +87,7 @@ conn.close();
     }
 
     @Override
-    public ArrayList query(Object o, int start, int length) throws SQLException {
+    public ArrayList<UserInfoEntity> query(Object o, int start, int length) throws SQLException {
         ArrayList<UserInfoEntity> se = new ArrayList<UserInfoEntity>();
         UserInfoEntity sUser = (UserInfoEntity) o;
         Connection conn = DBUtil.getConnection();
@@ -103,7 +103,7 @@ conn.close();
             Long x = conn.prepareStatement(sql).executeQuery().getLong("Suid");
             UserInfoDao uidao = new UserInfoDao();
             UserInfoEntity u = new UserInfoEntity(x);
-            UserInfoEntity t= new UserInfoEntity();
+            UserInfoEntity t= null;
             t=(UserInfoEntity) uidao.query(u);
             if(t==null)
             {

@@ -76,10 +76,10 @@
                         <div class="col-md-8 column">
                             <ul class="nav nav-tabs nav-stacked">
                                 <li class="active">
-                                    <a href="#">首页</a>
+                                    <a href="register.html">注册</a>
                                 </li>
                                 <li>
-                                    <a href="#">简介</a>
+                                    <a href="login.jsp">登陆</a>
                                 </li>
                                 <li class="disabled">
                                     <a href="#">信息</a>
