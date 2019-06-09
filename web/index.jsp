@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/home.css">
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="js/nav.js"></script>
   <!--<script>-->
   <!--function ScollPostion(){-->
   <!--var t, l, w, h;-->
@@ -25,7 +26,7 @@
   <!--return { top: t, left: l, width: w, height: h };-->
   <!--}-->
   <!--</script>-->
-</head>}
+</head>
 <body>
 <div class="text-center">
   <div class="container">
@@ -137,26 +138,5 @@
     </p>
   </div>
 </div>
-
-<script>
-  var isAnimated = false;
-  $(document).ready(function(){
-    $(window).on("scroll",function () {
-      if ($(this).scrollTop()>190) {
-        $(".box1").addClass("box2");
-        $(".box2").removeClass("box1");
-        if (!isAnimated) {
-          $(".navbar").css("top", "-60px");
-          $(".navbar").animate({"top": "0px"}, 1000);
-          isAnimated = true;
-        }
-      }else {
-        isAnimated = false;
-        $(".box1").removeClass("box2");
-        $(".box2").addClass("box1");
-      }
-    })
-  })
-</script>
 </body>
 </html>
