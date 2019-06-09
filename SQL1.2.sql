@@ -12,7 +12,7 @@ CREATE TABLE BlogInfo (
 	Bid BIGINT NOT NULL PRIMARY KEY,-- 动态编号id,主键
 	Buid BIGINT NOT NULL,
 	FOREIGN KEY ( Buid ) REFERENCES Users ( Userid ),-- 动态发布者id，外键
-	Btext VARCHAR ( 200 ) NOT NULL,-- 动态文本
+	Btext VARCHAR ( 500 ) NOT NULL,-- 动态文本
 	Bdate datetime NOT NULL,-- 动态发布时间
 	Bimage VARCHAR ( 50 ),-- 动态发布照片
 	Btitle VARCHAR ( 20 ) -- 动态标题
@@ -20,11 +20,11 @@ CREATE TABLE BlogInfo (
 );
 CREATE TABLE Comments (
     Cid BIGINT NOT NULL PRIMARY KEY ,
-	Cfid BIGINT NOT NULL,
-	Cuid BIGINT NOT NULL,
-	FOREIGN KEY ( Cfid ) REFERENCES BlogInfo ( Bid ),-- 评论归属的动态的id，外键
-	FOREIGN KEY ( Cuid ) REFERENCES Users ( Userid ),-- 评论者id，外键
-	Ctext nvarchar ( 100 ) NOT NULL,-- 评论内容
+		Cfid BIGINT NOT NULL,
+		Cuid BIGINT NOT NULL,
+		FOREIGN KEY ( Cfid ) REFERENCES BlogInfo ( Bid ),-- 评论归属的动态的id，外键
+		FOREIGN KEY ( Cuid ) REFERENCES Users ( Userid ),-- 评论者id，外键
+		Ctext nvarchar ( 100 ) NOT NULL,-- 评论内容
 	Ctime datetime NOT NULL -- 评论创建时间
 	
 );
@@ -62,9 +62,9 @@ CREATE TABLE UserInfo (
 	Uemail VARCHAR ( 100 ),-- 邮箱
 	UidentityNumber CHAR ( 18 ),-- 证件号码
 	Uimage VARCHAR ( 50 ),-- 头像
-	Uhobby VARCHAR ( 50 ) -- 爱好
-	Uschool VARCHAR(50) --大学
-    Ugrade  VARCHAR(50) --级部
+	Uhobby VARCHAR ( 50 ), -- 爱好
+	Uschool VARCHAR(50), -- 大学
+    Ugrade  VARCHAR(50) -- 级部
 );
 CREATE TABLE School (
 	Suid BIGINT NOT NULL PRIMARY KEY,-- 用户User,主键键
@@ -86,7 +86,7 @@ CREATE TABLE Message (
 	FOREIGN KEY ( Msuid ) REFERENCES Users ( Userid ),-- 发送私信id，外键
 	Mtext VARCHAR ( 50 ) NOT NULL,-- 私信text
 	Mtime datetime NOT NULL -- 私信发送时间
-	
+
 );
 CREATE TABLE Board (
 	BDid BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,-- 留言id

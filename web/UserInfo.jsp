@@ -9,40 +9,40 @@
     <script src="bootstrap/css/bootstrap.css"></script>
     <script src="bootstrap/css/bootstrap-theme.css" ></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-       $(document).ready(function () {
-           var str=document.getElementById("gender1").value;
-           var obj=document.getElementById("gender");
-           for (i=0;i<obj.length;i++)
-           {
-               if(obj[i].value==str)
-                   obj.selected=true;
-           }
+<%--    <script type="text/javascript">--%>
+<%--       $(document).ready(function () {--%>
+<%--           var str=document.getElementById("gender1").value;--%>
+<%--           var obj=document.getElementById("gender");--%>
+<%--           for (i=0;i<obj.length;i++)--%>
+<%--           {--%>
+<%--               if(obj[i].value==str)--%>
+<%--                   obj.selected=true;--%>
+<%--           }--%>
 
-    // $("#follow").click(function () {
-    //     $ajax({
-    //         url:"FollowAcquireServlet",
-    //         type:"GET",
-    //         data:
-    //         success:function (test) {
-    //
-    //         }
-    //
-    //
-    //     })
-
-
-
-
-    })
-
-       })
+<%--    // $("#follow").click(function () {--%>
+<%--    //     $ajax({--%>
+<%--    //         url:"FollowAcquireServlet",--%>
+<%--    //         type:"GET",--%>
+<%--    //         data:--%>
+<%--    //         success:function (test) {--%>
+<%--    //--%>
+<%--    //         }--%>
+<%--    //--%>
+<%--    //--%>
+<%--    //     })--%>
 
 
 
 
+<%--    })--%>
 
-    </script>
+<%--       })--%>
+
+
+
+
+
+<%--    </script>--%>
 
 </head>
 <body>
