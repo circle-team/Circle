@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>asd</title>
-    <link  type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <script src="js/register.js"></script>
+    <script src="js/nav.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/css/bootstrap.css"></script>
+    <script src="bootstrap/css/bootstrap-theme.css" ></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
        $(document).ready(function () {
@@ -28,6 +30,26 @@
 </head>
 <body>
 <div class="container">
+    <div class="container">
+        <div class="row">
+            <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
+                <div class="col-md-3 text-left">
+                    <img id="logo" style="width: 45%" src="images/logo.png"/>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-7 text-right">
+                    <a href="#"><img src="images/personal.png"/></a>
+                    <a href="UserInfo.jsp"><img src="images/information.png"/></a>
+                    <a href="#"><img src="images/blog.png"/></a>
+                    <a href="#" id="user"><img src="images/defult_uiImge.png"/>
+                        <div id="userText">
+                            <h1></h1>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="row clearfix">
