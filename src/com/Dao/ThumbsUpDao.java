@@ -68,9 +68,11 @@ public class ThumbsUpDao implements CommonDao{
         pstmt.setLong(1,hbid);
         ResultSet rs = pstmt.executeQuery();
         Long x = 0l;
-        if (rs.next())
-        x=rs.getLong("count(Tuid)");
-        conn.close();
+        if (rs.next()) {
+            System.out.println(hbid);
+            x = rs.getLong("count(Tuid)");
+            System.out.println("输入thumbs成功！");
+        }conn.close();
         rs.close();
         pstmt.close();
         return x;

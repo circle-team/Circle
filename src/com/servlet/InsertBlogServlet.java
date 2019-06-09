@@ -49,5 +49,6 @@ public class InsertBlogServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        resp.sendRedirect("action.jsp");
     }
 }

@@ -54,9 +54,11 @@ public class CommentDao  implements CommonDao {
         pstmt.setLong(1,f);
         ResultSet rs = pstmt.executeQuery();
         Long x = 0l;
-        if (rs.next())
-        x=rs.getLong("count(Cuid)");
-
+        if (rs.next()) {
+            System.out.println(f);
+            x = rs.getLong("count(Cuid)");
+            System.out.println("输入thumbs成功！");
+        }
         conn.close();
         rs.close();
         pstmt.close();

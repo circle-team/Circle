@@ -27,6 +27,7 @@ public class UserInfoEntity {
     public UserInfoEntity(){}
 public UserInfoEntity(Long uid)
 {
+    this.uid = uid;
 
 }
     public UserInfoEntity(Long uid, String ugender,int uage,String ucontact, String uname, String uaddress, String uemail, String uidentityNumber, String uimage, String uhobby,String uschool, String ugrade) {

@@ -1,13 +1,87 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/register.js">
+   <script src="js/login.js"></script>-->
+
+<%--    <script>--%>
+<%--        function login_commit(){--%>
+<%--            var flag = true;--%>
+<%--            $.ajax({--%>
+<%--                url:"login",--%>
+<%--                type:"POST",--%>
+<%--                async:false,--%>
+<%--                data:$("#login_form").serialize(),--%>
+<%--                success:function (data) {--%>
+<%--                    ;                    if(data=="false"){--%>
+<%--                        $("#login_alert").css("display","block");--%>
+<%--                        flag = false;--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            })--%>
+<%--            return flag;--%>
+<%--        }--%>
+<%--        $(document).ready(function(){--%>
+
+<%--            /*$("#btn btn-default").click(function () {--%>
+<%--                $.ajax({--%>
+
+<%--                    url:"loginServlet",--%>
+<%--                    type:"POST",--%>
+<%--                    data:{"name":$("#name").val(),"password":$("#password").val()},--%>
+<%--                    success:function (test) {--%>
+<%--                        if(test==2)--%>
+<%--                        $("alert").html("密码错误");--%>
+
+<%--                    },--%>
+<%--                    error:function () {--%>
+<%--                        alert("出现连接错误！");--%>
+<%--                    }--%>
+
+
+
+<%--                })--%>
+<%--            })*/--%>
+
+
+
+
+<%--        })--%>
+
+
+
+<%--    </script>--%>
+    <script>
+        function rep_merge(){
+
+                $.ajax({
+                    url:"PwdReplaceServlet",
+                    type:"POST",
+                    async:false,
+                    data:$("#login_form").serialize(),
+                    success:function (data) {
+                        if(data.puton=="0"){
+                            alert(typeof data.puton);
+                            $("#login_alert1").css("display","block");
+                        }
+                        else
+                        {
+                            $("#login_alert1").css("display","none");
+                            alert(data.que);
+                            $("#question").valueOf(data.que);
+                        }
+                    }
+                })
+            }
+
+
+
+
 
 
     </script>
@@ -18,7 +92,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    注 册 <small> 立 即 成 为 circle 的 新 成 员</small>
+                    登 录 <small>  立 即 开 始 探 索 circle</small>
                 </h1>
             </div>
         </div>
@@ -67,89 +141,58 @@
                 </div>
                 <div class="col-md-6 column">
                     <div class="row clearfix">
-                        <div class="col-md-12 column" style="display:inline-block">
+                        <div class="col-md-12 column">
                             <br>
-                            <form class="form-horizontal" role="form" method="post" action="register"
-                                  onsubmit="return submitTest()">
-                                <div class="form-group">
-                                    <div class="input-group col-sm-4">
-                                        <span class="input-group-addon" id="addon1">用户名</span>
-                                        <input type="text" class="form-control" id="name" placeholder="请输入用户名"
-                                               name="name" aria-describedby="addon1" onblur="oBlur_name()"/>
-                                    </div>
+                            <form id="login_form" class="form-horizontal" role="form" method="post" action="PwdReplace"
+                                  onsubmit="return login_commit()">
+                                <div class="input-group form-group col-sm-6">
+                                    <span class="input-group-addon" id="addon1">id号</span>
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="请输入id号" aria-describedby="addon1" />
+
+                                </div>
+                                <div id="login_alert1" class="alert alert-danger" role="alert" style="display: none">
+                                    该用户不存在！
+                                </div>
+
+                                <div class="input-group form-group col-sm-6">
+                                    <span class="input-group-addon" id="addon2">密保问题</span>
+                                    <input type="password" class="form-control" id="question" name="question"
+                                           aria-describedby="addon2" placeholder="" />
+                                </div>
+                                <div class="input-group form-group col-sm-6">
+                                    <span class="input-group-addon" id="addon3">问题答案</span>
+                                    <input type="password" class="form-control" id="answer" name="answer"
+                                           aria-describedby="addon2" placeholder="请输入问题答案" />
+                                </div>
+                                <div class="input-group form-group col-sm-6">
+                                    <span class="input-group-addon" id="addon4">新密码</span>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           aria-describedby="addon2" placeholder="请输入新密码" />
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6 input-group">
-                                        <span class="input-group-addon" id="addon2">密保问题1</span>
-                                        <select class="form-control" id="q1" name="q1" aria-describedby="addon2"
-                                                onchange="oBlur_q1()">
-                                            <option value="你喜欢看的电影？">你喜欢看的电影</option>
-                                            <option value="你的生日？">你的生日</option>
-                                            <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
-                                            <option value="你的初中班主任名字是什么？">你的初中班主任名字是？</option>
-                                            <option value="你最喜欢的食物是什么？">你最喜欢的食物是？</option>
-                                        </select>
+                                    <div class="col-sm-6">
+                                        <div class="checkbox">
+                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6 input-group">
-                                        <span class="input-group-addon" id="addon3">密保答案1</span>
-                                        <input type="text" class="form-control" id="a1" name="a1"
-                                               onblur="oBlur_a1()" aria-describedby="addon3" placeholder="请输入密保答案"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6 input-group">
-                                        <span class="input-group-addon" id="addon4">密保问题2</span>
-                                        <select class="form-control" id="q2" name="q2" aria-describedby="addon4"
-                                                onchange="oBlur_q2()">
-                                            <option value="你的生日？">你的生日</option>
-                                            <option value="你喜欢看的电影？">你喜欢看的电影</option>
-                                            <option value="你最喜欢哪支球队？">你最喜欢哪支球队</option>
-                                            <option value="你的初中班主任名字是什么？">你的初中班主任名字是？</option>
-                                            <option value="你最喜欢的食物是什么？">你最喜欢的食物是？</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6 input-group">
-                                        <span class="input-group-addon" id="addon5">密保答案2</span>
-                                        <input type="text" class="form-control" id="a2" name="a2"
-                                               placeholder="请输入密保答案" aria-describedby="addon5" onblur="oBlur_a2()"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-5 input-group">
-                                        <span class="input-group-addon" id="addon6">输入密码</span>
-                                        <input type="password" class="form-control" id="Password" name="password"
-                                               placeholder="请输入密码" aria-describedby="addon6" onblur="oBlur_Password()"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-5 input-group">
-                                        <span class="input-group-addon" id="addon7">确认密码</span>
-                                        <input type="password" class="form-control" id="Password2" name="Password2"
-                                               placeholder="再次输入密码" aria-describedby="addon7"
-                                               onblur="oBlur_Password2()"/>
-                                    </div>
-                                </div>
-                                <br>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default btn-lg">注 册</button>
+                                        <button class="btn btn-default" type="submit">登 录</button>
                                     </div>
                                 </div>
                             </form>
-                            <div class="alert animated fadeIn alert-warning" id="alert_win" style="display: none">
-                                <h4 id="alert">
-                                    输入有误!
-                                </h4>
+                            <button class="btn btn-default" onclick=" rep_merge()">验证</button>
+                            <div id="login_alert" class="alert alert-danger" role="alert" style="display: none">
+                                密码错误!
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 column">
                     <div class="row clearfix">
+                        <div class="col-md-4 column">
+                        </div>
                         <br>
                         <div class="col-md-12 column">
                             <div class="carousel slide" id="carousel-848284">
@@ -172,6 +215,7 @@
                                             <p>
                                                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
                                                 elit non mi porta gravida at eget metus. Nullam id dolor id nibh
+                                                ultricies vehicula ut id elit.
                                             </p>
                                         </div>
                                     </div>
