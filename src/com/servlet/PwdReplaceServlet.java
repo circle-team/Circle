@@ -31,7 +31,7 @@ public class PwdReplaceServlet extends HttpServlet {
             e.printStackTrace();
         }
         JSONObject obj = new JSONObject();
-        System.out.println(User.getUquestion1());
+//        System.out.println(User.getUquestion1());
 
         if (User!=null)
         {
