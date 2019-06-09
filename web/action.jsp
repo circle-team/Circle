@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinterest的网格瀑布流</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
@@ -15,10 +15,25 @@
     <script src="js/comment.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
+    <script src="js/nav.js"></script>
 
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
+            <div class="col-md-3 text-left">
+                <img id="logo" style="width: 45%" src="images/logo.png"/>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-7 text-right">
+                <a href="#"><img src="images/personal.png"/></a>
+                <a href="#"><img src="images/information.png"/></a>
+                <a href="#"><img src="images/blog.png"/></a>
+                <a href="#"><img src="images/defult_uiImge.png"/></a>
+            </div>
+        </nav>
+    </div>
     <div class="waterfall"></div>
 </div>
 
@@ -233,8 +248,8 @@
             url: 'SelfBlogServlet',
             dataType: 'json',
             success: function (data) {
-                var blogs= eval(data);
-                for(var index in blogs){
+                var blogs = eval(data);
+                for (var index in blogs) {
                     alert(blogs[index].bid);
 
                 }

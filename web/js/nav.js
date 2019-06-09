@@ -2,7 +2,7 @@
 var isAnimated = false;
 $(document).ready(function(){
     $(window).on("scroll",function () {
-        if ($(this).scrollTop()>150) {
+        if ($(this).scrollTop()>190) {
             $(".box1").addClass("box2");
             $(".box2").removeClass("box1");
             if (!isAnimated) {
