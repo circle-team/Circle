@@ -31,8 +31,8 @@ public class PwdSubmitServlet extends HttpServlet {
 
         System.out.println(User.getuAnswer1());
         System.out.println(req.getParameter("answer"));
-        String answer = req.getParameter("answer");
-        if (User.getuAnswer1()==answer)
+
+        if (User.getuAnswer1().equals(req.getParameter("answer")))
         {
             System.out.println("password匹配成功！");
             User.setUpassword(req.getParameter("password"));
@@ -50,6 +50,7 @@ public class PwdSubmitServlet extends HttpServlet {
         }
         else {
             out.write("false");
+//            resp.getWriter().write("false");
         }
     }
 }
