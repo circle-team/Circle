@@ -232,8 +232,13 @@
             dataType: 'text',
             success: function (data) {
                 console.log(data);
-                var blogs = jQuery.parseJSON(data);
-                for ( let index in blogs) {
+                // alert(data);
+                var blogs = JSON.parse(data);
+                // alert(blogs);
+                // alert(blogs[1]);
+                var str1=JSON.stringify(blogs[1]);
+                alert(str1);
+                for (var index in blogs) {
                     alert(blogs[index]);
                     var res = blogs[index];
                     result = result + template("waterfall-template", res);

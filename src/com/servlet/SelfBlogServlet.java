@@ -139,9 +139,9 @@ public class SelfBlogServlet extends HttpServlet {
 
         List<ShowblogEntity> beans = Sblog;
         System.out.println(beans);
-        JSONArray array = JSONArray.fromObject(beans);
+            JSONArray array = JSONArray.fromObject(beans);
         System.out.println(array.toString());
         out.print(array);
-        resp.getWriter().println(array.toString());
+//        resp.getWriter().println(array.toString());
     }
 }
