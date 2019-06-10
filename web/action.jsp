@@ -234,6 +234,7 @@
                 console.log(data);
                 alert(data);
                 var blogs = jQuery.parseJSON(data);
+                alert(blogs);
                 for (var index in blogs) {
                     alert(blogs[index]);
                     var res = blogs[index];
