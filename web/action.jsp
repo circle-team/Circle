@@ -207,11 +207,11 @@
                 <div class="media-left">
                     <a href="javascript:;">
                         <img class="media-object img-rounded" style="width: 30px; height: 30px;"
-                             src="{{img}}"/>
+                             src="{{uimage}}"/>
                     </a>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading">{{text}}</h5>
+                    <h5 class="media-heading">{{uname}}</h5>
                     <small>{{text}}</small>
                     <br>
                     <small class="timestamp pull-right">{{date.time}}</small>
@@ -225,14 +225,14 @@
     <div class="row clearfix">
         <div class="col-md-2 column text-center">
             <img height="80" width="80" alt="140x140"
-                 src="{{cuid}}"
+                 src="{{cimg}}"
                  class="img-circle"/>
-            <label>{{}}</label>
+            <label>{{cname}}</label>
         </div>
         <div class="col-md-10 column">
             <blockquote>
-                <p>{{text}}</p>
-                <small>{{date.time}}<cite>发送于web客户端</cite></small>
+                <p>{{ctext}}</p>
+                <small class="timestamp">{{ctime.time}}<cite>发送于web客户端</cite></small>
             </blockquote>
         </div>
     </div>
@@ -390,7 +390,6 @@
             $(".timestamp").html(getDateDiff(this.html()));
         });
     }
-
     re_blog();
 </script>
 </body>
