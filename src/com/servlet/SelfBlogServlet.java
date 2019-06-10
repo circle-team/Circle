@@ -27,6 +27,7 @@ public class SelfBlogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         resp.setContentType("application/x-json;charset=utf-8");
          System.out.println("success我！");
         PrintWriter out = resp.getWriter();
@@ -138,9 +139,9 @@ public class SelfBlogServlet extends HttpServlet {
 
         List<ShowblogEntity> beans = Sblog;
         System.out.println(beans);
-        JSONArray array = JSONArray.fromObject(beans);
+            JSONArray array = JSONArray.fromObject(beans);
         System.out.println(array.toString());
         out.print(array);
-        resp.getWriter().println(array.toString());
+//        resp.getWriter().println(array.toString());
     }
 }
