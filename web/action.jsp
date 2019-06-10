@@ -246,7 +246,6 @@
                     result=result + res;
                     // 将模板放入页面中
                 }
-                alert(result);
                 $('.waterfall').append(result)
                     .waterfall();
             },
