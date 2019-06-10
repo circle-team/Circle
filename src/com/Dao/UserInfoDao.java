@@ -5,6 +5,7 @@ import com.entity.UsersEntity;
 import com.servlet.UserInfoServlet;
 import com.util.DBUtil;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,10 +98,10 @@ conn.close();
                          pstmt=conn.prepareStatement(sql);
                 pstmt.setString(1,sUser.getUschool());
                 pstmt.setString(2,sUser.getUgrade());
+        ResultSet rs = pstmt.executeQuery();
 
-
-        while(conn.prepareStatement(sql).executeQuery().next()) {
-            Long x = conn.prepareStatement(sql).executeQuery().getLong("Suid");
+        while(rs.next()) {
+            Long x = rs.getLong("Suid");
             UserInfoDao uidao = new UserInfoDao();
             UserInfoEntity u = new UserInfoEntity(x);
             UserInfoEntity t= null;

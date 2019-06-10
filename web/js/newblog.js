@@ -23,23 +23,3 @@ function submit_blog() {
     }
 }
 
-function new_blog() {
-    $(".commit-blog").click(function () {
-        if (submit_blog()) {
-            var uid = '${sessionScope.userinf.getUid()}'
-            var text = $("#new-blog-text").val();
-            $.ajax({
-                type: 'GET',
-                url: 'SelfBlogServlet',
-                data: {uid: uid,text:text},
-                dataType:'json',
-                success: function () {
-                    alert("push success");
-                },
-                error: function () {
-                    alert("push fail");
-                }
-            });
-        }
-    });
-}

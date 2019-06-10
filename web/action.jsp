@@ -36,9 +36,10 @@
         </nav>
     </div>
 </div>
-<div class="blank" style="width: auto;height: 100px">
 
+<div class="blank" style="width: auto;height: 100px">
 </div>
+
 <div class="panel">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -54,6 +55,11 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="waterfall">
+    </div>
+</div>
+
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -182,7 +188,7 @@
     </div>
 </div>
 
-<script id="waterfall-template" type="text/html">
+<script id="template" type="text/html">
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -229,21 +235,22 @@
         $.ajax({
             type: 'GET',
             url: 'SelfBlogServlet',
-            dataType: 'json',
+            dataType:'json',
             success: function (data) {
+                console.log(data);
                 var blogs = eval(data);
                 for (var index in blogs) {
-                    alert(blogs[index]);
-                    var res = blogs[index];
-                    result = result + template("waterfall-template", res);
-
+                    var a = blogs[index];
+                    var res = template("template", a);
+                    console.log(res);
+                    result=result + res;
+                    // 将模板放入页面中
                 }
-                $('.waterfall')
-                    .data('bootstrap-waterfall-template', result)
+                $('.waterfall').append(result)
                     .waterfall();
             },
             error: function () {
-                alert("dddddddddddddddddddd!");
+                alert("page load fail");
             }
         });
         //   $('.waterfall')
@@ -290,7 +297,6 @@
                 if (uid1 == uid2) {
                     $("#delete-blog").css("display", "");
                 }
-                r
                 $.ajax({
                     type: 'GET',
                     url: 'SelfBlogServlet',
@@ -298,12 +304,32 @@
                     dataType: 'json',
                     success: function () {
                         alert("delete success");
+                        re_blog();
                     },
                     error: function () {
                         alert("delete fail");
                     }
                 });
             })
+            $("body").on("click", ".commit-blog", function () {
+                if (submit_blog()) {
+                    var uid = '${sessionScope.userinf.getUid()}'
+                    var text = $("#new-blog-text").val();
+                    $.ajax({
+                        type: 'GET',
+                        url: 'SelfBlogServlet',
+                        data: {uid: uid,text:text},
+                        dataType:'json',
+                        success: function () {
+                            alert("push success");
+                            re_blog();
+                        },
+                        error: function () {
+                            alert("push fail");
+                        }
+                    });
+                }
+            });
         });
     }
     re_blog();

@@ -90,10 +90,10 @@
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
-                    ;                    if(data=="false"){
+                    // alert("false"===false);
+                    if(false === data){
                         $("#login_alert1").css("display","none");
                         $("#login_alert").css("display","block");
-
                     }
                     else{
                         alert("恭喜!修改成功！");
