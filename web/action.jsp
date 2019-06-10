@@ -242,7 +242,7 @@
         var result;
         $.ajax({
             type: 'GET',
-            url: 'SelfBlogServlet',
+            url: 'AcquireCommentServlet',
             dataType: 'json',
             data: {bid: bid},
             success: function (data) {
