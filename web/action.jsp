@@ -36,9 +36,10 @@
         </nav>
     </div>
 </div>
-<div class="blank" style="width: auto;height: 100px">
 
+<div class="blank" style="width: auto;height: 100px">
 </div>
+
 <div class="panel">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -54,6 +55,11 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="waterfall">
+    </div>
+</div>
+
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -182,7 +188,7 @@
     </div>
 </div>
 
-<script id="waterfall-template" type="text/html">
+<script id="template" type="text/html">
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -201,7 +207,7 @@
             <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}"
                data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
                data-bid="{{blogid}}"
-               data-img="{{}}" role="button"
+               data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
         </li>
@@ -229,24 +235,19 @@
         $.ajax({
             type: 'GET',
             url: 'SelfBlogServlet',
-            dataType: 'text',
+            dataType:'json',
             success: function (data) {
                 console.log(data);
-                // alert(data);
-                var blogs = JSON.parse(data);
-                // alert(blogs);
-                // alert(blogs[1]);
-                var str1=JSON.stringify(blogs[1]);
-                alert(str1);
-                for (var index =0;index<blogs.length;index++) {
-                    alert(blogs[index]);
-                    var res = JSON.stringify(blogs[index]);
-                    alert(res);
-                    result = result + template("waterfall-template", res);
-
+                var blogs = eval(data);
+                for (var index in blogs) {
+                    var a = blogs[index];
+                    var res = template("template", a);
+                    console.log(res);
+                    result=result + res;
+                    // 将模板放入页面中
                 }
-                $('.waterfall')
-                    .data('bootstrap-waterfall-template', result)
+                alert(result);
+                $('.waterfall').append(result)
                     .waterfall();
             },
             error: function () {
