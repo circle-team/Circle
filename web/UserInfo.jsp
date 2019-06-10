@@ -88,6 +88,7 @@
                             </div>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon" id="addon1" value="">姓名</span>
+
                                     <input type="text" class="form-control" aria-describedby="addon1" name="name" id="name" value="${sessionScope.userinf.getUname()}" hidden="{$user.getname()}"/>
                                 </div>
                                 <div class="form-group input-group col-md-6 column">
