@@ -369,13 +369,12 @@
             });
             $("body").on("click", ".commit-comment", function () {
                 if (submit_comment()) {
-                    var uid = '${sessionScope.userinf.getUid()}';
                     var bid = $(".details-content").data("bid");
                     var text = $("#new-blog-text").val();
                     $.ajax({
                         type: 'GET',
                         url: 'SelfBlogServlet',
-                        data: {uid: uid, bid: bid, text: text},
+                        data: {bid: bid, text: text},
                         dataType: 'json',
                         success: function () {
                             alert("push success");
