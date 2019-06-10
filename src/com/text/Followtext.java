@@ -12,15 +12,15 @@ import java.util.List;
 
 public class Followtext {
     public static void main(String[] args) {
-        UserInfoEntity Useri = (UserInfoEntity) session.getAttribute("userinf");
-//        UserInfoDao UserIdao = new UserInfoDao();
-//        UserInfoEntity Useri = new UserInfoEntity();
-//        Useri.setUid(77682l);
-//        try {
-//            Useri = (UserInfoEntity) UserIdao.query(Useri);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+//        UserInfoEntity Useri = (UserInfoEntity) session.getAttribute("userinf");
+        UserInfoDao UserIdao = new UserInfoDao();
+        UserInfoEntity Useri = new UserInfoEntity();
+        Useri.setUid(77682l);
+        try {
+            Useri = (UserInfoEntity) UserIdao.query(Useri);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         ArrayList<UserInfoEntity> Usersinf = new ArrayList<UserInfoEntity>();
 
         try {
