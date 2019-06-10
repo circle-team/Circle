@@ -229,27 +229,11 @@
         $.ajax({
             type: 'GET',
             url: 'SelfBlogServlet',
-            dataType: 'json',
+            dataType: 'text',
             success: function (data) {
                 console.log(data);
-                var msg = eval(data);
-                var blogs = JSON.parse(data);
-                $.each(data.obj, function (index, data) {
-                    alert(data.value);
-                });
-                for (var index in blogs) {
-                    alert(blogs[index].blogid);
-                    var res = blogs[index];
-                    result = result + template("waterfall-template", res);
-
-                }
-                for (var index in data) {
-                    alert(blogs[index].blogid);
-                    var res = blogs[index];
-                    result = result + template("waterfall-template", res);
-
-                }
-                for (var index in msg) {
+                blogs = jQuery.parseJSON(data);
+                for ( index in blogs) {
                     alert(blogs[index]);
                     var res = blogs[index];
                     result = result + template("waterfall-template", res);
