@@ -1,4 +1,4 @@
-package com.servlet;
+package com.text;
 
 import com.Dao.FollowDao;
 import com.Dao.UserInfoDao;
@@ -6,38 +6,21 @@ import com.entity.FollowEntity;
 import com.entity.UserInfoEntity;
 import com.entity.UserInfoShowEntity;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AcquireStudentServlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
-        resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter out = resp.getWriter();
-        HttpSession session = req.getSession();
-        UserInfoEntity Useri = (UserInfoEntity) session.getAttribute("userinf");
+public class Followtext {
+    public static void main(String[] args) {
 //        UserInfoEntity Useri = (UserInfoEntity) session.getAttribute("userinf");
-
-//        UserInfoEntity Useri = new UserInfoEntity();
-//        Useri.setUid(77682l);
-//        try {
-//            Useri = (UserInfoEntity) UserIdao.query(Useri);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-                UserInfoDao UserIdao = new UserInfoDao();
+        UserInfoDao UserIdao = new UserInfoDao();
+        UserInfoEntity Useri = new UserInfoEntity();
+        Useri.setUid(77682l);
+        try {
+            Useri = (UserInfoEntity) UserIdao.query(Useri);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         ArrayList<UserInfoEntity> Usersinf = new ArrayList<UserInfoEntity>();
 
         try {
@@ -71,6 +54,6 @@ public class AcquireStudentServlet extends HttpServlet {
         List<UserInfoShowEntity> Users = Usershowlist;
         JSONArray student = JSONArray.fromObject(Users);
         System.out.println(student);
-        out.print(student);
+//        out.print(student);
     }
 }

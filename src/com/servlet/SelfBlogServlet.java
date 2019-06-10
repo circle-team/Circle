@@ -3,6 +3,7 @@ package com.servlet;
 import com.Dao.*;
 import com.entity.BlogInfoEntity;
 import com.entity.ShowblogEntity;
+import com.entity.ThumbsUpEntity;
 import com.entity.UserInfoEntity;
 import net.sf.json.JSONArray;
 
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,7 +23,7 @@ import java.util.List;
 
 @WebServlet("/SelfBlogServlet")
 public class SelfBlogServlet extends HttpServlet {
-    @Override
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
@@ -104,7 +104,7 @@ public class SelfBlogServlet extends HttpServlet {
         ArrayList<ShowblogEntity> Sblog = new ArrayList<>();
 
 
-
+        Long ifthumb = null;
 
         for (BlogInfoEntity x : BlogE) {
             try {
@@ -117,6 +117,14 @@ public class SelfBlogServlet extends HttpServlet {
                 System.out.println("thumbs"+thumbnum);
                 Long comment = (Long) comments.Search(x.getBid());
                 System.out.println("comment"+comment);
+                ThumbsUpEntity T = new ThumbsUpEntity(x.getBid(),User.getUid(),null);
+                if (thumbs.query(T)==null)
+                {
+                    ifthumb=0l;
+                }
+                else {
+                    ifthumb=1l;
+                }
 //                System.out.println("Bid:"+x.getBid());
 //                System.out.println("Buid:"+x.getBuid());
 //                System.out.println(User.getUid());
@@ -127,7 +135,8 @@ public class SelfBlogServlet extends HttpServlet {
 //                System.out.println(x.getBtitle());
 //                System.out.println(thumbnum);
 //                System.out.println(comment);
-                ShowblogEntity a = new ShowblogEntity(x.getBid(),User.getUid(),User.getUname(),User.getUimage(),x.getBtext(),x.getBdate(),x.getBtitle(),thumbnum,comment);
+                //ifthumb==0说明没有关注界面是灰心==1说明有关注界面是红心
+                ShowblogEntity a = new ShowblogEntity(x.getBid(),User.getUid(),User.getUname(),x.getBimage(),x.getBtext(),x.getBdate(),x.getBtitle(),thumbnum,comment,User.getUimage(),ifthumb);
                 Sblog.add(a);
 //                System.out.println(a.getDate()+a.getText()+a.getCommentnumber());
             } catch (SQLException e) {

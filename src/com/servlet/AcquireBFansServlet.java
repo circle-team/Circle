@@ -2,7 +2,9 @@ package com.servlet;
 
 import com.Dao.FollowDao;
 import com.Dao.UserInfoDao;
+import com.entity.FollowEntity;
 import com.entity.UserInfoEntity;
+import com.entity.UserInfoShowEntity;
 import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
@@ -42,11 +44,32 @@ public class AcquireBFansServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        ArrayList<UserInfoShowEntity> Usershowlist = new ArrayList<>();
+        FollowEntity follow = new FollowEntity();
+//        FollowDao fdao = new FollowDao();
+        Long ifthumb = null;
+        for (UserInfoEntity x:Userinfs) {
+            follow.setFhuid(x.getUid());
+            follow.setFuid(Useri.getUid());
+            try {
+                if (fdao.query(follow)==null)
+                {
+                    ifthumb=0l;
 
+                }
+                else {
+                    ifthumb=1l;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            UserInfoShowEntity y = new UserInfoShowEntity(x.getUid(),x.getUgender(),x.getUage(),x.getUcontact(),x.getUname(),x.getUaddress(),x.getUemail(),x.getUidentityNumber(),x.getUimage(),x.getUhobby(),x.getUschool(),x.getUgrade(),ifthumb);
+            Usershowlist.add(y);
+        }
 
-        List<UserInfoEntity> fansinf = Userinfs;
-        JSONArray Fans = JSONArray.fromObject(fansinf);
-        out.print(Fans);
+        List<UserInfoShowEntity> Users = Usershowlist;
+        JSONArray student = JSONArray.fromObject(Users);
+        out.print(student);
 
 
     }

@@ -9,11 +9,30 @@ public class ShowblogEntity {
     private String image;
     private String text;
     private Timestamp date;
+
+    public String getUimage() {
+        return uimage;
+    }
+
+    public void setUimage(String uimage) {
+        this.uimage = uimage;
+    }
+
+    public Long getIfthumb() {
+        return ifthumb;
+    }
+
+    public void setIfthumb(Long ifthumb) {
+        this.ifthumb = ifthumb;
+    }
+
     private String title;
     private Long thumbnumber;
     private Long commentnumber;
+    private String uimage;
+    private Long ifthumb;
 
-    public ShowblogEntity(Long blogid,Long uid,String uname,String image,String text,Timestamp date,String title,Long thumbnumber,Long commentnumber)
+    public ShowblogEntity(Long blogid,Long uid,String uname,String image,String text,Timestamp date,String title,Long thumbnumber,Long commentnumber,String uimage,Long ifthumb)
     {
         this.blogid=blogid;
         this.uid=uid;
@@ -24,6 +43,8 @@ public class ShowblogEntity {
         this.title=title;
         this.thumbnumber=thumbnumber;
         this.commentnumber=commentnumber;
+        this.uimage=uimage;
+        this.ifthumb=ifthumb;
     }
 
     public Long getBlogid() {

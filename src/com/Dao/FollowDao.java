@@ -115,7 +115,7 @@ public class FollowDao implements CommonDao {
         ResultSet rs = pstmt.executeQuery();
         while (rs.next())
         {
-            uid=rs.getLong("Fhuid");
+            uid=rs.getLong(1);
             idlist.add(uid);
 
         }
@@ -150,12 +150,15 @@ public class FollowDao implements CommonDao {
         Connection conn = DBUtil.getConnection();
         String sql = "select * from follow where fhuid=? and fuid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,fe.getFhuid());
+        pstmt.setLong(2,fe.getFuid());
         ResultSet rs = pstmt.executeQuery();
+
         FollowEntity f = null;
         if(rs.next())
         {
             f = new FollowEntity(rs.getLong("fhuid"),rs.getLong("fuid"),
-                    rs.getTimestamp("datetime"));
+                    rs.getTimestamp("ftime"));
         }
 
         return f;

@@ -83,14 +83,16 @@ public class ThumbsUpDao implements CommonDao{
     public Object query(Object o) throws SQLException {
         ThumbsUpEntity fe = (ThumbsUpEntity) o;
         Connection conn = DBUtil.getConnection();
-        String sql = "select * from follow where Thbid=? and Tuid=?";
+        String sql = "select * from thumbs_up where Thbid=? and Tuid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,fe.getThbid());
+        pstmt.setLong(2,fe.getTuid());
         ResultSet rs = pstmt.executeQuery();
         ThumbsUpEntity f = null;
         if(rs.next())
         {
-            f = new ThumbsUpEntity(rs.getLong("Thbid"),rs.getLong(" Tuid"),
-                    rs.getTimestamp("datetime"));
+            f = new ThumbsUpEntity(rs.getLong(1),rs.getLong(2),
+                    rs.getTimestamp(3));
         }
 
         return f;
