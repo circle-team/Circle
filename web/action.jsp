@@ -201,7 +201,7 @@
             <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}"
                data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
                data-bid="{{blogid}}"
-               data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
+               data-img="{{}}" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
         </li>
@@ -238,9 +238,10 @@
                 // alert(blogs[1]);
                 var str1=JSON.stringify(blogs[1]);
                 alert(str1);
-                for (var index in blogs) {
+                for (var index =0;index<blogs.length;index++) {
                     alert(blogs[index]);
-                    var res = blogs[index];
+                    var res = JSON.stringify(blogs[index]);
+                    alert(res);
                     result = result + template("waterfall-template", res);
 
                 }
