@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="css/nav.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/template-web.js"></script>
-    <script src="js/comment.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
     <script src="js/nav.js"></script>
+    <script src="js/comment.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/getDateDiff.js"></script>
+
 
 </head>
 <body>
@@ -45,11 +48,11 @@
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <a style="display: none" class="btn-new-blog btn btn-primary btn-group-lg" href="#modal-blog-new"
+                    <a style="display: none" class="btn-new-blog btn btn-primary btn-lg" href="#modal-blog-new"
                        onclick="">发表博客</a>
                 </li>
                 <li class="active">
-                    <a style="display: none" class="btn btn-primary btn-group-lg" href="#" onclick="">关注</a>
+                    <a style="display: none" class="btn btn-primary btn-lg" href="#">刷新全部</a>
                 </li>
             </ul>
         </div>
@@ -62,7 +65,7 @@
 
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" data-bid="">
         <div class="modal-content details-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -79,7 +82,8 @@
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <h3 class="details-text">正文内容</h3>
+                        <h3 class="details-text">正文内容</h3><br>
+                        <small id="blog-timestamp" class="timestamp pull-right">time</small>
                     </div>
                 </div>
                 <hr>
@@ -87,33 +91,20 @@
                     <div class="col-md-12 column">
                                     <span class="praise"><span class="praise_img_block"><img src="images/love.png"
                                                                                              class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt details-thupnum">146</span></span>
+                                    <span class="praise_txt details-thupnum">0</span></span>
 
                         <span class="comments"><img src="images/comment.png"
                                                     class="comment_img animated rubberBand"></span>
-                        <span class="comment_txt details-commentnum">146</span>
-                        <button id="delete-blog" data-bid="" data-bid="" class="btn btn-group-lg btn-danger"
+                        <span class="comment_txt details-commentnum">0</span>
+
+                        <button id="delete-blog" data-bid="" class="btn btn-group-lg btn-danger pull-right"
                                 style="display: none"></button>
                     </div>
                 </div>
                 <hr>
                 <div class="row clearfix animated fadeInDown">
                     <div class="col-md-12 column comment_block">
-                        <div class="row clearfix">
-                            <div class="col-md-2 column text-center">
-                                <img height="80" width="80" alt="140x140"
-                                     src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"
-                                     class="img-circle"/>
-                                <label>name</label>
-                            </div>
-                            <div class="col-md-10 column">
-                                <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                                        posuere erat a ante.</p>
-                                    <small>send date time<cite>发送于web客户端</cite></small>
-                                </blockquote>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="row clearfix">
@@ -129,7 +120,7 @@
                                      style="display: none" id="alert_win">
                                     <h5 id="alert">输入有误!</h5>
                                 </div>
-                                <button type="submit" class="btn btn-primary">评论</button>
+                                <a href="javascript:;" data-bid="" class="commit-comment btn btn-primary">评论</a>
                             </div>
                         </form>
                     </div>
@@ -175,7 +166,7 @@
                                      style="display: none" id="alert_win2">
                                     <h5 id="alert2">输入有误!</h5>
                                 </div>
-                                <a  class="btn btn-primary commit-blog" href="javascript:;" onclick="">发表</a>
+                                <a class="btn btn-primary commit-blog" href="javascript:;" onclick="">发表</a>
                             </div>
                         </form>
                     </div>
@@ -188,11 +179,10 @@
     </div>
 </div>
 
-<script id="template" type="text/html">
-
+<script id="template-blog" type="text/html">
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="javascript:refresh();">
+            <a href="javascript:;">
                 <img src="{{image}}"/>
             </a>
         </li>
@@ -204,10 +194,11 @@
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span clcass="comment-txt">{{commentnumber}}</span>
-            <a href="#modal-blog-details" class="modal-details-btn" data-text="{{text}}"
-               data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}"
-               data-bid="{{blogid}}"
-               data-img="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" role="button"
+            <a href="#modal-blog-details" class="btn btn-sm btn-default modal-details-btn" data-text="{{text}}"
+               data-uid="{{uid}}"
+               data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}" data-time="{{date.time}}"
+               data-bid="{{blogid}}" data-uimg=""
+               data-img="{{image}}" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
         </li>
@@ -216,18 +207,61 @@
                 <div class="media-left">
                     <a href="javascript:;">
                         <img class="media-object img-rounded" style="width: 30px; height: 30px;"
-                             src="images/avatar_30.png"/>
+                             src="{{img}}"/>
                     </a>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading">Liber</h5>
-                    <small>I love this pin!</small>
+                    <h5 class="media-heading">{{text}}</h5>
+                    <small>{{text}}</small>
+                    <br>
+                    <small class="timestamp pull-right">{{date.time}}</small>
                 </div>
             </div>
         </li>
     </ul>
+</script>
 
-
+<script id="template-comment" type="text/html">
+    <div class="row clearfix">
+        <div class="col-md-2 column text-center">
+            <img height="80" width="80" alt="140x140"
+                 src="{{cuid}}"
+                 class="img-circle"/>
+            <label>{{}}</label>
+        </div>
+        <div class="col-md-10 column">
+            <blockquote>
+                <p>{{text}}</p>
+                <small>{{date.time}}<cite>发送于web客户端</cite></small>
+            </blockquote>
+        </div>
+    </div>
+</script>
+<script>
+    function re_comment(bid) {
+        var result;
+        $.ajax({
+            type: 'GET',
+            url: 'SelfBlogServlet',
+            dataType: 'json',
+            data: {bid: bid},
+            success: function (data) {
+                console.log(data);
+                var comments = eval(data);
+                for (var index in comments) {
+                    var a = comments[index];
+                    var res = template("template-comment", a);
+                    console.log(res);
+                    result = result + res;
+                    // 将模板放入页面中
+                }
+                $('.comment_block').append(result);
+            },
+            error: function () {
+                alert("comments load fail");
+            }
+        });
+    }
 </script>
 <script>
     function re_blog() {
@@ -235,15 +269,15 @@
         $.ajax({
             type: 'GET',
             url: 'SelfBlogServlet',
-            dataType:'json',
+            dataType: 'json',
             success: function (data) {
                 console.log(data);
                 var blogs = eval(data);
                 for (var index in blogs) {
                     var a = blogs[index];
-                    var res = template("template", a);
+                    var res = template("template-blog", a);
                     console.log(res);
-                    result=result + res;
+                    result = result + res;
                     // 将模板放入页面中
                 }
                 $('.waterfall').append(result)
@@ -279,16 +313,19 @@
                 var uid = $(this).data("uid");
                 var bid = $(this).data("bid");
                 var text = $(this).data("text");
+                var time = $(this).data("time");
                 var commentnum = $(this).data("commentnum");
                 var thupnum = $(this).data("thupnum");
                 var img = $(this).data("img");
-                $(".details-content").attr("id", bid);
+                $(".details-content").data("bid", bid);
                 $("#delete-blog").data("bid", bid);
                 $("#delete-blog").data("uid", uid);
+                $("#blog-timestamp").html(time);
                 $(".details-commentnum").html(commentnum);
                 $(".details-thupnum").html(thupnum);
                 $(".details-text").html(text);
                 $(".details-img").attr("src", img);
+                re_comment(bid);
             })
             $("body").on("click", "#delete-blog", function () {
                 var bid = $(this).data("bid");
@@ -318,8 +355,8 @@
                     $.ajax({
                         type: 'GET',
                         url: 'SelfBlogServlet',
-                        data: {uid: uid,text:text},
-                        dataType:'json',
+                        data: {uid: uid, text: text},
+                        dataType: 'json',
                         success: function () {
                             alert("push success");
                             re_blog();
@@ -330,8 +367,30 @@
                     });
                 }
             });
+            $("body").on("click", ".commit-comment", function () {
+                if (submit_comment()) {
+                    var uid = '${sessionScope.userinf.getUid()}';
+                    var bid = $(".details-content").data("bid");
+                    var text = $("#new-blog-text").val();
+                    $.ajax({
+                        type: 'GET',
+                        url: 'SelfBlogServlet',
+                        data: {uid: uid, bid: bid, text: text},
+                        dataType: 'json',
+                        success: function () {
+                            alert("push success");
+                            re_comment(bid);
+                        },
+                        error: function () {
+                            alert("push fail");
+                        }
+                    });
+                }
+            });
+            $(".timestamp").html(getDateDiff(this.html()));
         });
     }
+
     re_blog();
 </script>
 </body>
