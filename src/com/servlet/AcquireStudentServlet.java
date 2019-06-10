@@ -2,6 +2,8 @@ package com.servlet;
 
 import com.Dao.UserInfoDao;
 import com.entity.UserInfoEntity;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +14,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class UNStudentServlet extends HttpServlet {
+public class AcquireStudentServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
@@ -29,8 +32,8 @@ public class UNStudentServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
+        List<UserInfoEntity> Users = Usersinf;
+        JSONArray student = JSONArray.fromObject(Usersinf);
+        out.print(student);
     }
 }

@@ -123,6 +123,25 @@ public class FollowDao implements CommonDao {
         return idlist;
     }
 
+    public ArrayList<Long> query2(Object o) throws SQLException{
+        Long uid = (Long)o;
+        ArrayList<Long> idlist = new ArrayList<Long>();
+        Connection conn = DBUtil.getConnection();
+        String sql = "select Fuid from follow where Fhuid=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,uid);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next())
+        {
+            uid=rs.getLong("Fuid");
+            idlist.add(uid);
+
+        }
+
+        return idlist;
+    }
+
+
 
 
     @Override

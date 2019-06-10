@@ -32,6 +32,17 @@ public class CommentDao  implements CommonDao {
 
     @Override
     public boolean deleteData(Object o) throws SQLException {
+         Long Bid = (Long)o;
+         Connection conn = DBUtil.getConnection();
+         String sql = "delete * from Comments where Cfid=?";
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         pstmt.setLong(1,Bid);
+         if (pstmt.executeUpdate()>0)
+         {
+             conn.close();
+             return true;
+         }
+         conn.close();
         return false;
     }
 
