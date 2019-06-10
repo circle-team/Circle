@@ -250,7 +250,7 @@
                     .waterfall();
             },
             error: function () {
-                alert("dddddddddddddddddddd!");
+                alert("page load fail");
             }
         });
         //   $('.waterfall')
@@ -297,7 +297,6 @@
                 if (uid1 == uid2) {
                     $("#delete-blog").css("display", "");
                 }
-                r
                 $.ajax({
                     type: 'GET',
                     url: 'SelfBlogServlet',
@@ -305,12 +304,32 @@
                     dataType: 'json',
                     success: function () {
                         alert("delete success");
+                        re_blog();
                     },
                     error: function () {
                         alert("delete fail");
                     }
                 });
             })
+            $("body").on("click", ".commit-blog", function () {
+                if (submit_blog()) {
+                    var uid = '${sessionScope.userinf.getUid()}'
+                    var text = $("#new-blog-text").val();
+                    $.ajax({
+                        type: 'GET',
+                        url: 'SelfBlogServlet',
+                        data: {uid: uid,text:text},
+                        dataType:'json',
+                        success: function () {
+                            alert("push success");
+                            re_blog();
+                        },
+                        error: function () {
+                            alert("push fail");
+                        }
+                    });
+                }
+            });
         });
     }
     re_blog();

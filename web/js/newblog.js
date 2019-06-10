@@ -23,7 +23,7 @@ function submit_blog() {
     }
 }
 
-function new_blog() {
+
     $(".commit-blog").click(function () {
         if (submit_blog()) {
             var uid = '${sessionScope.userinf.getUid()}'
@@ -42,4 +42,3 @@ function new_blog() {
             });
         }
     });
-}
