@@ -231,9 +231,10 @@
             url: 'SelfBlogServlet',
             dataType: 'text',
             success: function (data) {
+                var json='[{"blogid":2,"commentnumber":0,"date":{"date":2,"day":0,"hours":22,"minutes":20,"month":5,"nanos":0,"seconds":49,"time":1559485249000,"timezoneOffset":-480,"year":119},"image":"请问","text":"1","thumbnumber":1,"title":"","uid":1,"uname":"孙彦"},{"blogid":5,"commentnumber":0,"date":{"date":2,"day":0,"hours":22,"minutes":22,"month":5,"nanos":0,"seconds":7,"time":1559485327000,"timezoneOffset":-480,"year":119},"image":"请问","text":"1","thumbnumber":0,"title":"","uid":1,"uname":"孙彦"},{"blogid":16513,"commentnumber":1,"date":{"date":6,"day":4,"hours":21,"minutes":23,"month":5,"nanos":0,"seconds":2,"time":1559827382000,"timezoneOffset":-480,"year":119},"image":"请问","text":"123456","thumbnumber":1,"title":"123456","uid":1,"uname":"孙彦"}]'
                 console.log(data);
                 alert(data);
-                var blogs = jQuery.parseJSON(data);
+                var blogs = jQuery.parseJSON(json);
                 alert(blogs);
                 for (var index =0;index< blogs.length;index++) {
                     alert(blogs[index]);
@@ -247,6 +248,20 @@
             },
             error: function () {
                 alert("dddddddddddddddddddd!");
+                var json='[{"blogid":2,"commentnumber":0,"date":{"date":2,"day":0,"hours":22,"minutes":20,"month":5,"nanos":0,"seconds":49,"time":1559485249000,"timezoneOffset":-480,"year":119},"image":"请问","text":"1","thumbnumber":1,"title":"","uid":1,"uname":"孙彦"},{"blogid":5,"commentnumber":0,"date":{"date":2,"day":0,"hours":22,"minutes":22,"month":5,"nanos":0,"seconds":7,"time":1559485327000,"timezoneOffset":-480,"year":119},"image":"请问","text":"1","thumbnumber":0,"title":"","uid":1,"uname":"孙彦"},{"blogid":16513,"commentnumber":1,"date":{"date":6,"day":4,"hours":21,"minutes":23,"month":5,"nanos":0,"seconds":2,"time":1559827382000,"timezoneOffset":-480,"year":119},"image":"请问","text":"123456","thumbnumber":1,"title":"123456","uid":1,"uname":"孙彦"}]'
+                console.log(data);
+                alert(data);
+                var blogs = jQuery.parseJSON(json);
+                alert(blogs);
+                for (var index =0;index< blogs.length;index++) {
+                    alert(blogs[index]);
+                    var res = blogs[index];
+                    result = result + template("waterfall-template", res);
+
+                }
+                $('.waterfall')
+                    .data('bootstrap-waterfall-template', result)
+                    .waterfall();
             }
         });
         //   $('.waterfall')
