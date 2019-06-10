@@ -77,6 +77,24 @@ public class CommentDao  implements CommonDao {
 
     }
 
+     public ArrayList<CommentsEntity> query1(Object o) throws SQLException{
+       Long bid = (Long)o;
+       Connection conn = DBUtil.getConnection();
+       String sql = "select * from Comments where Cfid=?";
+       PreparedStatement pstmt = conn.prepareStatement(sql);
+       ArrayList<CommentsEntity> CommentA = new ArrayList<>();
+       pstmt.setLong(1,bid);
+       ResultSet rs = pstmt.executeQuery();
+       while (rs.next())
+       {
+           CommentsEntity comm = new CommentsEntity (rs.getLong(1),rs.getLong(2),rs.getLong(3),rs.getString(4),rs.getTimestamp(5));
+           CommentA.add(comm);
+       }
+       conn.close();
+       pstmt.close();
+       rs.close();
+        return CommentA;
+}
 
 
     @Override

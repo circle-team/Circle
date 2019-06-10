@@ -53,6 +53,7 @@ public class AcquireBFansNumServlet extends HttpServlet {
 
         }
 
+
         List<Boolean> F = Follows;
         JSONArray F2 = JSONArray.fromObject(F);
         out.print(F2);

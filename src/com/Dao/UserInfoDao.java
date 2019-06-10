@@ -94,14 +94,14 @@ conn.close();
         Connection conn = DBUtil.getConnection();
         PreparedStatement pstmt=null;
         String sql=null;
-        sql = "select Uid from School where Uschool=? and Ugrade=?";
+        sql = "select Uid from UserInfo where Uschool=? and Ugrade=?";
                          pstmt=conn.prepareStatement(sql);
                 pstmt.setString(1,sUser.getUschool());
                 pstmt.setString(2,sUser.getUgrade());
         ResultSet rs = pstmt.executeQuery();
 
         while(rs.next()) {
-            Long x = rs.getLong("Suid");
+            Long x = rs.getLong("uid");
             UserInfoDao uidao = new UserInfoDao();
             UserInfoEntity u = new UserInfoEntity(x);
             UserInfoEntity t= null;
@@ -122,6 +122,7 @@ conn.close();
 
     @Override
     public Object query(Object o) throws SQLException {
+        System.out.println("进入");
         UserInfoEntity Useri = (UserInfoEntity)o;
         Connection conn = DBUtil.getConnection();
         String sql = "select * from UserInfo where Uid = ?";

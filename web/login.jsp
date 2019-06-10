@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-<!--    <script src="js/login.js"></script>-->
+<%--<!--    <script src="js/login.js"></script>-->--%>
 
     <script>
         function login_commit(){
