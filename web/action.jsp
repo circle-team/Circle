@@ -5,17 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinterest的网格瀑布流</title>
+    <title>action</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
-
+    <link rel="stylesheet" href="css/nav.css">
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/template-web.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
-
+    <script src="js/nav.js"></script>
     <script src="js/comment.js"></script>
     <script src="js/blog.js"></script>
     <script src="js/getDateDiff.js"></script>
@@ -48,8 +48,8 @@
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <a style="display: none" class="btn-new-blog btn btn-primary btn-lg" href="#modal-blog-new"
-                       onclick="">发表博客</a>
+                    <a class="btn-new-blog btn btn-default btn-lg" href="#modal-blog-new" role="button"
+                       data-toggle="modal">发表博客</a>
                 </li>
                 <li class="active">
                     <a style="display: none" class="btn btn-primary btn-lg" href="#">刷新全部</a>
@@ -83,22 +83,16 @@
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3 class="details-text">正文内容</h3><br>
-                        <small id="blog-timestamp" class="timestamp pull-right">time</small>
+
                     </div>
                 </div>
                 <hr>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                                    <span id="log-details-praise" data-bid="" class="praise"><span id="blog-details-praise-img" class="praise_img_block"><img src="images/love.png"
-                                                                                             class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt details-thupnum">0</span></span>
-
-                        <span class="comments"><img src="images/comment.png"
-                                                    class="comment_img animated rubberBand"></span>
-                        <span class="comment_txt details-commentnum">0</span>
-
-                        <button id="delete-blog" data-bid="" class="btn btn-group-lg btn-danger pull-right"
-                                style="display: none"></button>
+                        <small id="blog-timestamp" class="timestamp pull-left">time</small>
+                        <button id="delete-blog" data-bid="" class="btn btn-sm btn-danger pull-right"
+                                style="display: none">删除博客
+                        </button>
                     </div>
                 </div>
                 <hr>
@@ -120,7 +114,7 @@
                                      style="display: none" id="alert_win">
                                     <h5 id="alert">输入有误!</h5>
                                 </div>
-                                <a href="javascript:;" data-bid="" class="commit-comment btn btn-primary">评论</a>
+                                <a data-bid="" class="commit-comment btn btn-primary">评论</a>
                             </div>
                         </form>
                     </div>
@@ -155,8 +149,8 @@
                     <div class="col-md-12 column">
                         <form role="form" onsubmit="return submit_blog()" method="post" action="comment">
                             <div class="form-group">
-                                <label for="image" class="btn btn-default">上传照片</label>
-                                <input name="image" id="image" type="file" style="display:none">
+                                <label for="new_blog_image" class="btn btn-default">上传照片</label>
+                                <input name="image" id="new_blog_image" type="file" style="display:none">
                                 <label for="comment">写博客</label><input type="text" onchange="on_blog()"
                                                                        class="form-control" id="new-blog-text"/>
                                 <p class="help-block">
@@ -166,7 +160,7 @@
                                      style="display: none" id="alert_win2">
                                     <h5 id="alert2">输入有误!</h5>
                                 </div>
-                                <a class="btn btn-primary commit-blog" href="javascript:;" onclick="">发表</a>
+                                <a class="btn btn-primary commit-blog" href="#">发表</a>
                             </div>
                         </form>
                     </div>
@@ -180,7 +174,7 @@
 </div>
 
 <script id="template-blog" type="text/html">
-    <ul class="list-group">
+    <ul id="{{blogid}}" class="list-group">
         <li class="list-group-item">
             <a href="javascript:;">
                 <img src="{{image}}"/>
@@ -191,12 +185,10 @@
                 {{if ifthumb==0}}
                 <span class="praise_img_block"><img src="images/love.png" class="praise_img animated rubberBand"></span>
                 <span class="praise_txt">{{thumbnumber}}</span></span>
-                {{else if ifthumb==1}}
-                <span class="praise_img_block"><img src="images/loved.png" class="praise_img animated rubberBand"></span>
-                <span class="praise_txt">{{thumbnumber}}</span></span>
-                {{/if}}
-
-
+            {{else if ifthumb==1}}
+            <span class="praise_img_block"><img src="images/loved.png" class="praise_img animated rubberBand"></span>
+            <span class="praise_txt">{{thumbnumber}}</span></span>
+            {{/if}}
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
             <span clcass="comment-txt">{{commentnumber}}</span>
@@ -212,13 +204,13 @@
             <div class="media">
                 <div class="media-left">
                     <a href="javascript:;">
-                        <img class="media-object img-rounded" style="width: 30px; height: 30px;"
+                        <img class="media-object img-rounded" style="width: 30px; height: 30px; margin-top: -25px;"
                              src="{{uimage}}"/>
                     </a>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading">{{uname}}</h5>
-                    <small>{{text}}</small>
+                    <h5 class="media-heading"></h5>
+                    <small>{{uname}}</small>
                 </div>
             </div>
         </li>
@@ -228,15 +220,14 @@
 <script id="template-comment" type="text/html">
     <div class="row clearfix">
         <div class="col-md-2 column text-center">
-            <img height="80" width="80" alt="140x140"
+            <img height="72" width="72" alt="140x140"
                  src="{{cimg}}"
                  class="img-circle"/>
-            <label>{{cname}}</label>
+            <label class="text-center">{{cname}}</label>
         </div>
         <div class="col-md-10 column">
             <blockquote>
                 <p>{{ctext}}</p>
-                <small class="timestamp">{{ctime.time}}<cite>发送于web客户端</cite></small>
             </blockquote>
         </div>
     </div>
@@ -244,13 +235,14 @@
 
 <script>
     function re_comment(bid) {
-        var result;
-        alert(bid);
         $.ajax({
             type: 'POST',
-            url: 'AcquireStudentServlet',
-            dataType:'json',
+            url: 'AcquireCommentServlet',
+            data: {bid: bid},
+            dataType: 'json',
             success: function (data) {
+                var result;
+                $('.comment_block').html("");
                 console.log(data);
                 var comments = eval(data);
                 for (var index in comments) {
@@ -260,7 +252,7 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.comment_block').data();
+                $('.comment_block').append(result);
             },
             error: function () {
                 alert("comments load fail");
@@ -302,19 +294,20 @@
             var commentnum = $(this).data("commentnum");
             var thupnum = $(this).data("thupnum");
             var img = $(this).data("img");
-            var ifthumb=$(this).data("ifthumb");
-            if(ifthumb==1){
-                $("#blog-details-praise-img").html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
-            }else {
-                $("#blog-details-praise-img").html("<img src='images/love.png' class='praise_img animated rubberBand' />");
-            }
+            var ifthumb = $(this).data("ifthumb");
             $(".details-content").data("bid", bid);
             $("#delete-blog").data("bid", bid);
             $("#delete-blog").data("uid", uid);
             $("#log-details-praise").data("bid", bid);
-            obj.find(".praise_txt").data("ifthumb", ifthumb);
             $("#blog-timestamp").html(getDateDiff(time));
             $(".details-commentnum").html(commentnum);
+            var uid2 = '${sessionScope.userinf.getUid()}';
+            alert(uid2);
+            if (uid == uid2) {
+                $("#delete-blog").css("display", "block");
+            } else {
+                $("#delete-blog").css("display", "none");
+            }
             $(".details-thupnum").html(thupnum);
             $(".details-text").html(text);
             $(".details-img").attr("src", img);
@@ -345,7 +338,6 @@
                         num += 1;
                         praise_txt.text(num)
                     }
-                    re_blog();
                 },
                 error: function () {
                     // alert(uid);
@@ -357,64 +349,58 @@
         });
         $("body").on("click", "#delete-blog", function () {
             var bid = $(this).data("bid");
-            var uid1 = $(this).data("uid");
-            var uid2 = '${sessionScope.userinf.getUid()}';
-            if (uid1 == uid2) {
-                $("#delete-blog").css("display", "");
-            }
             $.ajax({
                 type: 'GET',
-                url: 'SelfBlogServlet',
+                url: 'DeleteBlogServlet',
                 data: {bid: bid},
-                dataType: 'json',
                 success: function () {
+                    location.reload();
                     alert("delete success");
-                    re_blog();
                 },
                 error: function () {
+                    location.reload();
                     alert("delete fail");
                 }
             });
         });
         $("body").on("click", ".commit-blog", function () {
-            if (submit_blog()) {
-                var uid = '${sessionScope.userinf.getUid()}'
-                var text = $("#new-blog-text").val();
-                $.ajax({
-                    type: 'GET',
-                    url: 'SelfBlogServlet',
-                    data: {uid: uid, text: text},
-                    dataType: 'json',
-                    success: function () {
-                        alert("push success");
-                        re_blog();
-                    },
-                    error: function () {
-                        alert("push fail");
-                    }
-                });
-            }
+            var text = $("#new-blog-text").val();
+            $.ajax({
+                type: 'POST',
+                url: 'InsertBlogServlet',
+                data: {text: text},
+                success: function () {
+                    alert("push blog success");
+                    location.reload();
+                },
+                error: function () {
+                    alert("push blog fail");
+                    location.reload();
+                }
+            });
+
         });
         $("body").on("click", ".commit-comment", function () {
-            if (submit_comment()) {
-                var bid = $(".details-content").data("bid");
-                var text = $("#new-blog-text").val();
-                $.ajax({
-                    type: 'GET',
-                    url: 'CommentAddServlet',
-                    data: {bid: bid, text: text},
-                    dataType: 'json',
-                    success: function () {
-                        alert("push success");
-                        re_comment(bid);
-                    },
-                    error: function () {
-                        alert("push fail");
-                    }
-                });
-            }
+            var bid = $(".details-content").data("bid");
+            var text = $("#comment").val();
+            alert(bid);
+            alert(text);
+            $.ajax({
+                type: 'POST',
+                url: 'CommentAddServlet',
+                data: {bid: bid, text: text},
+                success: function () {
+                    alert("push success");
+                    re_comment(bid);
+                },
+                error: function () {
+                    alert("push fail");
+                }
+            });
+
         });
     }
+
     re_blog();
     re_click();
 </script>

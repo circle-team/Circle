@@ -50,6 +50,26 @@ public class ThumbsUpDao implements CommonDao{
         return false;
     }
 
+    public boolean deleteBlogthumb(Object o) throws SQLException{
+        Long Bid = (Long)o;
+        Connection conn = DBUtil.getConnection();
+        String sql = "delete from ThumbS_up where Thbid=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,Bid);
+        if (pstmt.executeUpdate()>0)
+        {
+            conn.close();
+            pstmt.close();
+            return  true;
+        }
+        conn.close();
+        pstmt.close();
+        return false;
+
+
+    }
+
+
     @Override
     public boolean updateData(Object o) throws SQLException {
         return false;

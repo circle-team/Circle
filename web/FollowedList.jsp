@@ -11,7 +11,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/template-web.js"></script>
-    <title>FollowedLis</title>
+    <title>FollowedList</title>
 </head>
 <body>
 <div class="container">

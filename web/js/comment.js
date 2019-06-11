@@ -22,4 +22,5 @@ function submit_comment() {
         alert("请按要求填写评论");
         return false;
     }
+    return true;
 }

@@ -49,14 +49,20 @@ public class BlogInfoDao implements CommonDao {
         BlogInfoEntity BlogInfo = (BlogInfoEntity) o;
 
         Connection conn = DBUtil.getConnection();
-
+        System.out.println("删除id:"+BlogInfo.getBid());
         String sql = "DELETE FROM BlogInfo WHERE Bid = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1, BlogInfo.getBid());
 
-        pstmt.executeUpdate();
+        if (pstmt.executeUpdate()>0)
+        {
+            pstmt.close();
+            conn.close();
+            return true;
+        }
+        conn.close();
         pstmt.close();
-        return true;
+        return false;
     }
 
     @Override

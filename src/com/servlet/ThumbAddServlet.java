@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+
 @WebServlet("/ThumbAddServlet")
 public class ThumbAddServlet extends HttpServlet {
     @Override

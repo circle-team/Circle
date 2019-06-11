@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Random;
+
 @WebServlet("/CommentAddServlet")
 public class CommentAddServlet  extends HttpServlet {
     @Override
@@ -43,7 +44,7 @@ public class CommentAddServlet  extends HttpServlet {
             }
         }
         Timestamp time = new Timestamp(new Date().getTime());
-        comment = new CommentsEntity(cid,Long.valueOf(req.getParameter("fid")),Long.valueOf(userinf.getUid()),req.getParameter("ctext"),time);
+        comment = new CommentsEntity(cid,Long.valueOf(req.getParameter("bid")),Long.valueOf(userinf.getUid()),req.getParameter("text"),time);
         try {
             Cdao.insertData(comment);
         } catch (SQLException e) {
