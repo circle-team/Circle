@@ -116,12 +116,12 @@
                             <br>
                             <form id="login_form" class="form-horizontal" role="form" method="post" action="login"
                                   onsubmit="return login_commit()">
-                                <div class="input-group form-group col-sm-6">
+                                <div class="input-group form-group col-sm-8">
                                     <span class="input-group-addon" id="addon1">用户名</span>
                                     <input type="text" class="form-control" id="name" value="${cookie.id.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
-                                <div class="input-group form-group col-sm-6">
+                                <div class="input-group form-group col-sm-8">
                                     <span class="input-group-addon" id="addon2">密   码</span>
                                     <input type="password" class="form-control" id="Password" name="password"
                                            aria-describedby="addon2" placeholder="请输入密码" value="${cookie.password.value}" onblur="oBlur_Password()"/>
@@ -164,7 +164,7 @@
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img alt=""
-                                             src="images/img_27.jpg"/>
+                                             src="images/78.jpeg"/>
                                         <div class="carousel-caption">
                                             <h4>
                                                 Show you Life whatever you are!!
