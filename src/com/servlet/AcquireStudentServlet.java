@@ -9,6 +9,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@WebServlet("/AcquireStudentServlet")
 public class AcquireStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

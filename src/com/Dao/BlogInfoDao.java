@@ -152,6 +152,19 @@ public class BlogInfoDao implements CommonDao {
         }
         return Blist;
     }
+    public ArrayList<BlogInfoEntity> queryall() throws SQLException{
+        Connection conn = DBUtil.getConnection();
+        String sql = "select * from BlogInfo ";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        ArrayList<BlogInfoEntity> Bloglist = new ArrayList<>();
+        while (rs.next())
+        {
+            BlogInfoEntity Blog = new BlogInfoEntity(rs.getLong(1), rs.getLong(2), rs.getString(3)
+                    , rs.getTimestamp(4), rs.getString(5), rs.getString(6));
+            Bloglist.add(Blog);
 
-
+        }
+        return Bloglist;
+    }
 }

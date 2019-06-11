@@ -89,7 +89,7 @@
                 <hr>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                                    <span class="praise"><span class="praise_img_block"><img src="images/love.png"
+                                    <span id="log-details-praise" data-bid="" class="praise"><span id="blog-details-praise-img" class="praise_img_block"><img src="images/love.png"
                                                                                              class="praise_img animated rubberBand"></span>
                                     <span class="praise_txt details-thupnum">0</span></span>
 
@@ -187,9 +187,15 @@
             </a>
         </li>
         <li class="list-group-item">
-            <span class="praise"><span class="praise_img_block"><img src="images/love.png"
-                                                                     class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt">{{thumbnumber}}</span></span>
+            <span class="praise" data-bid="{{blogid}}">
+                {{if ifthumb==0}}
+                <span class="praise_img_block"><img src="images/love.png" class="praise_img animated rubberBand"></span>
+                <span class="praise_txt">{{thumbnumber}}</span></span>
+                {{else if ifthumb==1}}
+                <span class="praise_img_block"><img src="images/loved.png" class="praise_img animated rubberBand"></span>
+                <span class="praise_txt">{{thumbnumber}}</span></span>
+                {{/if}}
+
 
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
@@ -197,7 +203,7 @@
             <a href="#modal-blog-details" class="btn btn-sm btn-default modal-details-btn" data-text="{{text}}"
                data-uid="{{uid}}"
                data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}" data-time="{{date.time}}"
-               data-bid="{{blogid}}" data-uimg=""
+               data-bid="{{blogid}}" data-ifthumb="{{ifthumb}}" data-uimg="{{uimage}}"
                data-img="{{image}}" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
@@ -213,8 +219,6 @@
                 <div class="media-body">
                     <h5 class="media-heading">{{uname}}</h5>
                     <small>{{text}}</small>
-                    <br>
-                    <small class="timestamp pull-right">{{date.time}}</small>
                 </div>
             </div>
         </li>
@@ -244,9 +248,8 @@
         alert(bid);
         $.ajax({
             type: 'POST',
-            url: 'AcquireCommentServlet',
+            url: 'AcquireStudentServlet',
             dataType:'json',
-            data: {bid: bid},
             success: function (data) {
                 console.log(data);
                 var comments = eval(data);
@@ -257,7 +260,7 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.comment_block').append(result);
+                $('.comment_block').data();
             },
             error: function () {
                 alert("comments load fail");
@@ -281,9 +284,8 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.waterfall').append(result)
-                    .waterfall();
-                re_DateDiff();
+
+                $('.waterfall').append(result).waterfall();
             },
             error: function () {
                 alert("page load fail");
@@ -292,24 +294,6 @@
     }
 
     function re_click() {
-        $("body").on("click", ".praise", function () {
-            var praise_img_block = $(this).find(".praise_img_block");
-            var praise_img = $(this).find(".praise_img");
-            var praise_txt = $(this).find(".praise_txt");
-            var num = parseInt(praise_txt.text());
-            if (praise_img.attr("src") == ("images/loved.png")) {
-                praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
-                praise_txt.removeClass("hover");
-                num -= 1;
-                praise_txt.text(num)
-            } else {
-                praise_img.attr("src", "images/loved.png");
-                praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
-                praise_txt.addClass("hover");
-                num += 1;
-                praise_txt.text(num)
-            }
-        });
         $("body").on("click", ".modal-details-btn", function () {
             var uid = $(this).data("uid");
             var bid = $(this).data("bid");
@@ -318,15 +302,58 @@
             var commentnum = $(this).data("commentnum");
             var thupnum = $(this).data("thupnum");
             var img = $(this).data("img");
+            var ifthumb=$(this).data("ifthumb");
+            if(ifthumb==1){
+                $("#blog-details-praise-img").html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
+            }else {
+                $("#blog-details-praise-img").html("<img src='images/love.png' class='praise_img animated rubberBand' />");
+            }
             $(".details-content").data("bid", bid);
             $("#delete-blog").data("bid", bid);
             $("#delete-blog").data("uid", uid);
-            $("#blog-timestamp").html(time);
+            $("#log-details-praise").data("bid", bid);
+            obj.find(".praise_txt").data("ifthumb", ifthumb);
+            $("#blog-timestamp").html(getDateDiff(time));
             $(".details-commentnum").html(commentnum);
             $(".details-thupnum").html(thupnum);
             $(".details-text").html(text);
             $(".details-img").attr("src", img);
             re_comment(bid);
+
+        });
+        $("body").on("click", ".praise", function () {
+            var praise_img_block = $(this).find(".praise_img_block");
+            var praise_img = $(this).find(".praise_img");
+            var praise_txt = $(this).find(".praise_txt");
+            var bid = $(this).data("bid");
+            var num = parseInt(praise_txt.text());
+            alert(bid);
+            $.ajax({
+                type: 'POST',
+                url: 'ThumbAddServlet',
+                data: {bid: bid},
+                success: function () {
+                    if (praise_img.attr("src") == ("images/loved.png")) {
+                        praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
+                        praise_txt.removeClass("hover");
+                        num -= 1;
+                        praise_txt.text(num)
+                    } else {
+                        praise_img.attr("src", "images/loved.png");
+                        praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
+                        praise_txt.addClass("hover");
+                        num += 1;
+                        praise_txt.text(num)
+                    }
+                    re_blog();
+                },
+                error: function () {
+                    // alert(uid);
+                    alert("praise fail");
+
+                }
+            });
+
         });
         $("body").on("click", "#delete-blog", function () {
             var bid = $(this).data("bid");
@@ -388,13 +415,7 @@
             }
         });
     }
-
-    function re_DateDiff() {
-        $(".timestamp").html("Hello <b>world</b>!");
-    }
-
     re_blog();
-
     re_click();
 </script>
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,6 @@
                 <a href="#"><img src="images/blog.png"/></a>
                 <a href="#" id="user"><img src="images/defult_uiImge.png"/>
                     <div id="userText">
-                        <h1>okokokokokoko</h1>
                     </div>
                 </a>
             </div>
@@ -40,22 +39,22 @@
 <div class="FollowList">
 </div>
 <script id="template" type="text/html">
-    <div style="width: 60%;height: 40%" class="container jumbotron well-sm">
+    <div style="width:auto;height:auto;max-width:800px;max-height:100px;" class="container jumbotron well-sm">
         <div class="row clearfix">
             <div class="col-md-12 column">
                 <div class="row clearfix">
                     <div class="col-md-2 column">
-                        <img style="height: 80%;width: 80%" alt="140x140"
-                             src=""
+                        <img style="width:auto;height:auto;max-width:72px;max-height:72px;" alt="140x140"
+                             src="{{uimage}}"
                              class="img-circle"/>
                     </div>
                     <div class="col-md-8 column row">
-                        <h5><span class="label  label-primary"> 昵称</span>{{}} </h5>
-                        <h5><span class="label  label-primary">年龄</span>年龄 </h5>
-                        <h5><span class="label  label-primary">所属学校 </span>所属学校 </h5>
+                        <h5><span class="label  label-primary"> 昵称</span>{{uname}}</h5>
+                        <h5><span class="label  label-primary">年龄</span>{{uage}}</h5>
+                        <h5><span class="label  label-primary">所属学校 </span>{{uschool}}<span class="label  label-primary">所属年级</span>{{ugrade}}</h5>
                     </div>
                     <div class="col-md-2 column">
-                        <button class="follow btn btn-sm btn-default pull-right" data-uid="{{}}" href="#"><h5>关注</h5>
+                        <button class="follow btn btn-sm btn-default pull-right" data-uid="{{uid}}" href="#"><h5>关注</h5>
                         </button>
                     </div>
                 </div>
@@ -68,8 +67,8 @@
     function re_FollowList() {
         var result;
         $.ajax({
-            type: 'GET',
-            url: 'AcquireFansServlet',
+            type: 'POST',
+            url: 'AcquireStudentServlet',
             dataType: 'json',
             success: function (data) {
                 console.log(data);
@@ -81,8 +80,7 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.FollowList').append(result)
-
+                $('.FollowList').append(result);
             },
             error: function () {
                 alert("page load fail!");
@@ -91,10 +89,9 @@
         $("body").on("click", ".follow", function () {
             var uid = $(this).data("uid");
             $.ajax({
-                type: 'GET',
-                url: 'SelfBlogServlet',
+                type: 'POST',
+                url: 'FollowAddServlet',
                 data: {uid: uid},
-                dataType: 'json',
                 async:false,
                 success: function () {
                     alert("follow success");
@@ -107,10 +104,9 @@
         $("body").on("click", ".notfollow", function () {
             var uid = $(this).data("uid");
             $.ajax({
-                type: 'GET',
-                url: 'SelfBlogServlet',
+                type: 'POST',
+                url: 'FollowAddServlet',
                 data: {uid: uid},
-                dataType: 'json',
                 async:false,
                 success: function () {
                     alert("notfollow success");
