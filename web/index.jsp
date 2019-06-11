@@ -30,7 +30,7 @@
         </nav>
       </div>
     </div>
-
+  </div>
     <div class="row center-block">
       <div class="col-md-12">
         <div class="carousel slider" data-ride="carousel" id="carouse-example-generic">
