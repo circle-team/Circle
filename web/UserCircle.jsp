@@ -33,9 +33,9 @@
             <div class="col-md-2"></div>
             <div class="col-md-7 text-right">
                 <a href="#"><img src="images/personal.png"/></a>
-                <a href="UserInfo.jsp"><img src="images/information.png"/></a>
-                <a href="#"><img src="images/blog.png"/></a>
-                <a href="login.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
+                <a href="UserBlogs.jsp"><img src="images/information.png"/></a>
+                <a href="UserCircle.jsp"><img src="images/blog.png"/></a>
+                <a href="UserInfo.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
             </div>
         </nav>
     </div>
@@ -287,6 +287,10 @@
                 alert(follow_num);
                 alert(followed_num);
                 alert(blogs_num);
+                $("#blogs_num").html(blogs_num);
+                $("#followed_num").html(followed_num);
+                $("#follow_num").html(follow_num);
+                alert("re card yes");
             },
             error: function () {
                 alert("re card fail");
