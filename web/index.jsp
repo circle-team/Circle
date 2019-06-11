@@ -22,16 +22,10 @@
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-7 text-right">
-
             <a href="#"><img src="images/personal.png"/></a>
             <a href="UserInfo.jsp"><img src="images/information.png"/></a>
             <a href="#"><img src="images/blog.png"/></a>
             <a href="login.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
-            <div id="myModal" class="modal mo1 text-center">
-              <span class="close">&times;</span>
-              <h3>Sohyun</h3>
-              <a>关注</a><a>喜欢</a><a>私信</a>
-            </div>
           </div>
         </nav>
       </div>
