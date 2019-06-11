@@ -88,6 +88,7 @@ public class CommentDao  implements CommonDao {
        while (rs.next())
        {
            CommentsEntity comm = new CommentsEntity (rs.getLong(1),rs.getLong(2),rs.getLong(3),rs.getString(4),rs.getTimestamp(5));
+           System.out.println("评论的id："+comm.getCid());
            CommentA.add(comm);
        }
        conn.close();
