@@ -277,7 +277,7 @@
     function re_card() {
         $.ajax({
             type: 'POST',
-            url: 'AcquireCommentServlet',
+            url: 'SelfInfServlet',
             dataType: 'json',
             success: function (data) {
                 var card = eval(data);
@@ -289,7 +289,7 @@
                 alert(blogs_num);
             },
             error: function () {
-                alert("comments load fail");
+                alert("re card fail");
             }
         });
 
@@ -461,7 +461,7 @@
 
         });
     }
-
+    re_card();
     re_blog();
     re_click();
 </script>
