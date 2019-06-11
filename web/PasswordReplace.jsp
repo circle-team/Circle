@@ -116,7 +116,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    登 录 <small>  立 即 开 始 探 索 circle</small>
+                    找回密码<small>密码可以忘，但密保问题可真得记住了:)</small>
                 </h1>
             </div>
         </div>
@@ -134,8 +134,8 @@
                                 <li>
                                     <a href="login.jsp">登陆</a>
                                 </li>
-                                <li class="disabled">
-                                    <a href="#">信息</a>
+                                <li class="active">
+                                    <a href="PasswordReplace.jsp">忘记密码(修改密码)</a>
                                 </li>
                                 <li class="dropdown pull-right">
                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong
