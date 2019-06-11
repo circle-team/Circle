@@ -25,8 +25,8 @@ public class FollowAddServlet extends HttpServlet {
         UserInfoEntity userinf =(UserInfoEntity)session.getAttribute("userinf");
         Long uid = userinf.getUid();
         Long huid = Long.valueOf(req.getParameter("uid"));
-        Timestamp time = new Timestamp(new Date().getTime());
-        FollowEntity follow = new FollowEntity(huid,uid,time);
+
+        FollowEntity follow = new FollowEntity(huid,uid);
         FollowDao fdao = new FollowDao();
         try {
             if (fdao.query(follow)==null)

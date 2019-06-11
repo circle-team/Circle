@@ -10,19 +10,15 @@ public class FollowEntity {
 
     private long fhuid;
     private long fuid;
-    private Timestamp ftime;
 
-    public FollowEntity(long fhuid, long fuid, Timestamp ftime) {
 
-        this.fhuid = fhuid;
-        this.fuid = fuid;
-        this.ftime = ftime;
-    }
-    public FollowEntity(long fhuid, long fuid){
+    public FollowEntity(long fhuid, long fuid) {
 
         this.fhuid = fhuid;
         this.fuid = fuid;
+
     }
+
     public FollowEntity(){
 
     }
@@ -48,14 +44,6 @@ public class FollowEntity {
     }
 
     @Basic
-    @Column(name = "Ftime")
-    public Timestamp getFtime() {
-        return ftime;
-    }
-
-    public void setFtime(Timestamp ftime) {
-        this.ftime = ftime;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -63,12 +51,11 @@ public class FollowEntity {
         if (o == null || getClass() != o.getClass()) return false;
         FollowEntity that = (FollowEntity) o;
         return fhuid == that.fhuid &&
-                fuid == that.fuid &&
-                Objects.equals(ftime, that.ftime);
+                fuid == that.fuid ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fhuid, fuid, ftime);
+        return Objects.hash(fhuid, fuid);
     }
 }

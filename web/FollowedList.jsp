@@ -11,7 +11,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/template-web.js"></script>
-    <title>Title</title>
+    <title>FollowedLis</title>
 </head>
 <body>
 <div class="container">
@@ -77,7 +77,7 @@
         var result;
         $.ajax({
             type: 'POST',
-            url: 'AcquireStudentServlet',
+            url: 'AcquireBFansServlet',
             dataType: 'json',
             success: function (data) {
                 console.log(data);
