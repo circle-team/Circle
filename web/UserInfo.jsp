@@ -38,34 +38,18 @@
 </head>
 <body>
 <div class="container">
-
         <div class="row">
             <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
                 <div class="col-md-3 text-left">
-                    <img id="logo" style="width: 47% ;height: 120%" src="images/logo.png"/>
+                    <img id="logo" style="width:auto;height:auto;max-width:125px;max-height:48px;" src="images/logo.png"/>
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-7 text-right">
-
                     <a href="#"><img src="images/personal.png"/></a>
                     <a href="UserInfo.jsp"><img src="images/information.png"/></a>
                     <a href="#"><img src="images/blog.png"/></a>
-                    <a href="#" id="user"><img src="images/defult_uiImge.png"/>
-                        <div id="userText">
-                            <h1>okokokokokoko</h1>
-                        </div>
-                    </a>
+                    <a href="login.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
                 </div>
-                <!--<div id="myModal" class="modal">-->
-                <!--<div class="modal-header">-->
-                <!--<span class="close">&times;</span>-->
-                <!--</div>-->
-                <!--<div class="modal-body">-->
-                <!--<p>弹窗文本...</p>-->
-                <!--<p>弹窗文本...</p>-->
-                <!--</div>-->
-                <!--<div class="modal-footer"></div>-->
-                <!--</div>-->
             </nav>
         </div>
 
