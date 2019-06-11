@@ -115,7 +115,6 @@
                         btn.removeClass("btn-default");
                         btn.addClass("btn-primary");
                         btn.data("iffollow", "1");
-
                     }
                 },
                 error: function () {
