@@ -11,19 +11,19 @@
 
     <script>
         function login_commit(){
-            var flag = true;
+            var flag = false;
             $.ajax({
                 url:"AdminloginServlet",
                 type:"POST",
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
+                    alert("qqqq!!!!"),
                     if(data==1){
                         $("#login_alert1").css("display","none");
                         $("#login_alert").css("display","block");
                         flag = false;
                     }
-
                 if(data==0)
             {
                 $("#login_alert").css("display","none");

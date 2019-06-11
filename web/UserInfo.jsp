@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label for="image" class="btn btn-default">更换头像</label>
                                     <input name="image" id="image" type="file" style="display:none">
-                                    <img src="/upload/kids.jpg" alt="">
+<%--                                    <img src="/upload/kids.jpg" alt="">--%>
                                     <p class="help-block">
                                         Example block-level help text here.
                                     </p>
@@ -102,26 +102,26 @@
                                     <input type="text" class="form-control" aria-describedby="addon8" name="age"
                                            id="age" value="${sessionScope.userinf.getUage()}"/>
                                 </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon" id="addon9">初中学校</span>
-                                    <input type="text" class="form-control" aria-describedby="addon9" name="mschool"
-                                           id="mschool"/>
-                                </div>
-                                <div class="form-group input-group col-md-6 column">
-                                    <span class="input-group-addon" id="addon10">初中年级</span>
-                                    <input type="text" class="form-control" aria-describedby="addon10" name="mgrade"
-                                           id="mgrade"/>
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon" id="addon11">高中学校</span>
-                                    <input type="text" class="form-control" aria-describedby="addon11" name="hschool"
-                                           id="hschool"/>
-                                </div>
-                                <div class="form-group input-group col-md-6 column">
-                                    <span class="input-group-addon" id="addon12">高中年级</span>
-                                    <input type="text" class="form-control" aria-describedby="addon12" name="hgrade"
-                                           id="hgrade"/>
-                                </div>
+<%--                                <div class="form-group input-group">--%>
+<%--                                    <span class="input-group-addon" id="addon9">初中学校</span>--%>
+<%--                                    <input type="text" class="form-control" aria-describedby="addon9" name="mschool"--%>
+<%--                                           id="mschool"/>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group input-group col-md-6 column">--%>
+<%--                                    <span class="input-group-addon" id="addon10">初中年级</span>--%>
+<%--                                    <input type="text" class="form-control" aria-describedby="addon10" name="mgrade"--%>
+<%--                                           id="mgrade"/>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group input-group">--%>
+<%--                                    <span class="input-group-addon" id="addon11">高中学校</span>--%>
+<%--                                    <input type="text" class="form-control" aria-describedby="addon11" name="hschool"--%>
+<%--                                           id="hschool"/>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group input-group col-md-6 column">--%>
+<%--                                    <span class="input-group-addon" id="addon12">高中年级</span>--%>
+<%--                                    <input type="text" class="form-control" aria-describedby="addon12" name="hgrade"--%>
+<%--                                           id="hgrade"/>--%>
+<%--                                </div>--%>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon" id="addon13">大学学校</span>
                                     <input type="text" class="form-control" aria-describedby="addon13" name="uschool"

@@ -43,6 +43,10 @@ CREATE TABLE Follow (
 	FOREIGN KEY ( Fuid ) REFERENCES Users ( Userid ),-- 关注者id，外键
 	
 );
+CREATE TABLE Admin(
+    Id BIGINT NOT NULL ,
+    Password BIGINT NOT NULL
+);
 CREATE TABLE Collect (
 	Cbid BIGINT NOT NULL,
 	Cuid BIGINT NOT NULL,

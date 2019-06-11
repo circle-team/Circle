@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-@WebServlet("/AdAdminloginServlet")
+@WebServlet("/AdminloginServlet")
 public class AdminloginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("qqq!");
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
@@ -31,12 +32,12 @@ public class AdminloginServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if (admin==null) {
+        if (admin1==null) {
             test = 1l;
             out.write("test");
         }
         else {
-            if(admin.getPassword().equals(password))
+            if(admin1.getPassword().equals(password))
             {
                 resp.sendRedirect("AdminCirle.jsp");
             }
