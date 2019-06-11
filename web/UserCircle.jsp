@@ -104,7 +104,7 @@
 
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" data-bid="">
+    <div class="modal-dialog modal-lg" data-bid="">
         <div class="modal-content details-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -115,7 +115,7 @@
             <div class="modal-body">
                 <div class="row clearfix">
                     <div class="col-md-12 column text-center">
-                        <img class="details-img" style="width:auto;height:auto;"
+                        <img class="details-img" style="width:90%;height:90%;"
                              src=""/>
                     </div>
                 </div>

@@ -50,7 +50,7 @@ public class InsertBlogServlet extends HttpServlet {
         System.out.println("查询分配随机数成功！");
 
         Timestamp date= new Timestamp(new Date().getTime());
-        Blog = new BlogInfoEntity(Bid,id,req.getParameter("text"),date,"1",null);
+        Blog = new BlogInfoEntity(Bid,id,req.getParameter("text"),date,"images/69.jpeg",null);
         try {
             BlogDao.insertData(Blog);
         } catch (SQLException e) {

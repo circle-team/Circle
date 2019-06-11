@@ -64,7 +64,7 @@
                            type="text"/>
                 </li>
                 <li>
-                    <button onclick="search_uid()" id="search_uid_btn" class="btn btn-default">查找</button>
+                    <button onclick="search_uid()" id="search_uid_btn" class="btn btn-default">关注</button>
                 </li>
             </ul>
         </div>
@@ -78,7 +78,7 @@
 
 <div class="modal fade" id="modal-blog-details" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" data-bid="">
+    <div class="modal-dialog  modal-lg" data-bid="">
         <div class="modal-content details-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -89,7 +89,7 @@
             <div class="modal-body">
                 <div class="row clearfix">
                     <div class="col-md-12 column text-center">
-                        <img class="details-img" style="width:auto;height:auto;"
+                        <img class="details-img" style="width:90%;height:90%;"
                              src=""/>
                     </div>
                 </div>
@@ -292,12 +292,12 @@
     }
 
     function re_blog() {
-        var result;
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: 'SelfBlogServlet',
             dataType: 'json',
             success: function (data) {
+                var result;
                 console.log(data);
                 var blogs = eval(data);
                 for (var index in blogs) {
@@ -311,7 +311,7 @@
                 $('.waterfall').append(result).waterfall();
             },
             error: function () {
-                alert("page load fail");
+
             }
         });
     }
@@ -333,7 +333,7 @@
             $("#blog-timestamp").html(getDateDiff(time));
             $(".details-commentnum").html(commentnum);
             var uid2 = '${sessionScope.userinf.getUid()}';
-            alert(uid2);
+
             if (uid == uid2) {
                 $("#delete-blog").css("display", "block");
             } else {
@@ -351,7 +351,7 @@
             var praise_txt = $(this).find(".praise_txt");
             var bid = $(this).data("bid");
             var num = parseInt(praise_txt.text());
-            alert(bid);
+
             $.ajax({
                 type: 'POST',
                 url: 'ThumbAddServlet',
@@ -372,7 +372,7 @@
                 },
                 error: function () {
                     // alert(uid);
-                    alert("praise fail");
+                    // alert("praise fail");
 
                 }
             });
@@ -386,11 +386,11 @@
                 data: {bid: bid},
                 success: function () {
                     location.reload();
-                    alert("delete success");
+                    // alert("delete success");
                 },
                 error: function () {
                     location.reload();
-                    alert("delete fail");
+                    // alert("delete fail");
                 }
             });
         });
@@ -401,11 +401,11 @@
                 url: 'InsertBlogServlet',
                 data: {text: text},
                 success: function () {
-                    alert("push blog success");
+                    // alert("push blog success");
                     location.reload();
                 },
                 error: function () {
-                    alert("push blog fail");
+                    // alert("push blog fail");
                     location.reload();
                 }
             });
@@ -414,24 +414,23 @@
         $("body").on("click", ".commit-comment", function () {
             var bid = $(".details-content").data("bid");
             var text = $("#comment").val();
-            alert(bid);
+            // alert(bid);
             alert(text);
             $.ajax({
                 type: 'POST',
                 url: 'CommentAddServlet',
                 data: {bid: bid, text: text},
                 success: function () {
-                    alert("push success");
+                    // alert("push success");
                     re_comment(bid);
                 },
                 error: function () {
-                    alert("push fail");
+                    // alert("push fail");
                 }
             });
 
         });
     }
-
     re_blog();
     re_click();
 </script>

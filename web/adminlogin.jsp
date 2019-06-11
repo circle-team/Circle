@@ -18,7 +18,7 @@
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
-                    alert("qqqq!!!!"),
+                    alert("qqqq!!!!");
                     if(data==1){
                         $("#login_alert1").css("display","none");
                         $("#login_alert").css("display","block");
