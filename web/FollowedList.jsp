@@ -22,7 +22,6 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-7 text-right">
-
                 <a href="#"><img src="images/personal.png"/></a>
                 <a href="UserInfo.jsp"><img src="images/information.png"/></a>
                 <a href="#"><img src="images/blog.png"/></a>
@@ -57,11 +56,13 @@
                     <div class="col-md-2 column follow-btn">
                         {{if ifthumb==0}}
                         <button class="follow btn btn-sm btn-default pull-right" data-iffollow="0"
-                                data-uid="{{uid}}" href="#">关&nbsp&nbsp &nbsp&nbsp注</button>
+                                data-uid="{{uid}}" href="#">关&nbsp&nbsp &nbsp&nbsp注
+                        </button>
 
                         {{else if ifthumb==1}}
                         <button class="follow btn btn-sm btn-primary pull-right" data-iffollow="1"
-                                data-uid="{{uid}}" href="#">取消关注</button>
+                                data-uid="{{uid}}" href="#">取消关注
+                        </button>
                         {{/if}}
 
 
