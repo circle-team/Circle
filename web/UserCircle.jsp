@@ -23,7 +23,6 @@
 
 </head>
 <body>
-<
 <div class="container">
     <div class="row">
         <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
@@ -62,13 +61,13 @@
                 <div class="col-md-8 column">
                     <ul class="nav nav-pills">
                         <li class="active">
-                            <a href="#"><h4>相贴 <span id="blogs_num" class="badge  badge-primary">0</span></h4></a>
+                            <a href="UserBlogs.jsp"><h4>相贴 <span id="blogs_num" class="badge  badge-primary">0</span></h4></a>
                         </li>
                         <li>
-                            <a href="#"><h4>粉丝 <span id="followed_num" class="badge  badge-primary">0</span></h4></a>
+                            <a href="FollowList.jsp"><h4>粉丝 <span id="followed_num" class="badge  badge-primary">0</span></h4></a>
                         </li>
                         <li>
-                            <a href="#"><h4>关注 <span id="follow_num" class="badge  badge-primary">0</span></h4></a>
+                            <a href="FollowedList.jsp"><h4>关注 <span id="follow_num" class="badge  badge-primary">0</span></h4></a>
                         </li>
                     </ul>
                     <blockquote>
