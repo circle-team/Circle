@@ -324,8 +324,8 @@
     function re_blog() {
         var result;
         $.ajax({
-            type: 'GET',
-            url: 'SelfBlogServlet',
+            type: 'POST',
+            url: 'YourselfBlogServlet',
             dataType: 'json',
             success: function (data) {
                 console.log(data);
