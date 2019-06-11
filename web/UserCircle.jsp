@@ -91,6 +91,9 @@
                        data-toggle="modal">发表博客</a>
                 </li>
                 <li class="active">
+                    <a class="btn btn-primary btn" href="School.jsp">同校同学推荐</a>
+                </li>
+                <li class="active">
                     <a href="" class="btn btn-default" href="#">刷新全部</a>
                 </li>
             </ul>
@@ -286,10 +289,10 @@
                 $("#blogs_num").html(blogs_num);
                 $("#followed_num").html(follow_num);
                 $("#follow_num").html(followed_num);
-                alert("re card yes");
+                // alert("re card yes");
             },
             error: function () {
-                alert("re card fail");
+                // alert("re card fail");
             }
         });
 

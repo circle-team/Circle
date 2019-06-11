@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<!--<script>-->
+
+<!--    function delete_1(bid) {-->
+<!--        alert(bid);-->
+<!--        $.ajax({-->
+<!--            type: 'POST',-->
+<!--            url: 'deleteuser',-->
+<!--            data: {id: id},-->
+<!--            success: function (data) {-->
+<!--                alert("删除成功！")-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
+
+
+<h1>管理员面板</h1>
+<div id="panel" class=" container jumbotron well-sm" style="width:auto;height:auto;max-width:800px;max-height:100px;">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="nav nav-pills">
+                <li>
+                    <h5>输入UID删号：</h5>
+                </li>
+                <li>
+                    <input name="search_uid" id="search_uid" class="form-control input-medium search-query"
+                           type="text"/>
+                </li>
+                <li>
+                    <button onclick="del_uid()" id="search_uid_btn" class="btn btn-default">删除</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function del_uid() {
+        var uid=$("#search_uid").val();
+        $.ajax({
+            type: 'POST',
+            url: 'deleteuser',
+            data: {uid: uid},
+            async: false,
+            success: function () {
+                alert("已删除！");
+            },
+            error: function () {
+                alert("已删除！");
+            }
+        });
+    }
+</script>
+</body>
+</html>

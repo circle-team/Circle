@@ -10,60 +10,15 @@
     <%--<!--    <script src="js/login.js"></script>-->--%>
 
     <script>
-        function login_commit(){
-            var flag = false;
-            $.ajax({
-                url:"AdminloginServlet",
-                type:"POST",
-                async:false,
-                data:$("#login_form").serialize(),
-                success:function (data) {
-                    alert("qqqq!!!!");
-                    if(data==1){
-                        $("#login_alert1").css("display","none");
-                        $("#login_alert").css("display","block");
-                        flag = false;
-                    }
-                if(data==0)
-            {
-                $("#login_alert").css("display","none");
-                $("#login_alert1").css("display","block");
-                flag = false;
+        function login_commit() {
+            var name=$("#name").val();
+            var Password=$("#Password").val();
+            if(name=="admin" && Password=="88888888"){
+                window.open("admin.html");
+            }else{
+                alert("用户名或者密码错误！")
             }
-                }
-            }
-            )
-            return flag;
         }
-        $(document).ready(function(){
-
-            /*$("#btn btn-default").click(function () {
-                $.ajax({
-
-                    url:"loginServlet",
-                    type:"POST",
-                    data:{"name":$("#name").val(),"password":$("#password").val()},
-                    success:function (test) {
-                        if(test==2)
-                        $("alert").html("密码错误");
-
-                    },
-                    error:function () {
-                        alert("出现连接错误！");
-                    }
-
-
-
-                })
-            })*/
-
-
-
-
-        })
-
-
-
     </script>
 </head>
 <body>
@@ -127,7 +82,7 @@
                                   onsubmit="return login_commit()">
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon1">ID号</span>
-                                    <input type="text" class="form-control" id="name" value="" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
+                                    <input type="text" class="form-control" id="name" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
                                 <div class="input-group form-group col-sm-6">

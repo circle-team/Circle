@@ -245,7 +245,7 @@
 <script>
     function re_comment(bid) {
         var result;
-        alert(bid);
+        // alert(bid);
         $.ajax({
             type: 'POST',
             url: 'AcquireStudentServlet',
@@ -263,7 +263,7 @@
                 $('.comment_block').data();
             },
             error: function () {
-                alert("comments load fail");
+                // alert("comments load fail");
             }
         });
     }
@@ -288,7 +288,7 @@
                 $('.waterfall').append(result).waterfall();
             },
             error: function () {
-                alert("page load fail");
+                // alert("page load fail");
             }
         });
     }
@@ -331,7 +331,7 @@
             var praise_txt = $(this).find(".praise_txt");
             var bid = $(this).data("bid");
             var num = parseInt(praise_txt.text());
-            alert(bid);
+            // alert(bid);
             $.ajax({
                 type: 'POST',
                 url: 'ThumbAddServlet',
@@ -353,7 +353,7 @@
                 },
                 error: function () {
                     // alert(uid);
-                    alert("praise fail");
+                    // alert("praise fail");
 
                 }
             });
@@ -367,11 +367,11 @@
                 data: {bid: bid},
                 dataType: 'json',
                 success: function () {
-                    alert("delete success");
+                    // alert("delete success");
                     re_blog();
                 },
                 error: function () {
-                    alert("delete fail");
+                    // alert("delete fail");
                 }
             });
         });
@@ -385,11 +385,11 @@
                     data: {uid: uid, text: text},
                     dataType: 'json',
                     success: function () {
-                        alert("push success");
+                        // alert("push success");
                         re_blog();
                     },
                     error: function () {
-                        alert("push fail");
+                        // alert("push fail");
                     }
                 });
             }
@@ -403,11 +403,11 @@
                 data: {bid: bid, text: text},
                 dataType: 'json',
                 success: function () {
-                    alert("push success");
+                    // alert("push success");
                     re_comment(bid);
                 },
                 error: function () {
-                    alert("push fail");
+                    // alert("push fail");
                 }
             });
         });
