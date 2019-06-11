@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-<%--<!--    <script src="js/login.js"></script>-->--%>
+    <%--<!--    <script src="js/login.js"></script>-->--%>
 
     <script>
         function login_commit(){
@@ -18,7 +18,7 @@
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
-;                    if(data=="false"){
+                    if(data=="false"){
                         $("#login_alert").css("display","block");
                         flag = false;
                     }
@@ -26,32 +26,32 @@
             })
             return flag;
         }
-   $(document).ready(function(){
+        $(document).ready(function(){
 
-       /*$("#btn btn-default").click(function () {
-           $.ajax({
+            /*$("#btn btn-default").click(function () {
+                $.ajax({
 
-               url:"loginServlet",
-               type:"POST",
-               data:{"name":$("#name").val(),"password":$("#password").val()},
-               success:function (test) {
-                   if(test==2)
-                   $("alert").html("密码错误");
-                   
-               },
-               error:function () {
-                   alert("出现连接错误！");
-               }
+                    url:"loginServlet",
+                    type:"POST",
+                    data:{"name":$("#name").val(),"password":$("#password").val()},
+                    success:function (test) {
+                        if(test==2)
+                        $("alert").html("密码错误");
 
-
-
-           })
-       })*/
+                    },
+                    error:function () {
+                        alert("出现连接错误！");
+                    }
 
 
 
+                })
+            })*/
 
-   })
+
+
+
+        })
 
 
 
@@ -63,7 +63,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    登 录 <small>  立 即 开 始 探 索 circle</small>
+                    管理员登陆 <small>等级最高者的登陆</small>
                 </h1>
             </div>
         </div>
@@ -118,21 +118,21 @@
                                   onsubmit="return login_commit()">
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon1">用户名</span>
-                                    <input type="text" class="form-control" id="name" value="${cookie.id.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
+                                    <input type="text" class="form-control" id="name" value="" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon2">密   码</span>
                                     <input type="password" class="form-control" id="Password" name="password"
-                                           aria-describedby="addon2" placeholder="请输入密码" value="${cookie.password.value}" onblur="oBlur_Password()"/>
+                                           aria-describedby="addon2" placeholder="请输入密码" value="" onblur="oBlur_Password()"/>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <div class="checkbox">
-                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>
-                                        </div>
-                                    </div>
-                                </div>
+<%--                                <div class="form-group">--%>
+<%--                                    <div class="col-sm-6">--%>
+<%--                                        <div class="checkbox">--%>
+<%--                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <button class="btn btn-default" type="submit">登 录</button>
