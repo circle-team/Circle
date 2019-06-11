@@ -36,26 +36,17 @@ a:hover, a:active, a:focus {
 #user{
     position: relative;
 }
-#myModal{
-    display: none;
-    position: absolute;
-    background-color: #bce8f1;
-    z-index: 99;
-    height: 120px;
+img{
+    border-radius: 10px;
 }
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+a img{
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
-.mo1{
-    top: 48px;
-    left: 500px;
-    width: 40%;
-}
-.mo2{
-    top: 59px;
-    left: 580px;
-    width: 30%;
+a img:hover{
+    -moz-box-shadow: 0px 0px 25px rgba(0, 255, 178, 1);
+    -webkit-box-shadow: 0px 0px 25px rgba(0, 255, 178, 1);
+    box-shadow: 0px 0px 25px rgba(0, 255, 178, 1);
+    cursor: pointer;
 }
