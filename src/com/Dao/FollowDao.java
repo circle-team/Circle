@@ -14,11 +14,14 @@ public class FollowDao implements CommonDao {
     public boolean insertData(Object o) throws SQLException {
         FollowEntity fe = (FollowEntity)o;
         Connection conn = DBUtil.getConnection();
-        String sql = "insert into Follow values(?,?,?)";
+        System.out.println(fe.getFuid());
+        System.out.println(fe.getFhuid());
+
+        String sql = "insert into Follow values(?,?)";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,fe.getFhuid());
         pstmt.setLong(2,fe.getFuid());
-        pstmt.setTimestamp(3,fe.getFtime());
+
         if(pstmt.executeUpdate()>0)
         {
             conn.close();
@@ -115,7 +118,7 @@ public class FollowDao implements CommonDao {
         ResultSet rs = pstmt.executeQuery();
         while (rs.next())
         {
-            uid=rs.getLong("Fhuid");
+            uid=rs.getLong(1);
             idlist.add(uid);
 
         }
@@ -150,12 +153,14 @@ public class FollowDao implements CommonDao {
         Connection conn = DBUtil.getConnection();
         String sql = "select * from follow where fhuid=? and fuid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,fe.getFhuid());
+        pstmt.setLong(2,fe.getFuid());
         ResultSet rs = pstmt.executeQuery();
+
         FollowEntity f = null;
         if(rs.next())
         {
-            f = new FollowEntity(rs.getLong("fhuid"),rs.getLong("fuid"),
-                    rs.getTimestamp("datetime"));
+            f = new FollowEntity(rs.getLong("fhuid"),rs.getLong("fuid"));
         }
 
         return f;

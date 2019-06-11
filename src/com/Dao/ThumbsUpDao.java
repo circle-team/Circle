@@ -12,8 +12,12 @@ import java.util.ArrayList;
 public class ThumbsUpDao implements CommonDao{
     @Override
     public boolean insertData(Object o) throws SQLException {
+        System.out.println("申请插入数据");
         ThumbsUpEntity te = (ThumbsUpEntity)o;
         Connection conn = DBUtil.getConnection();
+        System.out.println(te.getTuid());
+        System.out.println(te.getThbid());
+        System.out.println(te.getTdate());
         String sql = "insert into Thumbs_up values(?,?,?)";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,te.getThbid());
@@ -21,6 +25,7 @@ public class ThumbsUpDao implements CommonDao{
         pstmt.setTimestamp(3,te.getTdate());
         if(pstmt.executeUpdate()>0)
         {
+            System.out.println("插入成功！");
             conn.close();
             return true;
         }
@@ -83,15 +88,18 @@ public class ThumbsUpDao implements CommonDao{
     public Object query(Object o) throws SQLException {
         ThumbsUpEntity fe = (ThumbsUpEntity) o;
         Connection conn = DBUtil.getConnection();
-        String sql = "select * from follow where Thbid=? and Tuid=?";
+        String sql = "select * from thumbs_up where Thbid=? and Tuid=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setLong(1,fe.getThbid());
+        pstmt.setLong(2,fe.getTuid());
         ResultSet rs = pstmt.executeQuery();
         ThumbsUpEntity f = null;
         if(rs.next())
         {
-            f = new ThumbsUpEntity(rs.getLong("Thbid"),rs.getLong(" Tuid"),
-                    rs.getTimestamp("datetime"));
+            f = new ThumbsUpEntity(rs.getLong(1),rs.getLong(2),
+                    rs.getTimestamp(3));
         }
+conn.close();
 
         return f;
     }

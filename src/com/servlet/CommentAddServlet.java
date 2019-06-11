@@ -5,6 +5,7 @@ import com.entity.CommentsEntity;
 import com.entity.UserInfoEntity;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Random;
-
+@WebServlet("/CommentAddServlet")
 public class CommentAddServlet  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class CommentAddServlet  extends HttpServlet {
             }
         }
         Timestamp time = new Timestamp(new Date().getTime());
-        comment = new CommentsEntity(cid,Long.valueOf(req.getParameter("fid")),Long.valueOf(req.getParameter("uid")),req.getParameter("ctext"),time);
+        comment = new CommentsEntity(cid,Long.valueOf(req.getParameter("fid")),Long.valueOf(userinf.getUid()),req.getParameter("ctext"),time);
         try {
             Cdao.insertData(comment);
         } catch (SQLException e) {

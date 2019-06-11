@@ -7,51 +7,60 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-<%--<!--    <script src="js/login.js"></script>-->--%>
+    <%--<!--    <script src="js/login.js"></script>-->--%>
 
     <script>
         function login_commit(){
             var flag = true;
             $.ajax({
-                url:"login",
+                url:"AdminloginServlet",
                 type:"POST",
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
-;                    if(data=="false"){
+                    if(data==1){
+                        $("#login_alert1").css("display","none");
                         $("#login_alert").css("display","block");
                         flag = false;
                     }
+
+                if(data==0)
+            {
+                $("#login_alert").css("display","none");
+                $("#login_alert1").css("display","block");
+                flag = false;
+            }
                 }
-            })
+            }
+            )
             return flag;
         }
-   $(document).ready(function(){
+        $(document).ready(function(){
 
-       /*$("#btn btn-default").click(function () {
-           $.ajax({
+            /*$("#btn btn-default").click(function () {
+                $.ajax({
 
-               url:"loginServlet",
-               type:"POST",
-               data:{"name":$("#name").val(),"password":$("#password").val()},
-               success:function (test) {
-                   if(test==2)
-                   $("alert").html("密码错误");
-                   
-               },
-               error:function () {
-                   alert("出现连接错误！");
-               }
+                    url:"loginServlet",
+                    type:"POST",
+                    data:{"name":$("#name").val(),"password":$("#password").val()},
+                    success:function (test) {
+                        if(test==2)
+                        $("alert").html("密码错误");
 
-
-
-           })
-       })*/
+                    },
+                    error:function () {
+                        alert("出现连接错误！");
+                    }
 
 
 
+                })
+            })*/
 
-   })
+
+
+
+        })
 
 
 
@@ -59,11 +68,11 @@
 </head>
 <body>
 <div class="container">
-    <div class="row clearfix" >
+    <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    登 录 <small>  立 即 开 始 探 索 <strong>circle</strong></small>
+                    管理员登陆 <small>等级最高者的登陆</small>
                 </h1>
             </div>
         </div>
@@ -110,29 +119,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4  col-md-offset-1 column">
+                <div class="col-md-6 column">
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <br>
                             <form id="login_form" class="form-horizontal" role="form" method="post" action="login"
                                   onsubmit="return login_commit()">
                                 <div class="input-group form-group col-sm-6">
-                                    <span class="input-group-addon" id="addon1">用户名</span>
-                                    <input type="text" class="form-control" id="name" value="${cookie.id.value}" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
+                                    <span class="input-group-addon" id="addon1">ID号</span>
+                                    <input type="text" class="form-control" id="name" value="" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
                                 <div class="input-group form-group col-sm-6">
                                     <span class="input-group-addon" id="addon2">密   码</span>
                                     <input type="password" class="form-control" id="Password" name="password"
-                                           aria-describedby="addon2" placeholder="请输入密码" value="${cookie.password.value}" onblur="oBlur_Password()"/>
+                                           aria-describedby="addon2" placeholder="请输入密码" value="" onblur="oBlur_Password()"/>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <div class="checkbox">
-                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>
-                                        </div>
-                                    </div>
-                                </div>
+<%--                                <div class="form-group">--%>
+<%--                                    <div class="col-sm-6">--%>
+<%--                                        <div class="checkbox">--%>
+<%--                                            <input name="remember" value="Y" id="rem" type="checkbox"/><label for="rem">记住我</label>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <button class="btn btn-default" type="submit">登 录</button>
@@ -141,7 +150,10 @@
                             </form>
 
                             <div id="login_alert" class="alert alert-danger" role="alert" style="display: none">
-                                密码错误!
+                                该用户不存在
+                            </div>
+                            <div id="login_alert1" class="alert alert-danger" role="alert" style="display: none">
+                                密码错误
                             </div>
                         </div>
                     </div>
@@ -164,29 +176,44 @@
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img alt=""
-                                             src="images/img_27.jpg"/>
+                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/1/default.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                Show you Life whatever you are!!
+                                                First Thumbnail label
                                             </h4>
+                                            <p>
+                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
+                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
+                                                ultricies vehicula ut id elit.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img alt=""
-                                             src="images/img_39.jpg"/>
+                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/2/default.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                Show your creative wherever you are!!
+                                                Second Thumbnail label
                                             </h4>
+                                            <p>
+                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
+                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
+                                                ultricies vehicula ut id elit.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img alt=""
-                                             src="images/img_47.jpg"/>
+                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/3/default.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                Show your discover whenever your are!!
+                                                Third Thumbnail label
                                             </h4>
+                                            <p>
+                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
+                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
+                                                ultricies vehicula ut id elit.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

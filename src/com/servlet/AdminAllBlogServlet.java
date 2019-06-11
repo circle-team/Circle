@@ -1,6 +1,9 @@
 package com.servlet;
 
-import com.Dao.*;
+import com.Dao.BlogInfoDao;
+import com.Dao.CommentDao;
+import com.Dao.ThumbsUpDao;
+import com.Dao.UserInfoDao;
 import com.entity.BlogInfoEntity;
 import com.entity.ShowblogEntity;
 import com.entity.ThumbsUpEntity;
@@ -8,11 +11,9 @@ import com.entity.UserInfoEntity;
 import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,71 +22,20 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@WebServlet("/SelfBlogServlet")
-public class SelfBlogServlet extends HttpServlet {
-
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class AdminAllBlogServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         resp.setContentType("application/x-json;charset=utf-8");
-         System.out.println("success我！");
         PrintWriter out = resp.getWriter();
-        HttpSession session = req.getSession();
-        UserInfoEntity userinf1 = (UserInfoEntity) session.getAttribute("userinf");
-//        System.out.println("多少微博!");
-//        System.out.println(userinf1.getUschool());
-//        System.out.println("qqqq");
-        int SelfBolgnumber=0;
-        BlogInfoDao Blogdao = new BlogInfoDao();
-        Long id = userinf1.getUid();
+        ArrayList<BlogInfoEntity> Blist = new ArrayList<>();
+        BlogInfoDao Bdao = new BlogInfoDao();
         try {
-           SelfBolgnumber =Blogdao.queryDataNum(id);
+            Blist= Bdao.queryall();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-//        System.out.println(SelfBolgnumber);
-        System.out.println("多少微博!");
-//        System.out.println(id);
-        int fans = 0;
-        int bfans= 0;
-
-        FollowDao fdao = new FollowDao();
-        try {
-            bfans=fdao.queryDataNum1(id,1l);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            fans=fdao.queryDataNum1(id,0l);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("fansbigbang");
-        System.out.println(fans);
-        System.out.println(bfans);
-        System.out.println("fanbigbang ");
-
-      ArrayList<BlogInfoEntity> BlogE= new ArrayList<BlogInfoEntity>();
-      ArrayList<Long> ID =null;
-        try {
-            ID = fdao.query1(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-//        for (Long x:
-//                ID
-//             ) {
-//            System.out.println(x);
-//
-//        }
-
-        for (Long x:ID) {
-            try {
-                BlogE=Blogdao.query1(x,BlogE);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         Comparator<BlogInfoEntity> comparator = new Comparator<BlogInfoEntity>() {
             @Override
@@ -97,27 +47,27 @@ public class SelfBlogServlet extends HttpServlet {
 
             }
         };
-        Collections.sort(BlogE, comparator);
+        Collections.sort(Blist, comparator);
 
-        System.out.println(BlogE.toString());
+        System.out.println(Blist.toString());
         UserInfoDao Userdao = new UserInfoDao();
         ArrayList<ShowblogEntity> Sblog = new ArrayList<>();
 
 
         Long ifthumb = null;
 
-        for (BlogInfoEntity x : BlogE) {
+        for (BlogInfoEntity x : Blist) {
             try {
                 UserInfoEntity User = new UserInfoEntity (x.getBuid());
                 User = (UserInfoEntity) Userdao.query(User);
                 System.out.println(x.getBuid());
                 ThumbsUpDao thumbs = new ThumbsUpDao();
-                CommentDao  comments = new CommentDao();
+                CommentDao comments = new CommentDao();
                 Long thumbnum = (Long) thumbs.Search(x.getBid());
                 System.out.println("thumbs"+thumbnum);
                 Long comment = (Long) comments.Search(x.getBid());
                 System.out.println("comment"+comment);
-                ThumbsUpEntity T = new ThumbsUpEntity(x.getBid(),userinf1.getUid(),null);
+                ThumbsUpEntity T = new ThumbsUpEntity(x.getBid(),User.getUid(),null);
                 if (thumbs.query(T)==null)
                 {
                     ifthumb=0l;
@@ -148,9 +98,10 @@ public class SelfBlogServlet extends HttpServlet {
 
         List<ShowblogEntity> beans = Sblog;
         System.out.println(beans);
-            JSONArray array = JSONArray.fromObject(beans);
+        JSONArray array = JSONArray.fromObject(beans);
         System.out.println(array.toString());
         out.print(array);
 //        resp.getWriter().println(array.toString());
+
     }
 }

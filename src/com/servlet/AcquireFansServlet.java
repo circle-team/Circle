@@ -2,10 +2,13 @@ package com.servlet;
 
 import com.Dao.FollowDao;
 import com.Dao.UserInfoDao;
+import com.entity.FollowEntity;
 import com.entity.UserInfoEntity;
+import com.entity.UserInfoShowEntity;
 import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@WebServlet("/AcquireFansServlet")
 public class AcquireFansServlet extends HttpServlet {
 
     @Override
@@ -45,9 +49,32 @@ public class AcquireFansServlet extends HttpServlet {
         }
 
 
-        List<UserInfoEntity> fansinf = Userinfs;
-        JSONArray Fans = JSONArray.fromObject(fansinf);
-        out.print(Fans);
+        ArrayList<UserInfoShowEntity> Usershowlist = new ArrayList<>();
+        FollowEntity follow = new FollowEntity();
+//        FollowDao fdao = new FollowDao();
+        Long ifthumb = null;
+        for (UserInfoEntity x:Userinfs) {
+            follow.setFhuid(x.getUid());
+            follow.setFuid(Useri.getUid());
+            try {
+                if (fdao.query(follow)==null)
+                {
+                    ifthumb=0l;
+
+                }
+                else {
+                    ifthumb=1l;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            UserInfoShowEntity y = new UserInfoShowEntity(x.getUid(),x.getUgender(),x.getUage(),x.getUcontact(),x.getUname(),x.getUaddress(),x.getUemail(),x.getUidentityNumber(),x.getUimage(),x.getUhobby(),x.getUschool(),x.getUgrade(),ifthumb);
+            Usershowlist.add(y);
+        }
+
+        List<UserInfoShowEntity> Users = Usershowlist;
+        JSONArray student = JSONArray.fromObject(Users);
+        out.print(student);
 
 
     }

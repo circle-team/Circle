@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/comment.css">
-    <link rel="stylesheet" href="css/nav.css">
+
     <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="js/template-web.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/bootstrap-waterfall.js"></script>
-    <script src="js/nav.js"></script>
+
     <script src="js/comment.js"></script>
     <script src="js/blog.js"></script>
     <script src="js/getDateDiff.js"></script>
@@ -89,7 +89,7 @@
                 <hr>
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                                    <span class="praise"><span class="praise_img_block"><img src="images/love.png"
+                                    <span id="log-details-praise" data-bid="" class="praise"><span id="blog-details-praise-img" class="praise_img_block"><img src="images/love.png"
                                                                                              class="praise_img animated rubberBand"></span>
                                     <span class="praise_txt details-thupnum">0</span></span>
 
@@ -187,9 +187,15 @@
             </a>
         </li>
         <li class="list-group-item">
-            <span class="praise"><span class="praise_img_block"><img src="images/love.png"
-                                                                     class="praise_img animated rubberBand"></span>
-                                    <span class="praise_txt">{{thumbnumber}}</span></span>
+            <span class="praise" data-bid="{{blogid}}">
+                {{if ifthumb==0}}
+                <span class="praise_img_block"><img src="images/love.png" class="praise_img animated rubberBand"></span>
+                <span class="praise_txt">{{thumbnumber}}</span></span>
+                {{else if ifthumb==1}}
+                <span class="praise_img_block"><img src="images/loved.png" class="praise_img animated rubberBand"></span>
+                <span class="praise_txt">{{thumbnumber}}</span></span>
+                {{/if}}
+
 
             <span class="comments"><img src="images/comment.png"
                                         class="comment_img animated rubberBand"></span>
@@ -197,7 +203,7 @@
             <a href="#modal-blog-details" class="btn btn-sm btn-default modal-details-btn" data-text="{{text}}"
                data-uid="{{uid}}"
                data-commentnum="{{commentnumber}}" data-thupnum="{{thumbnumber}}" data-time="{{date.time}}"
-               data-bid="{{blogid}}" data-uimg=""
+               data-bid="{{blogid}}" data-ifthumb="{{ifthumb}}" data-uimg="{{uimage}}"
                data-img="{{image}}" role="button"
                class="btn btn-sm"
                data-toggle="modal">查看详情</a>
@@ -207,14 +213,12 @@
                 <div class="media-left">
                     <a href="javascript:;">
                         <img class="media-object img-rounded" style="width: 30px; height: 30px;"
-                             src="{{img}}"/>
+                             src="{{uimage}}"/>
                     </a>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading">{{text}}</h5>
+                    <h5 class="media-heading">{{uname}}</h5>
                     <small>{{text}}</small>
-                    <br>
-                    <small class="timestamp pull-right">{{date.time}}</small>
                 </div>
             </div>
         </li>
@@ -225,26 +229,27 @@
     <div class="row clearfix">
         <div class="col-md-2 column text-center">
             <img height="80" width="80" alt="140x140"
-                 src="{{cuid}}"
+                 src="{{cimg}}"
                  class="img-circle"/>
-            <label>{{}}</label>
+            <label>{{cname}}</label>
         </div>
         <div class="col-md-10 column">
             <blockquote>
-                <p>{{text}}</p>
-                <small>{{date.time}}<cite>发送于web客户端</cite></small>
+                <p>{{ctext}}</p>
+                <small class="timestamp">{{ctime.time}}<cite>发送于web客户端</cite></small>
             </blockquote>
         </div>
     </div>
 </script>
+
 <script>
     function re_comment(bid) {
         var result;
+        alert(bid);
         $.ajax({
-            type: 'GET',
-            url: 'SelfBlogServlet',
-            dataType: 'json',
-            data: {bid: bid},
+            type: 'POST',
+            url: 'AcquireStudentServlet',
+            dataType:'json',
             success: function (data) {
                 console.log(data);
                 var comments = eval(data);
@@ -255,15 +260,14 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.comment_block').append(result);
+                $('.comment_block').data();
             },
             error: function () {
                 alert("comments load fail");
             }
         });
     }
-</script>
-<script>
+
     function re_blog() {
         var result;
         $.ajax({
@@ -280,118 +284,139 @@
                     result = result + res;
                     // 将模板放入页面中
                 }
-                $('.waterfall').append(result)
-                    .waterfall();
+
+                $('.waterfall').append(result).waterfall();
             },
             error: function () {
                 alert("page load fail");
             }
         });
-        //   $('.waterfall')
-        //     .data('bootstrap-waterfall-template', $('#waterfall-template').html())
-        //      .waterfall();
-        $(function () {
-            $("body").on("click", ".praise", function () {
-                var praise_img_block = $(this).find(".praise_img_block");
-                var praise_img = $(this).find(".praise_img");
-                var praise_txt = $(this).find(".praise_txt");
-                var num = parseInt(praise_txt.text());
-                if (praise_img.attr("src") == ("images/loved.png")) {
-                    praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
-                    praise_txt.removeClass("hover");
-                    num -= 1;
-                    praise_txt.text(num)
-                } else {
-                    praise_img.attr("src", "images/loved.png");
-                    praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
-                    praise_txt.addClass("hover");
-                    num += 1;
-                    praise_txt.text(num)
+    }
+
+    function re_click() {
+        $("body").on("click", ".modal-details-btn", function () {
+            var uid = $(this).data("uid");
+            var bid = $(this).data("bid");
+            var text = $(this).data("text");
+            var time = $(this).data("time");
+            var commentnum = $(this).data("commentnum");
+            var thupnum = $(this).data("thupnum");
+            var img = $(this).data("img");
+            var ifthumb=$(this).data("ifthumb");
+            if(ifthumb==1){
+                $("#blog-details-praise-img").html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
+            }else {
+                $("#blog-details-praise-img").html("<img src='images/love.png' class='praise_img animated rubberBand' />");
+            }
+            $(".details-content").data("bid", bid);
+            $("#delete-blog").data("bid", bid);
+            $("#delete-blog").data("uid", uid);
+            $("#log-details-praise").data("bid", bid);
+            obj.find(".praise_txt").data("ifthumb", ifthumb);
+            $("#blog-timestamp").html(getDateDiff(time));
+            $(".details-commentnum").html(commentnum);
+            $(".details-thupnum").html(thupnum);
+            $(".details-text").html(text);
+            $(".details-img").attr("src", img);
+            re_comment(bid);
+
+        });
+        $("body").on("click", ".praise", function () {
+            var praise_img_block = $(this).find(".praise_img_block");
+            var praise_img = $(this).find(".praise_img");
+            var praise_txt = $(this).find(".praise_txt");
+            var bid = $(this).data("bid");
+            var num = parseInt(praise_txt.text());
+            alert(bid);
+            $.ajax({
+                type: 'POST',
+                url: 'ThumbAddServlet',
+                data: {bid: bid},
+                success: function () {
+                    if (praise_img.attr("src") == ("images/loved.png")) {
+                        praise_img_block.html("<img src='images/love.png' class='praise_img animated rubberBand' />");
+                        praise_txt.removeClass("hover");
+                        num -= 1;
+                        praise_txt.text(num)
+                    } else {
+                        praise_img.attr("src", "images/loved.png");
+                        praise_img_block.html("<img src='images/loved.png' class='praise_img animated rubberBand' />");
+                        praise_txt.addClass("hover");
+                        num += 1;
+                        praise_txt.text(num)
+                    }
+                    re_blog();
+                },
+                error: function () {
+                    // alert(uid);
+                    alert("praise fail");
+
                 }
-            })
-            $("body").on("click", ".modal-details-btn", function () {
-                var uid = $(this).data("uid");
-                var bid = $(this).data("bid");
-                var text = $(this).data("text");
-                var time = $(this).data("time");
-                var commentnum = $(this).data("commentnum");
-                var thupnum = $(this).data("thupnum");
-                var img = $(this).data("img");
-                $(".details-content").data("bid", bid);
-                $("#delete-blog").data("bid", bid);
-                $("#delete-blog").data("uid", uid);
-                $("#blog-timestamp").html(time);
-                $(".details-commentnum").html(commentnum);
-                $(".details-thupnum").html(thupnum);
-                $(".details-text").html(text);
-                $(".details-img").attr("src", img);
-                re_comment(bid);
-            })
-            $("body").on("click", "#delete-blog", function () {
-                var bid = $(this).data("bid");
-                var uid1 = $(this).data("uid");
-                var uid2 = '${sessionScope.userinf.getUid()}';
-                if (uid1 == uid2) {
-                    $("#delete-blog").css("display", "");
+            });
+
+        });
+        $("body").on("click", "#delete-blog", function () {
+            var bid = $(this).data("bid");
+            var uid1 = $(this).data("uid");
+            var uid2 = '${sessionScope.userinf.getUid()}';
+            if (uid1 == uid2) {
+                $("#delete-blog").css("display", "");
+            }
+            $.ajax({
+                type: 'GET',
+                url: 'SelfBlogServlet',
+                data: {bid: bid},
+                dataType: 'json',
+                success: function () {
+                    alert("delete success");
+                    re_blog();
+                },
+                error: function () {
+                    alert("delete fail");
                 }
+            });
+        });
+        $("body").on("click", ".commit-blog", function () {
+            if (submit_blog()) {
+                var uid = '${sessionScope.userinf.getUid()}'
+                var text = $("#new-blog-text").val();
                 $.ajax({
                     type: 'GET',
                     url: 'SelfBlogServlet',
-                    data: {bid: bid},
+                    data: {uid: uid, text: text},
                     dataType: 'json',
                     success: function () {
-                        alert("delete success");
+                        alert("push success");
                         re_blog();
                     },
                     error: function () {
-                        alert("delete fail");
+                        alert("push fail");
                     }
                 });
-            })
-            $("body").on("click", ".commit-blog", function () {
-                if (submit_blog()) {
-                    var uid = '${sessionScope.userinf.getUid()}'
-                    var text = $("#new-blog-text").val();
-                    $.ajax({
-                        type: 'GET',
-                        url: 'SelfBlogServlet',
-                        data: {uid: uid, text: text},
-                        dataType: 'json',
-                        success: function () {
-                            alert("push success");
-                            re_blog();
-                        },
-                        error: function () {
-                            alert("push fail");
-                        }
-                    });
-                }
-            });
-            $("body").on("click", ".commit-comment", function () {
-                if (submit_comment()) {
-                    var uid = '${sessionScope.userinf.getUid()}';
-                    var bid = $(".details-content").data("bid");
-                    var text = $("#new-blog-text").val();
-                    $.ajax({
-                        type: 'GET',
-                        url: 'SelfBlogServlet',
-                        data: {uid: uid, bid: bid, text: text},
-                        dataType: 'json',
-                        success: function () {
-                            alert("push success");
-                            re_comment(bid);
-                        },
-                        error: function () {
-                            alert("push fail");
-                        }
-                    });
-                }
-            });
-            $(".timestamp").html(getDateDiff(this.html()));
+            }
+        });
+        $("body").on("click", ".commit-comment", function () {
+            if (submit_comment()) {
+                var bid = $(".details-content").data("bid");
+                var text = $("#new-blog-text").val();
+                $.ajax({
+                    type: 'GET',
+                    url: 'CommentAddServlet',
+                    data: {bid: bid, text: text},
+                    dataType: 'json',
+                    success: function () {
+                        alert("push success");
+                        re_comment(bid);
+                    },
+                    error: function () {
+                        alert("push fail");
+                    }
+                });
+            }
         });
     }
-
     re_blog();
+    re_click();
 </script>
 </body>
 </html>
