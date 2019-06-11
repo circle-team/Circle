@@ -2,7 +2,7 @@
 var isAnimated = false;
 $(document).ready(function(){
     $(window).on("scroll",function () {
-        if ($(this).scrollTop()>190) {
+        if ($(this).scrollTop()>180) {
             $(".box1").addClass("box2");
             $(".box2").removeClass("box1");
             $(".mo1").addClass("mo2");
@@ -14,10 +14,12 @@ $(document).ready(function(){
             }
         }else {
             isAnimated = false;
-            $(".box1").removeClass("box2");
             $(".box2").addClass("box1");
-            $(".mo2").removeClass("mo1");
-            $(".mo1").addClass("mo2");
+            $(".box1").removeClass("box2");
+            $(".mo2").addClass("mo1");
+            $(".mo1").removeClass("mo2");
+
+
         }
     })
 })

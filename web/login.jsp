@@ -59,11 +59,11 @@
 </head>
 <body>
 <div class="container">
-    <div class="row clearfix">
+    <div class="row clearfix" >
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    登 录 <small>  立 即 开 始 探 索 circle</small>
+                    登 录 <small>  立 即 开 始 探 索 <strong>circle</strong></small>
                 </h1>
             </div>
         </div>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 column">
+                <div class="col-md-4  col-md-offset-1 column">
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <br>
@@ -164,44 +164,29 @@
                                 <div class="carousel-inner">
                                     <div class="item active">
                                         <img alt=""
-                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/1/default.jpg"/>
+                                             src="images/img_27.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                First Thumbnail label
+                                                Show you Life whatever you are!!
                                             </h4>
-                                            <p>
-                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                ultricies vehicula ut id elit.
-                                            </p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img alt=""
-                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/2/default.jpg"/>
+                                             src="images/img_39.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                Second Thumbnail label
+                                                Show your creative wherever you are!!
                                             </h4>
-                                            <p>
-                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                ultricies vehicula ut id elit.
-                                            </p>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <img alt=""
-                                             src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/3/default.jpg"/>
+                                             src="images/img_47.jpg"/>
                                         <div class="carousel-caption">
                                             <h4>
-                                                Third Thumbnail label
+                                                Show your discover whenever your are!!
                                             </h4>
-                                            <p>
-                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                                                elit non mi porta gravida at eget metus. Nullam id dolor id nibh
-                                                ultricies vehicula ut id elit.
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
