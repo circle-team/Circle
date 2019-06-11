@@ -26,7 +26,7 @@
             <a href="#"><img src="images/personal.png"/></a>
             <a href="UserInfo.jsp"><img src="images/information.png"/></a>
             <a href="#"><img src="images/blog.png"/></a>
-            <a href="#" id="user"><img src="images/defult_uiImge.png"/>
+       22     <a href="#" id="user"><img src="images/defult_uiImge.png"/>
               <div id="userText">
                 <h1>okokokokokoko</h1>
               </div>

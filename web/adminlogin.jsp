@@ -13,17 +13,26 @@
         function login_commit(){
             var flag = true;
             $.ajax({
-                url:"login",
+                url:"AdminloginServlet",
                 type:"POST",
                 async:false,
                 data:$("#login_form").serialize(),
                 success:function (data) {
-                    if(data=="false"){
+                    if(data==1){
+                        $("#login_alert1").css("display","none");
                         $("#login_alert").css("display","block");
                         flag = false;
                     }
+
+                if(data==0)
+            {
+                $("#login_alert").css("display","none");
+                $("#login_alert1").css("display","block");
+                flag = false;
+            }
                 }
-            })
+            }
+            )
             return flag;
         }
         $(document).ready(function(){
@@ -117,7 +126,7 @@
                             <form id="login_form" class="form-horizontal" role="form" method="post" action="login"
                                   onsubmit="return login_commit()">
                                 <div class="input-group form-group col-sm-6">
-                                    <span class="input-group-addon" id="addon1">用户名</span>
+                                    <span class="input-group-addon" id="addon1">ID号</span>
                                     <input type="text" class="form-control" id="name" value="" placeholder="请输入用户名" aria-describedby="addon1" name="name" onblur="oBlur_name()"/>
                                 </div>
 
@@ -141,7 +150,10 @@
                             </form>
 
                             <div id="login_alert" class="alert alert-danger" role="alert" style="display: none">
-                                密码错误!
+                                该用户不存在
+                            </div>
+                            <div id="login_alert1" class="alert alert-danger" role="alert" style="display: none">
+                                密码错误
                             </div>
                         </div>
                     </div>
