@@ -43,44 +43,7 @@
 <div class="blank" style="width: auto;height: 100px">
 
 </div>
-<div class="container jumbotron well-sm">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <div class="row clearfix">
-                <div class="col-md-2 column">
-                    <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg"
-                         class="img-circle"/>
-                </div>
-                <div class="col-md-2 column">
-                    <h4><span class="label  label-primary">昵称</span>${sessionScope.userinf.getUid()} </h4>
-                    <h4><span class="label  label-primary">年龄</span>${sessionScope.userinf.getUage()} </h4>
-                    <h5><span class="label  label-primary">所属学校 </span>${sessionScope.userinf.getUschool()}<span
-                            class="label  label-primary">年级</span>${sessionScope.userinf.getUgrade()}</h5>
-                    <h5><span class="label  label-primary">签名</span>${sessionScope.userinf.getUage()} </h5>
-                </div>
-                <div class="col-md-8 column">
-                    <ul class="nav nav-pills">
-                        <li class="active">
-                            <a href="UserBlogs.jsp"><h4>相贴 <span id="blogs_num" class="badge  badge-primary">0</span></h4></a>
-                        </li>
-                        <li>
-                            <a href="FollowList.jsp"><h4>粉丝 <span id="followed_num" class="badge  badge-primary">0</span></h4></a>
-                        </li>
-                        <li>
-                            <a href="FollowedList.jsp"><h4>关注 <span id="follow_num" class="badge  badge-primary">0</span></h4></a>
-                        </li>
-                    </ul>
-                    <blockquote>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                        </p>
-                        <small>Someone famous <cite>Source Title</cite></small>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="panel">
     <div class="row clearfix">
@@ -273,31 +236,6 @@
 </script>
 
 <script>
-    function re_card() {
-        $.ajax({
-            type: 'POST',
-            url: 'SelfInfServlet',
-            dataType: 'json',
-            success: function (data) {
-                var card = eval(data);
-                var follow_num= data.fans;
-                var followed_num= data.bfans;
-                var blogs_num= data.BlogNumber;
-                alert(follow_num);
-                alert(followed_num);
-                alert(blogs_num);
-                $("#blogs_num").html(blogs_num);
-                $("#followed_num").html(followed_num);
-                $("#follow_num").html(follow_num);
-                alert("re card yes");
-            },
-            error: function () {
-                alert("re card fail");
-            }
-        });
-
-    }
-
     function re_comment(bid) {
         $.ajax({
             type: 'POST',
@@ -464,7 +402,6 @@
 
         });
     }
-    re_card();
     re_blog();
     re_click();
 </script>

@@ -10,62 +10,21 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/nav.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <%--    <script type="text/javascript">--%>
-    <%--       $(document).ready(function () {--%>
-    <%--           var str=document.getElementById("gender1").value;--%>
-    <%--           var obj=document.getElementById("gender");--%>
-    <%--           for (i=0;i<obj.length;i++)--%>
-    <%--           {--%>
-    <%--               if(obj[i].value==str)--%>
-    <%--                   obj.selected=true;--%>
-    <%--           }--%>
-
-    <%--    // $("#follow").click(function () {--%>
-    <%--    //     $ajax({--%>
-    <%--    //         url:"FollowAcquireServlet",--%>
-    <%--    //         type:"GET",--%>
-    <%--    //         data:--%>
-    <%--    //         success:function (test) {--%>
-    <%--    //--%>
-    <%--    //         }--%>
-    <%--    //--%>
-    <%--    //--%>
-    <%--    //     })--%>
-    <%--    })--%
-    <%--       })--%>
-    <%--    </script>--%>
-
 </head>
 <body>
 <div class="container">
-
         <div class="row">
             <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
                 <div class="col-md-3 text-left">
-                    <img id="logo" style="width: 47% ;height: 120%" src="images/logo.png"/>
+                    <img id="logo" style="max-width:125px;max-height:48px;" src="images/logo.png"/>
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-7 text-right">
-
                     <a href="#"><img src="images/personal.png"/></a>
-                    <a href="UserInfo.jsp"><img src="images/information.png"/></a>
-                    <a href="#"><img src="images/blog.png"/></a>
-                    <a href="#" id="user"><img src="images/defult_uiImge.png"/>
-                        <div id="userText">
-                            <h1>okokokokokoko</h1>
-                        </div>
-                    </a>
+                    <a href="UserBlogs.jsp"><img src="images/information.png"/></a>
+                    <a href="UserCircle.jsp"><img src="images/blog.png"/></a>
+                    <a href="UserInfo.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
                 </div>
-                <!--<div id="myModal" class="modal">-->
-                <!--<div class="modal-header">-->
-                <!--<span class="close">&times;</span>-->
-                <!--</div>-->
-                <!--<div class="modal-body">-->
-                <!--<p>弹窗文本...</p>-->
-                <!--<p>弹窗文本...</p>-->
-                <!--</div>-->
-                <!--<div class="modal-footer"></div>-->
-                <!--</div>-->
             </nav>
         </div>
 
