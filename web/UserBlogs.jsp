@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-7 text-right">
-                <a href="#"><img src="images/personal.png"/></a>
+                <a href="index.jsp"><img src="images/personal.png"/></a>
                 <a href="UserBlogs.jsp"><img src="images/information.png"/></a>
                 <a href="UserCircle.jsp"><img src="images/blog.png"/></a>
                 <a href="UserInfo.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
@@ -45,21 +45,32 @@
 </div>
 
 
-<div class="panel">
+<div id="panel" class=" container jumbotron well-sm" style="width:auto;height:auto;max-width:800px;max-height:100px;">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <a class="btn-new-blog btn btn-primary btn-lg" href="#modal-blog-new" role="button"
+                    <a class="btn-new-blog btn btn-primary btn" href="#modal-blog-new" role="button"
                        data-toggle="modal">发表博客</a>
                 </li>
                 <li class="active">
-                    <a style="display: none" class="btn btn-default btn-lg" href="#">刷新全部</a>
+                    <a href="" class="btn btn-default btn-lg" href="#">刷新全部</a>
+                </li>
+                <li>
+                    <h5>输入UID关注：</h5>
+                </li>
+                <li>
+                    <input name="search_uid" id="search_uid" class="form-control input-medium search-query"
+                           type="text"/>
+                </li>
+                <li>
+                    <button onclick="search_uid()" id="search_uid_btn" class="btn btn-default">查找</button>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="waterfall">
     </div>
@@ -153,8 +164,10 @@
                             <div class="form-group">
                                 <label for="new_blog_image" class="btn btn-default">上传照片</label>
                                 <input name="image" id="new_blog_image" type="file" style="display:none">
-                                <label for="comment">写博客</label><input type="text" onchange="on_blog()"
-                                                                       class="form-control" id="new-blog-text"/>
+                                <br>
+                                <h5>博客内容</h5>
+                                <input style="height: 50px" type="text" onchange="on_blog()" class="form-control"
+                                                                       id="new-blog-text"/>
                                 <p class="help-block">
                                     Example block-level help text here.
                                 </p>
@@ -236,6 +249,22 @@
 </script>
 
 <script>
+    function search_uid() {
+        var uid=$("#search_uid").val();
+        $.ajax({
+            type: 'POST',
+            url: 'FollowAddServlet',
+            data: {uid: uid},
+            async: false,
+            success: function () {
+               alert("已关注所搜索的用户");
+            },
+            error: function () {
+
+            }
+        });
+    }
+
     function re_comment(bid) {
         $.ajax({
             type: 'POST',
@@ -402,6 +431,7 @@
 
         });
     }
+
     re_blog();
     re_click();
 </script>
