@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-7 text-right">
-                <a href="#"><img src="images/personal.png"/></a>
+                <a href="index.jsp"><img src="images/personal.png"/></a>
                 <a href="UserBlogs.jsp"><img src="images/information.png"/></a>
                 <a href="UserCircle.jsp"><img src="images/blog.png"/></a>
                 <a href="UserInfo.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
@@ -82,16 +82,16 @@
     </div>
 </div>
 
-<div class="panel">
+<div id="panel" class=" container jumbotron well-sm" style="width:auto;height:auto;max-width:800px;max-height:100px;">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <ul class="nav nav-pills">
                 <li class="active">
-                    <a class="btn-new-blog btn btn-primary btn-lg" href="#modal-blog-new" role="button"
+                    <a class="btn-new-blog btn btn-primary btn" href="#modal-blog-new" role="button"
                        data-toggle="modal">发表博客</a>
                 </li>
                 <li class="active">
-                    <a style="display: none" class="btn btn-default btn-lg" href="#">刷新全部</a>
+                    <a href="" class="btn btn-default" href="#">刷新全部</a>
                 </li>
             </ul>
         </div>
@@ -266,7 +266,7 @@
         </div>
         <div class="col-md-10 column">
             <blockquote>
-                <p>{{ctext}}</p>
+                <p>{{ctext}}</p><small class="timestamp pull-right"></small>
             </blockquote>
         </div>
     </div>
@@ -283,12 +283,9 @@
                 var follow_num= data.fans;
                 var followed_num= data.bfans;
                 var blogs_num= data.BlogNumber;
-                alert(follow_num);
-                alert(followed_num);
-                alert(blogs_num);
                 $("#blogs_num").html(blogs_num);
-                $("#followed_num").html(followed_num);
-                $("#follow_num").html(follow_num);
+                $("#followed_num").html(follow_num);
+                $("#follow_num").html(followed_num);
                 alert("re card yes");
             },
             error: function () {
