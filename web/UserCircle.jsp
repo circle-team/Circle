@@ -91,7 +91,7 @@
                        data-toggle="modal">发表博客</a>
                 </li>
                 <li class="active">
-                    <a class="btn btn-primary btn" href="School.jsp">同校同学推荐</a>
+                    <a class="btn btn-primary btn" href="School.jsp">同学推荐</a>
                 </li>
                 <li class="active">
                     <a href="" class="btn btn-default" href="#">刷新全部</a>
