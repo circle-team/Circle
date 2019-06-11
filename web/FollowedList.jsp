@@ -18,20 +18,21 @@
     <div class="row">
         <nav class="narbar navbar-default navbar-fixed-top box1" role="navigation">
             <div class="col-md-3 text-left">
-                <img id="logo" style="width:auto;height:auto;max-width:125px;max-height:48px;" src="images/logo.png"/>
+                <img id="logo" style="max-width:125px;max-height:48px;" src="images/logo.png"/>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-7 text-right">
                 <a href="#"><img src="images/personal.png"/></a>
-                <a href="UserInfo.jsp"><img src="images/information.png"/></a>
-                <a href="#"><img src="images/blog.png"/></a>
-                <a href="login.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
+                <a href="UserBlogs.jsp"><img src="images/information.png"/></a>
+                <a href="UserCircle.jsp"><img src="images/blog.png"/></a>
+                <a href="UserInfo.jsp" id="user"><img src="images/defult_uiImge.png"/></a>
             </div>
         </nav>
     </div>
 </div>
 
 <div style="height: 100px;"></div>
+
 <div class="FollowList">
 </div>
 <script id="template" type="text/html">
